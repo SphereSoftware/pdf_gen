@@ -35,15 +35,16 @@ module PDFRegion
     end
 
     def render_regions(x, y, test = false)
-      regions.each { |region| region.render(x, document.pdf.y, test)}       
+      regions.each { |region| region.render(x, y, test)}       
     end
 
     #renders specified span at the specified position
     #returns real position that caption was generated on
-    def render(pos, test = false)
-      new_pos = super pos
+    def render(x, y, test = false)
+      new_x, new_y = 0, 0
+      new_x, new_y = super x,y,test
 
-      render_regions(new_pos[0], new_pos[1], test) unless new_pos.nil?
+      render_regions(new_x, new_y, test) if new_x and new_y
     end  
 
   end

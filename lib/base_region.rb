@@ -72,8 +72,8 @@ module PDFRegion
     #protected :page_break
 
     #renders region
-    def render(pos)
-      pos
+    def render(x, y, test=false)
+      [x,y]
     end
 
     #appliaes specified values

@@ -6,7 +6,7 @@ require "lib/canvas"
 
 module PDFRegion
   class Document < BaseRegion
-    include Canvas, Container, TableContainer
+    include Canvas, Container, TableContainer, CaptionContainer
 
     #initialization
     def initialize(pdf, page_pad_top)
@@ -46,6 +46,7 @@ module PDFRegion
   def self.document(pdf, page_pad_top, &initialization_block)
     document = Document.new(pdf, page_pad_top)
     document.instance_eval(&initialization_block)
-    document.render([0, pdf.y])
+    document.render(0, pdf.y,true)
+    pdf.render
   end
 end

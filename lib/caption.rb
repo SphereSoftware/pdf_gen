@@ -97,10 +97,11 @@ module PDFRegion
     #renders specified text at the specified position
     #returns real position that caption was generated on
 
-    def render(pos)
-      new_pos = super pos
+    def render(x, y, test=false)
+      new_x, new_y = 0, 0
+      new_x, new_y = super x, y, test
 
-      add_text_wrap(new_pos[0], new_pos[1], false) unless new_pos.nil?
+      add_text_wrap(new_x, new_y, test) if new_x and new_y
     end
 
     def apply_values(values = {})
@@ -117,7 +118,7 @@ module PDFRegion
 
       caption = Caption.new self
 
-      caption.text = text unless text.nil?
+      caption.text = text if text
       caption.set_properties style unless style.nil?
 
       caption.instance_eval(&initialization_block) if initialization_block

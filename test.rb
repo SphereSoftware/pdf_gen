@@ -4,10 +4,12 @@ require "rubygems"
 require "pdf/writer"
 require "lib/document"
 require "lib/fixnum"
+require 'ruby-debug'
 
 
+result = PDFRegion::document PDF::Writer.new, 0.cm do
+  debugger
+  caption 'dbhfbdf'*20
+end
 
-PDFRegion::document PDF::Writer.new 2.cm do |pdf|
-  pdf.text "Test text" * 20
-  File.open("/tmp/doc.pdf", "wb") { |f| f.write pdf.render }
-end  
+File.open("#{File.dirname(__FILE__)}/../doc_test.pdf",'wb') {|f| f.write result}

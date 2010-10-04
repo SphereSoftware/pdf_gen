@@ -142,16 +142,15 @@ module PDFRegion
     #renders region
     #returns real coordinates that region was generated at
 
-    def render(pos)
+    def render(x,y,test=false)
+      new_x, new_y = super x, y, test
 
-      new_pos = super pos
-
-      unless new_pos.nil?
-        fill(new_pos[0], new_pos[1])
-        add_border(new_pos[0], new_pos[1])
+      if new_x and new_y
+        fill(new_x, new_y)
+        add_border(new_x, new_y)
       end
 
-      new_pos
+      [x,y]
     end
 
   end
