@@ -39,7 +39,7 @@ module PDFRegion
           end
 
           region.width = width if gorizontal_align
-          region.render([x, document.pdf.y])
+          region.render(x, document.pdf.y)
           
           document.pdf.y -= region.height
           document.pdf.y -= gorizontal_interval unless region == last
@@ -61,9 +61,19 @@ module PDFRegion
     end
   end
 
-  def self.div(pdf, &initialization_block)
-    div = Div.new(pdf)
-    div.instance_eval(&initialization_block)
-    div.render([0, pdf.y])
+   module DivContainer
+
+    #adds new caption with initialization block
+    def div(style = nil, &initialization_block)
+      
+      div = Div.new self
+
+      div.set_properties style unless style.nil?
+
+      div.instance_eval(&initialization_block) if initialization_block
+
+      add_region(div)
+    end
+
   end
 end

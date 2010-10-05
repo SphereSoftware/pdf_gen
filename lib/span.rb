@@ -55,7 +55,7 @@ module PDFRegion
       regions.each do |region|
 
         region.height = height if vertical_align
-        region.render([(x + content_height), (y - pad_top)]) unless test
+        region.render((x + content_height), (y - pad_top)) unless test
 
         content_height += region.width
         content_height += vertical_interval unless region == last
