@@ -1,10 +1,11 @@
+$: << File.expand_path("../")
 require 'rubygems'
-require '../lib/caption.rb'
-require '../lib/base_concrete_region.rb'
-require '../lib/writer.rb'
+require 'lib/caption.rb'
+require 'lib/base_concrete_region.rb'
+require 'lib/writer.rb'
 require 'pdf/writer'
-require "../lib/fixnum"
-require '../lib/document.rb'
+require "lib/fixnum"
+require 'lib/document.rb'
 include PDFRegion
 include PDF
 def create_caption
