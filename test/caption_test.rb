@@ -16,7 +16,7 @@ describe "A new caption" do
 	before(:all) do
 		@caption = create_caption
 	end
-	it "should not have text " do
+	it "should not have text" do
 		@caption.text.should == ""
 	end
 	it "should have left justification" do
