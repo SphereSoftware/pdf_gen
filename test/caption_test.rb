@@ -1,13 +1,13 @@
 $: << File.expand_path("../")
 require 'rubygems'
 require 'lib/caption.rb'
-require 'lib/base_concrete_region.rb'
 require 'lib/writer.rb'
 require 'pdf/writer'
 require "lib/fixnum"
 require 'lib/document.rb'
 include PDFRegion
 include PDF
+include CaptionContainer
 def create_caption
 	doc = Document.new Writer.new,0.cm
 	Caption.new doc	
@@ -65,3 +65,28 @@ describe "Setter for the font size" do
 		caption.font_size.should == 12
 	end
 end
+describe "caption minimal height" do
+	before(:each) do
+		@caption = create_caption
+		@doc = Document.new Writer.new,0.cm
+	end
+	describe "when padding is zero" do
+		it "should be equal to the font height" do
+			@caption.calculate_minimal_height.should == @doc.pdf.font_height
+		end
+	end
+	describe "when padding top is not zero" do
+		it "should be equal to the font height plus top padding" do
+			@caption.pad_top = 10
+			@caption.calculate_minimal_height.should == @doc.pdf.font_height + @caption.pad_top
+		end
+	end
+	describe "when padding top and padding bottom is not zero" do
+		it "should be equal to the font height plus top padding plus bottom margin" do
+			@caption.pad_top = 10
+			@caption.pad_bottom = 10
+			@caption.calculate_minimal_height.should == @doc.pdf.font_height + @caption.pad_top + @caption.pad_bottom
+		end
+	end 
+end
+
