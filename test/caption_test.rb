@@ -5,6 +5,7 @@ require 'lib/writer.rb'
 require 'pdf/writer'
 require "lib/fixnum"
 require 'lib/document.rb'
+require 'test/shared_examples.rb'
 include PDFRegion
 include PDF
 include CaptionContainer
@@ -12,7 +13,12 @@ def create_caption
 	doc = Document.new Writer.new,0.cm
 	Caption.new doc	
 end
+
 describe "A new caption" do
+	let(:base_region){create_caption}
+	it_should_behave_like "base region" 
+	let(:base_concrete_region){create_caption}
+	it_should_behave_like "base concrete region"
 	before(:all) do
 		@caption = create_caption
 	end
