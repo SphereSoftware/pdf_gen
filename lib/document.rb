@@ -5,10 +5,11 @@ require "lib/caption"
 require "lib/canvas"
 require "lib/span"
 require "lib/div"
+require "lib/image"
 
 module PDFRegion
   class Document < BaseRegion
-    include Canvas, Container, TableContainer, CaptionContainer, SpanContainer, DivContainer
+    include Canvas, Container, TableContainer, CaptionContainer, SpanContainer, DivContainer, ImageContainer
 
     #initialization
     def initialize(pdf, page_pad_top)
