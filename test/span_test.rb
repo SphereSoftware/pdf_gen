@@ -20,10 +20,10 @@ def create_caption
 end
 
 describe "New span" do
-	let(:base_region){create_span}
-	it_should_behave_like "base region" 
-	let(:base_concrete_region){create_span}
-	it_should_behave_like "base concrete region"
+  let(:base_region){create_span}
+  it_should_behave_like "base region"
+  let(:base_concrete_region){create_span}
+  it_should_behave_like "base concrete region"
   it "right calculation min height,if height bigger than font_height" do
     span_el = create_span
     span_el.set_properties(:pad_top => 3, :pad_bottom => 4)
@@ -54,21 +54,33 @@ describe "New span" do
 
     Integer(span_el.calculate_minimal_height).should == 18
   end
-	it "right calculate content height with vertical interval" do
-		span_el = create_span
-		
-		caption1 = create_caption
+  it "right calculate content height with vertical interval" do
+    span_el = create_span
+
+    caption1 = create_caption
     caption1.set_properties(:width => 50)
 
     caption2 = create_caption
     caption2.set_properties(:width => 50)
-		
-		span_el.add_region(caption1)
+
+    span_el.add_region(caption1)
     span_el.add_region(caption2)
-		
-		span_el.vertical_interval = 5
-		span_el.render_regions.should == 105
-	end
+
+    span_el.vertical_interval = 5
+    span_el.render_regions.should == 105
+  end
+  it "right calculate content height with vertical align" do
+    span_el = create_span
+    span_el.set_properties(:height => 100)
+    span_el.vertical_align = true
+    
+    caption1 = create_caption
+    caption1.set_properties(:width => 50)
+
+    span_el.add_region(caption1)
+    
+    caption1.height.should == 100
+  end
 end
 
 
