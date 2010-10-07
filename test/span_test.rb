@@ -54,6 +54,21 @@ describe "New span" do
 
     Integer(span_el.calculate_minimal_height).should == 18
   end
+	it "right calculate content height with vertical interval" do
+		span_el = create_span
+		
+		caption1 = create_caption
+    caption1.set_properties(:width => 50)
+
+    caption2 = create_caption
+    caption2.set_properties(:width => 50)
+		
+		span_el.add_region(caption1)
+    span_el.add_region(caption2)
+		
+		span_el.vertical_interval = 5
+		span_el.render_regions.should == 105
+	end
 end
 
 
