@@ -11,11 +11,12 @@ require "lib/float"
 
 result = PDFRegion::document PDF::Writer.new, 2.cm do
   #debugger
-  image_data = open(File.expand_path('../test_image.jpg'), "rb") { |file| file.read }
-  
-  image image_data, :width => 250, :height => 250, :border => 2.cm
-  caption 'test text'*50, :width=>150, :pad_left=>0.5.cm, :text_color=>Color::RGB::Blue, :border => 1.cm
-
+  span :pad_left => 2.cm do
+    image_data = open(File.expand_path('../test_image.jpg'), "rb") { |file| file.read }
+    
+    image image_data, :width => 250, :border => 2, :pad_left => 2.cm
+    caption 'test text'*50, :width=>150, :pad_left=>0.5.cm, :text_color=>Color::RGB::Blue, :border => 1.cm
+  end
 
 end
 
