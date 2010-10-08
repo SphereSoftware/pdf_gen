@@ -7,26 +7,18 @@ module PDFRegion
 			super parent
 
 			@image = nil
-			#@resize = nil
-			@border = nil
-			@link = nil      
 		end
 
 		attr_accessor :image
-		#attr_accessor :resize
-		#attr_accessor :border
-		attr_reader :link
 				
 		def render(x, y, test=false)
 			info = PDF::Writer::Graphics::ImageInfo.new(@image)
-			p width_new = width if width > 0
-			p height_new = height if height > 0
+			width_new = width if width > 0
+			height_new = height if height > 0
 			
 			width_new  ||= height / info.height.to_f * info.width
 			height_new ||= width * info.height / info.width.to_f
 			
-			p width_new
-			p height_new
 			document.pdf.add_image(@image, x, y - width_new, width_new,height_new) if (width_new > 0 && height_new > 0)
 			document.pdf.add_image(@image, x, y - info.width, nil,nil) if (width_new == 0 && height_new == 0)
 			add_border(x,y)
