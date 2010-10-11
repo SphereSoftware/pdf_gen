@@ -1,6 +1,7 @@
 require "pdf/writer"
 require 'lib/base_concrete_region'
 
+
 module PDFRegion
   class Image < BaseConcreteRegion
     def initialize(parent, image_res)
@@ -31,16 +32,6 @@ module PDFRegion
     def render(x, y, test=false)
       document.pdf.add_image(@image, x, y - height, width, height)
       add_border x, y
-    end
-  end
-
-  module ImageContainer
-    def image(image_res, style=nil, &initialization_block)
-      image = Image.new self, image_res
-      image.set_properties style unless style.nil?
-      image.instance_eval(&initialization_block) if initialization_block
-
-      self.add_region(image)
     end
   end
 end

@@ -9,7 +9,6 @@ require 'test/shared_examples.rb'
 require "test/helpers_for_testing"
 include PDFRegion
 include PDF
-include SpanContainer
 include HelpersForTesting
 
 

@@ -2,10 +2,14 @@ require "lib/base_region"
 require "lib/container"
 require "lib/caption"
 require "lib/span"
+require "lib/containers/div_container"
+require "lib/containers/span_container"
+require "lib/containers/caption_container"
+require "lib/containers/image_container"
 
 module PDFRegion
   class Div < BaseRegion
-    include Container, CaptionContainer, SpanContainer
+    include Container, CaptionContainer, SpanContainer, DivContainer, ImageContainer
 
     #initialization
 
@@ -59,21 +63,5 @@ module PDFRegion
     def calculate_minimal_height
       0
     end
-  end
-
-   module DivContainer
-
-    #adds new caption with initialization block
-    def div(style = nil, &initialization_block)
-      
-      div = Div.new self
-
-      div.set_properties style unless style.nil?
-
-      div.instance_eval(&initialization_block) if initialization_block
-
-      add_region(div)
-    end
-
   end
 end

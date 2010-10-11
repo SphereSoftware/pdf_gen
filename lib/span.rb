@@ -3,6 +3,8 @@ require "lib/image"
 require "lib/base_concrete_region"
 require "lib/container"
 require "lib/caption"
+require "lib/containers/caption_container"
+require "lib/containers/image_container"
 
 module PDFRegion
 
@@ -66,22 +68,4 @@ module PDFRegion
     end 
 
   end #Span
-
-  #Span container
-  module SpanContainer
-
-    #adds new caption with initialization block
-    def span(style = nil, &initialization_block)
-      
-      span = Span.new self
-
-      span.set_properties style unless style.nil?
-
-      span.instance_eval(&initialization_block) if initialization_block
-
-      add_region(span)
-    end
-
-  end
-
 end
