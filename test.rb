@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/ruby ruby
 $: << File.dirname(__FILE__)
 require "rubygems"
 require "pdf/writer"
