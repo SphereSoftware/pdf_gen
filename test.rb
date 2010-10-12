@@ -5,18 +5,19 @@ require "pdf/writer"
 require "lib/document"
 require "lib/fixnum"
 require "lib/float"
-#require 'ruby-debug'
+require 'ruby-debug'
 
-result = PDFRegion::document PDF::Writer.new, 2.cm do
+result = PDFRegion::document PDF::Writer.new, 1.cm do
 
-  #debugger
+#  debugger
 
-  div do
-      caption 'test text'*60, :width=>150, :pad_left=>0.5.cm, :text_color=>Color::RGB::Red, :justification => :right
-      caption 'test text'*50, :width=>150, :pad_left=>0.5.cm, :text_color=>Color::RGB::Blue, :justification => :right
-      caption 'test text'*60, :width=>150, :pad_left=>0.5.cm, :text_color=>Color::RGB::Red, :justification => :right
-      caption 'test text'*60, :width=>150, :pad_left=>0.5.cm, :text_color=>Color::RGB::Red, :justification => :right
+  div :width=> 35.cm, :pad_left=>2.cm, :pad_right=> 30.cm do
+      caption 'test text'*60, :width=>15.cm
+      caption 'test text'*60, :width=>15.cm
+      caption 'test text'*60, :width=>15.cm
+      caption 'test text'*60, :width=>15.cm
   end
+#  debugger
 end
 
 
