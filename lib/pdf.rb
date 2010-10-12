@@ -44,7 +44,7 @@ module Ruport
           pad_top = border_ops[:top] || 0
           pad_bottom = border_ops[:bottom] || 0
           pad_right = border_ops[:right] || 0
-          
+
           color = border_ops[:color] || self.stroke_color?
           style = border_ops[:style] || self.stroke_style?
 
@@ -71,6 +71,7 @@ module Ruport
         end
 
       end
+
       private :border_text
 
       #add test override.
@@ -92,9 +93,9 @@ module Ruport
         start_y = y
 
         y -= self.font_height
-        
+
         while !(text = add_text_wrap(x, y, width, text)).empty?
-          y -= self.font_height    
+          y -= self.font_height
         end
 
         self.y = y

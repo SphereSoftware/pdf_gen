@@ -10,7 +10,7 @@ module PDFRegion
 
   #Gorizontall captions line
   class Span < BaseConcreteRegion
-    include Container, CaptionContainer ,ImageContainer
+    include Container, CaptionContainer, ImageContainer
 
     #initialization
     def initialize parent
@@ -65,7 +65,7 @@ module PDFRegion
       end
 
       content_height + pad_right
-    end 
+    end
 
   end #Span
 end

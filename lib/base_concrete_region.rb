@@ -17,7 +17,6 @@ module PDFRegion
       @border_color = Color::RGB::Black
 
 
-
       @pad_top = 0
       @pad_bottom = 0
       @pad_left = 0
@@ -26,10 +25,10 @@ module PDFRegion
       @background_color = nil
 
 
-    end  
+    end
 
     def width=(value)
-        clear_minimal_height if super value
+      clear_minimal_height if super value
     end
 
     #top border
@@ -56,7 +55,7 @@ module PDFRegion
       self.border_bottom = value
       self.border_left = value
       self.border_right = value
-    end    
+    end
 
     #top padding
     attr_reader :pad_top
@@ -119,6 +118,7 @@ module PDFRegion
         document.pdf.restore_state
       end
     end
+
     private :add_border
 
     #fills caption area with background color
@@ -137,12 +137,13 @@ module PDFRegion
 
       end
     end
-    private :fill  
+
+    private :fill
 
     #renders region
     #returns real coordinates that region was generated at
 
-    def render(x,y,test=false)
+    def render(x, y, test=false)
       new_x, new_y = super x, y, test
 
       if new_x and new_y
@@ -150,7 +151,7 @@ module PDFRegion
         add_border(new_x, new_y)
       end
 
-      [x,y]
+      [x, y]
     end
 
   end

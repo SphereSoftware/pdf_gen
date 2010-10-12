@@ -6,13 +6,13 @@ module PDFRegion
   class BaseRegion
 
     def initialize parent
-       @parent = parent
+      @parent = parent
 
-       @width = 0#document.pdf.page_width - document.pdf.left_margin - document.pdf.right_margin
+      @width = 0#document.pdf.page_width - document.pdf.left_margin - document.pdf.right_margin
 
-       #@page_pad_top = document.pdf.top_margin
+      #@page_pad_top = document.pdf.top_margin
 
-       @height = 0
+      @height = 0
     end
 
     #pdf
@@ -38,12 +38,14 @@ module PDFRegion
     def clear_minimal_height
       @minimal_height = nil
     end
+
     protected :clear_minimal_height
 
     #gets minimal region height
     def calculate_minimal_height
       0
     end
+
     protected :calculate_minimal_height
 
     #height
@@ -61,7 +63,7 @@ module PDFRegion
 
     def width=(value)
       if value && @width != value
-        @width = value    
+        @width = value
       end
     end
 
@@ -73,7 +75,7 @@ module PDFRegion
 
     #renders region
     def render(x, y, test=false)
-      [x,y]
+      [x, y]
     end
 
     #appliaes specified values
@@ -93,5 +95,5 @@ module PDFRegion
     end
 
   end
-  
+
 end

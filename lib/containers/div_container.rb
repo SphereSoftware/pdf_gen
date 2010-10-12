@@ -3,16 +3,16 @@ include PDFRegion
 
 module DivContainer
 
-    #adds new caption with initialization block
-    def div(style = nil, &initialization_block)
-      
-      div = Div.new self
+  #adds new caption with initialization block
+  def div(style = nil, &initialization_block)
 
-      div.set_properties style unless style.nil?
+    div = Div.new self
 
-      div.instance_eval(&initialization_block) if initialization_block
+    div.set_properties style unless style.nil?
 
-      add_region(div)
-    end
+    div.instance_eval(&initialization_block) if initialization_block
 
+    add_region(div)
   end
+
+end

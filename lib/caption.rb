@@ -80,7 +80,7 @@ module PDFRegion
       txt = bold ? "<b>#{text}</b>" : text
 
       document.pdf.save_state
-      document.pdf.fill_color text_color if text_color      
+      document.pdf.fill_color text_color if text_color
       while !(txt = document.pdf.add_text_wrap(x + pad_left, y - res, width - pad_left - pad_right, txt, font_size, justification, 0, test)).empty?
         res += document.pdf.font_height
       end

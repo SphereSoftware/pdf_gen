@@ -5,7 +5,7 @@ module PDFRegion
     def regions
       @regions ||= []
     end
-    
+
     #executes specified initialization block on all inner regions
     def elements(style = {}, &initialization_block)
       regions.each do |region|
@@ -21,31 +21,31 @@ module PDFRegion
       regions.each{|region| region.apply_values values}
     end
 
-     def page_pad_top=(value)
+    def page_pad_top=(value)
       super value
 
       regions.each {|region| region.page_pad_top=value}
-     end
+    end
 
     #adds new region to the span
     def add_region region
       if region
         regions << region
-      end   
+      end
     end
 
     def render_regions(x, y, test = false)
-      regions.each { |region| region.render(x, document.pdf.y, test)}       
+      regions.each { |region| region.render(x, document.pdf.y, test)}
     end
 
     #renders specified span at the specified position
     #returns real position that caption was generated on
     def render(x, y, test = false)
       new_x, new_y = 0, 0
-      new_x, new_y = super x,y,test
+      new_x, new_y = super x, y, test
 
       render_regions(new_x, new_y, test) if new_x and new_y
-    end  
+    end
 
   end
 
