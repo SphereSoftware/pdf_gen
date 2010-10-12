@@ -13,14 +13,13 @@ include SpanContainer
 include HelpersForTesting
 
 
-
 describe "New span" do
-  let(:base_region){create_span} 
+  let(:base_region){create_span}
   it_should_behave_like "base region"
-  
+
   let(:base_concrete_region){create_span}
   it_should_behave_like "base concrete region"
-  
+
   it "right calculation min height,if height bigger than font_height" do
     span_el = create_span
     span_el.set_properties(:pad_top => 3, :pad_bottom => 4)
@@ -70,12 +69,12 @@ describe "New span" do
     span_el = create_span
     span_el.set_properties(:height => 100)
     span_el.vertical_align = true
-    
+
     caption1 = create_caption
     caption1.set_properties(:width => 50)
 
     span_el.add_region(caption1)
-    
+
     caption1.height.should == 100
   end
 end
