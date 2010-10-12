@@ -48,7 +48,7 @@ module PDFRegion
           document.pdf.y -= region.height
           document.pdf.y -= gorizontal_interval unless region == last
         end
-
+        
         content_height += region.height
         content_height += gorizontal_interval unless region == last
       end
