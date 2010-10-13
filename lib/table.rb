@@ -36,7 +36,7 @@ module PDFRegion
       title_height = render_region pos[0], @title, true
       header_height = render_region pos[0], @header, true
       first_row_height = 0
-      
+
       unless @table.data.nil? && @table.data.empty
         first_row_data = @table.data[0]
         unless first_row_data.nil?
@@ -44,10 +44,10 @@ module PDFRegion
           first_row_height = render_region pos[0], @data, true
         end
       end
-      
+
       if (title_height + header_height + first_row_height) > (document.pdf.y - document.pdf.bottom_margin)
         document.break_page
-      end 
+      end
 
       document.add_header_region @header if repeat_header_on_each_page
 
@@ -96,6 +96,7 @@ module PDFRegion
       region.set_properties style unless style.nil?
       region.instance_eval(&initialization_block) if initialization_block
     end
+
     private :access_region
   end
 
@@ -105,5 +106,5 @@ module PDFRegion
       table.instance_eval(&initialization_block)
       table.render([table.document.pdf.left_margin, table.document.pdf.y])
     end
-  end 
+  end
 end

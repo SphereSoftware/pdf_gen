@@ -44,7 +44,7 @@ module PDFRegion
 
           region.width = width if gorizontal_align
           region.render(x, document.pdf.y)
-          
+
           document.pdf.y -= region.height
           document.pdf.y -= gorizontal_interval unless region == last
         end
