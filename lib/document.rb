@@ -14,8 +14,12 @@ module PDFRegion
     #initialization
     def initialize(pdf, page_pad_top)
       super nil
-
+      pdf.y += pdf.top_margin  # clear predefined top_margin
+      pdf.y -= page_pad_top    # set y considering page_pad_top
+      pdf.top_margin = 0
+      
       @pdf = pdf
+      
       @page_pad_top = page_pad_top
       @header = []
     end

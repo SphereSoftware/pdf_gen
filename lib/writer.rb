@@ -16,5 +16,9 @@ module PDF
 
       self.y = self.y - pad_top
     end
+
+    def y=(yy) #:nodoc:
+      @y = yy
+    end
   end #Writer  
 end #PDF
