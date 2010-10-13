@@ -36,8 +36,8 @@ describe "calculating div height" do
       regions[0].add_region div1
       regions[0].add_region caption
       regions[0].add_region caption1
-			
-			div.send(:render_regions, 0, 0).should == 200
+
+      div.send(:render_regions, 0, 0).should == 200
     end
   end
 end
