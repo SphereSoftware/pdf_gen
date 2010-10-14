@@ -39,5 +39,8 @@ describe "calculating div height" do
 
       div.send(:render_regions, 0, 0).should == 200
     end
+    
   end
+
 end
+
