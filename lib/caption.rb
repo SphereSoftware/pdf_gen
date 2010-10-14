@@ -25,40 +25,22 @@ module PDFRegion
       end
     end
 
-    attr_reader :text_color
+    attr_reader :text_color, :justification, :bold, :font_size
 
     def text_color=(value)
-      if value && @text_color != value
-        @text_color = value
-        clear_minimal_height
-      end
+      common_setter(:@text_color,value)
     end
-
-    attr_reader :justification
 
     def justification=(value)
-      if value && @justification != value
-        @justification = value
-        clear_minimal_height
-      end
+      common_setter(:@justification,value)
     end
-
-    attr_reader :bold
 
     def bold= (value)
-      if value && @bold != value
-        @bold = value
-        clear_minimal_height
-      end
+      common_setter(:@bold,value)
     end
 
-    attr_reader :font_size
-
     def font_size=(value)
-      if value && @font_size != value
-        @font_size = value
-        clear_minimal_height
-      end
+      common_setter(:@font_size,value)
     end
 
     def calculate_minimal_height
@@ -86,9 +68,8 @@ module PDFRegion
     #renders specified text at the specified position
     #returns real position that caption was generated on
     def render(x, y, test=false)
-      new_x, new_y = super
-
-      add_text_wrap(new_x, new_y, test) if (new_x and new_y)
+      add_text_wrap(x, y, test)
+      super
     end
 
     def apply_values(values = {})

@@ -31,7 +31,7 @@ module PDFRegion
 
     def render(x, y, test=false)
       document.pdf.add_image(@image, x, y - height, width, height)
-      add_border(x, y)
+      super
     end
     
   end

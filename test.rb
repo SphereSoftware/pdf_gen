@@ -5,7 +5,7 @@ require "pdf/writer"
 require "lib/document"
 require "lib/fixnum"
 require "lib/float"
-#~ require 'ruby-debug'
+require 'ruby-debug'
 
 result = PDFRegion::document PDF::Writer.new, 2.cm do
      

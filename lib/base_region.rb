@@ -65,11 +65,15 @@ module PDFRegion
       @page_pad_top = value
     end
     
-    def width=(value)
-      if value && @width != value
-        @width = value
+    def common_setter(var_name,value)
+      if value && var_name != value
+        self.instance_variable_set(var_name, value)
         clear_minimal_height
       end
+    end
+    
+    def width=(value)
+      common_setter(:@width,value)
     end
 
     attr_accessor :border_top, :border_bottom, :border_left, :border_right, :border_style, :border_color 
@@ -81,40 +85,22 @@ module PDFRegion
       self.border_right = value
     end
 
-    attr_reader :pad_top
+    attr_reader :pad_top, :pad_bottom, :pad_left, :pad_right
 
     def pad_top=(value)
-      if value && @pad_top != value
-        @pad_top = value
-        clear_minimal_height
-      end
+      common_setter(:@pad_top,value)
     end
-
-    attr_reader :pad_bottom
 
     def pad_bottom=(value)
-      if value && @pad_bottom != value
-        @pad_bottom = value
-        clear_minimal_height
-      end
+      common_setter(:@pad_bottom,value)
     end
-
-    attr_reader :pad_left
 
     def pad_left=(value)
-      if value && @pad_left != value
-        @pad_left = value
-        clear_minimal_height
-      end
+      common_setter(:@pad_left,value)
     end
 
-    attr_reader :pad_right
-
     def pad_right=(value)
-      if value && @pad_right != value
-        @pad_right = value
-        clear_minimal_height
-      end
+      common_setter(:@pad_right,value)
     end
 
     attr_accessor :background_color
