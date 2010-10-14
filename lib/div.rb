@@ -86,13 +86,7 @@ module PDFRegion
     end
 
     def add_optional_border(x, y)
-      border_style = PDF::Writer::StrokeStyle::DOTTED
-      document.pdf.stroke_style! border_style
-
       document.pdf.line(x, y, x + width, y).stroke
-
-      border_style = PDF::Writer::StrokeStyle::SOLID
-      document.pdf.stroke_style! border_style
     end
 
     def calculate_minimal_height
