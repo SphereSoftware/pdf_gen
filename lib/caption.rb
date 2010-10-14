@@ -1,9 +1,9 @@
-require "lib/base_concrete_region"
+require "lib/base_region"
 
 #text class definition
 module PDFRegion
   #text that might be rendered to the PDF document
-  class Caption < BaseConcreteRegion
+  class Caption < BaseRegion
     #initialization
     def initialize(parent)
       super parent

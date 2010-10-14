@@ -8,7 +8,7 @@ require "lib/containers/caption_container"
 require "lib/containers/image_container"
 
 module PDFRegion
-  class Div < BaseConcreteRegion
+  class Div < BaseRegion
     include Container, CaptionContainer, SpanContainer, DivContainer, ImageContainer
 
     #initialization

@@ -1,6 +1,6 @@
 require "pdf/writer"
 require "lib/image"
-require "lib/base_concrete_region"
+require "lib/base_region"
 require "lib/container"
 require "lib/caption"
 require "lib/containers/caption_container"
@@ -9,7 +9,7 @@ require "lib/containers/image_container"
 module PDFRegion
 
   #Gorizontall captions line
-  class Span < BaseConcreteRegion
+  class Span < BaseRegion
     include Container, CaptionContainer, ImageContainer
 
     #initialization

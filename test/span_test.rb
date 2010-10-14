@@ -17,9 +17,6 @@ describe "New span" do
   let(:base_region){create_span}
   it_should_behave_like "base region"
 
-  let(:base_concrete_region){create_span}
-  it_should_behave_like "base concrete region"
-
   it "right calculation min height,if height bigger than font_height" do
     span_el = create_span
     span_el.set_properties(:pad_top => 3, :pad_bottom => 4)

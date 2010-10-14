@@ -1,9 +1,9 @@
 require "pdf/writer"
-require 'lib/base_concrete_region'
+require 'lib/base_region'
 
 
 module PDFRegion
-  class Image < BaseConcreteRegion
+  class Image < BaseRegion
     def initialize(parent, image_res)
       super parent
 

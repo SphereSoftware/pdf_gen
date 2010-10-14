@@ -15,10 +15,7 @@ include HelpersForTesting
 describe "A new caption" do
   let(:base_region){create_caption}
   it_should_behave_like "base region"
-
-  let(:base_concrete_region){create_caption}
-  it_should_behave_like "base concrete region"
-
+  
   before(:all) do
     @caption = create_caption
   end
