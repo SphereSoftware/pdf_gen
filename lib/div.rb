@@ -18,6 +18,7 @@ module PDFRegion
 
       @gorizontal_interval = 0
       @gorizontal_align = false
+      @optional_border = false
     end
 
     #gorizontal interval
@@ -25,7 +26,9 @@ module PDFRegion
 
     #gorizontal alignment
     attr_accessor :gorizontal_align
-
+    
+    #optional border
+    attr_accessor :optional_border
 
     #renders inner regions
     def render_regions(x, y, test = true)
@@ -39,9 +42,10 @@ module PDFRegion
 
         unless test
           if (region.height >= (document.pdf.y - pad_bottom))
+            add_optional_border(x,document.pdf.y) if optional_border
             document.break_page
           end
-
+          
           if (region.width > (width - pad_left - pad_right)) or gorizontal_align
             region.width = width - pad_left - pad_right
           end
@@ -50,9 +54,9 @@ module PDFRegion
           document.pdf.y -= pad_top if region == first
           region.render(x + pad_left, document.pdf.y)
           
-          y = first ? document.pdf.y + pad_top : document.pdf.y
-          y_new = last ?  document.pdf.y-region.height - pad_bottom : document.pdf.y-region.height
-          p y
+          y = region==first ? document.pdf.y + pad_top : document.pdf.y
+          y_new = region==last ?  document.pdf.y-region.height - pad_bottom : document.pdf.y-region.height
+          
           add_border_sides(x,y,y_new) #left and right borders
           
           document.pdf.y -= region.height
@@ -82,6 +86,16 @@ module PDFRegion
     def add_border_sides(x,y,y_new)
       document.pdf.line(x, y, x, y_new).stroke if border_left
       document.pdf.line(x + width, y, x + width, y_new).stroke if border_right
+    end
+    
+    def add_optional_border(x,y)
+      border_style = PDF::Writer::StrokeStyle::DOTTED
+      document.pdf.stroke_style! border_style
+      
+      document.pdf.line(x, y, x + width, y).stroke
+      
+      border_style = PDF::Writer::StrokeStyle::SOLID
+      document.pdf.stroke_style! border_style
     end
     #gets minimal region height
 
