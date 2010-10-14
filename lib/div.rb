@@ -1,5 +1,5 @@
 require "lib/base_region"
-require "lib/container"
+require "lib/modules/container"
 require "lib/caption"
 require "lib/span"
 require "lib/containers/div_container"
