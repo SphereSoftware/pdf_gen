@@ -1,9 +1,13 @@
 require "ruport"
 
+
 #Ruport's PDF formatter extension
 module Ruport
+  
   class Formatter
+    
     class PDF
+     
       alias old_add_text add_text
       alias old_draw_table draw_table
 
@@ -29,17 +33,13 @@ module Ruport
       end
 
       #gets if the "bold mode" turned on"
-
       def bold?
         @bold ||= false
       end
 
-
       #paintes the border around the text
       def border_text(start_y, format_ops = {})
-
         if border_ops = format_ops[:border]
-
           pad_left = border_ops[:left] || 0
           pad_top = border_ops[:top] || 0
           pad_bottom = border_ops[:bottom] || 0
@@ -52,7 +52,6 @@ module Ruport
 
           self.stroke_color! color
           self.stroke_style! style
-
 
           #left border
           line(pad_left, start_y + pad_top, pad_left, self.y - pad_bottom).stroke if border_ops[:left]
@@ -78,36 +77,25 @@ module Ruport
       #bold tracking added
       def add_text(text, format_opts ={})
         modified_text = bold? ? "<b>#{text}</b>" : text
-
         start_y = self.y
-
         old_add_text(modified_text, format_opts)
-
         border_text(start_y, format_opts) if format_opts[:border]
       end
 
-
       #wraps specified text to the specified region
       def wrap_text(text, x = 0, y = self.y, width = self.page_width, format_opts = {})
-
         start_y = y
-
         y -= self.font_height
-
         while !(text = add_text_wrap(x, y, width, text)).empty?
           y -= self.font_height
         end
-
         self.y = y
-
         border_text(start_y, format_opts) if format_opts[:border]
       end
 
       #draw table ovwrride
       def draw_table(table_data, format_ops = {})
-
         unless ((column_format = format_ops[:column_format]).nil?)
-
           columns = {}
           column_order = []
 
@@ -119,15 +107,12 @@ module Ruport
           format_ops[:columns] = columns
           format_ops[:column_order] = column_order
           format_ops.delete(:column_format)
-
         end
 
         old_draw_table table_data, format_ops
-
       end
 
       #turns formatter to the bold mode
-
       def bold
         @bold = true
         yield
@@ -135,7 +120,6 @@ module Ruport
       end
 
       #turns on columns mode
-
       def columns(size = 2, gutter = 10)
         start_columns size, gutter
         yield
@@ -143,11 +127,12 @@ module Ruport
       end
 
       #selects next column
-
       def column
         yield
         start_new_page if pdf_writer.columns? && pdf_writer.column_number < pdf_writer.column_count
       end
-    end #PDF
-  end #Formatter
-end #Ruport
+      
+    end 
+  end
+  
+end

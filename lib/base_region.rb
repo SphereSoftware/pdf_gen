@@ -172,5 +172,7 @@ module PDFRegion
     def set_properties(props = {})
       props.each_pair {|name, value| self.send("#{name}=", value)}
     end
+    
   end
+  
 end

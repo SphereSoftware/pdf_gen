@@ -3,9 +3,11 @@ require 'lib/base_region'
 
 
 module PDFRegion
+  
   class Image < BaseRegion
+    
     def initialize(parent, image_res)
-      super parent
+      super(parent)
 
       @image = image_res
       @info = PDF::Writer::Graphics::ImageInfo.new(@image)
@@ -13,8 +15,7 @@ module PDFRegion
 
     attr_accessor :image
 
-    def set_properties props = {}
-
+    def set_properties(props = {})
       super props
 
       case true
@@ -28,10 +29,11 @@ module PDFRegion
       end
     end
 
-    #TODO: need to refactoring
     def render(x, y, test=false)
       document.pdf.add_image(@image, x, y - height, width, height)
-      add_border x, y
+      add_border(x, y)
     end
+    
   end
+  
 end

@@ -14,8 +14,6 @@ module PDFRegion
       end
     end
 
-    #appliaes specified values
-
     #applies specified values
     def apply_values(values = {})
       regions.each{|region| region.apply_values values}
@@ -29,9 +27,7 @@ module PDFRegion
 
     #adds new region to the span
     def add_region region
-      if region
-        regions << region
-      end
+      regions << region if region
     end
 
     def render_regions(x, y, test = false)
@@ -41,7 +37,6 @@ module PDFRegion
     #renders specified span at the specified position
     #returns real position that caption was generated on
     def render(x, y, test = false)
-      new_x, new_y = 0, 0
       new_x, new_y = super x, y, test
 
       render_regions(new_x, new_y, test) if new_x and new_y

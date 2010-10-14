@@ -1,4 +1,6 @@
 require "pdf/writer"
+
+
 #Extension of the standard Fixnum class
 #with PDF  - related units conversions
 class Fixnum
@@ -9,7 +11,6 @@ class Fixnum
   end
 
   #in2pts
-
   def in
     PDF::Writer.in2pts(self)
   end

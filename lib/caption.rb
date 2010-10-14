@@ -1,23 +1,20 @@
 require "lib/base_region"
 
-#text class definition
+
 module PDFRegion
-  #text that might be rendered to the PDF document
+  
   class Caption < BaseRegion
-    #initialization
+    
     def initialize(parent)
-      super parent
+      super(parent)
 
       @text = ""
       @template = @text
-
       @justification = :left
       @bold = false
-
       @font_size = document.pdf.font_size
-    end
-
-    #text
+      end
+    
     attr_reader :text
 
     def text=(value)
@@ -37,7 +34,6 @@ module PDFRegion
       end
     end
 
-    #justification
     attr_reader :justification
 
     def justification=(value)
@@ -47,7 +43,6 @@ module PDFRegion
       end
     end
 
-    #bold
     attr_reader :bold
 
     def bold= (value)
@@ -57,7 +52,6 @@ module PDFRegion
       end
     end
 
-    #font_size
     attr_reader :font_size
 
     def font_size=(value)
@@ -67,21 +61,19 @@ module PDFRegion
       end
     end
 
-    #returns minimal height for the current caption
-
     def calculate_minimal_height
       add_text_wrap
     end
 
     #writes text. return actual text height
-
     def add_text_wrap(x = 0, y = document.pdf.y, test = true)
       res = document.pdf.font_height + pad_top
       txt = bold ? "<b>#{text}</b>" : text
 
       document.pdf.save_state
       document.pdf.fill_color text_color if text_color
-      while !(txt = document.pdf.add_text_wrap(x + pad_left, y - res, width - pad_left - pad_right, txt, font_size, justification, 0, test)).empty?
+      while !(txt = document.pdf.add_text_wrap(x + pad_left, y - res, width - pad_left - pad_right, txt, font_size,\
+                justification, 0, test)).empty?
         res += document.pdf.font_height
       end
       document.pdf.restore_state
@@ -91,15 +83,12 @@ module PDFRegion
 
     private :add_text_wrap
 
-
     #renders specified text at the specified position
     #returns real position that caption was generated on
-
     def render(x, y, test=false)
-      new_x, new_y = 0, 0
       new_x, new_y = super x, y, test
 
-      add_text_wrap(new_x, new_y, test) if new_x and new_y
+      add_text_wrap(new_x, new_y, test) if (new_x and new_y)
     end
 
     def apply_values(values = {})
@@ -107,7 +96,7 @@ module PDFRegion
       values.each_pair {|key, value| @text = @text.sub("<!#{key}!>", value.to_s)}
     end
 
-  end #Text
+  end
 
 end
 

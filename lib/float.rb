@@ -1,5 +1,6 @@
 require "pdf/writer"
 
+
 #Extension of the standard Float class
 #with PDF  - related units conversions
 class Float
@@ -10,7 +11,6 @@ class Float
   end
 
   #in2pts
-
   def in
     PDF::Writer.in2pts(self)
   end

@@ -1,19 +1,19 @@
 require "lib/base_region"
 require "lib/div"
 
+
 module PDFRegion
 
   #Table region
   class Table < BaseRegion
 
     def initialize(parent, table)
-      super parent
+      super(parent)
 
       @table = table
       @title = Div.new(parent)
       @header = Div.new(parent)
       @data = Div.new(parent)
-
       @repeat_header_on_each_page = false
     end
 
@@ -31,7 +31,6 @@ module PDFRegion
     end
 
     def render(pos)
-
       #title, header and first row of table should not split
       title_height = render_region pos[0], @title, true
       header_height = render_region pos[0], @header, true
@@ -60,11 +59,9 @@ module PDFRegion
       end
 
       document.remove_header_region @header if repeat_header_on_each_page
-
     end
 
     #gets dictionary for the specified data
-
     def get_data_dictionary data
       @data_dictionary ||= {}
       @column_names ||= @table.column_names
@@ -76,17 +73,13 @@ module PDFRegion
       @data_dictionary
     end
 
-    #title initializer
     def title(style = nil, &initialization_block)
       access_region(@title, style, &initialization_block)
     end
 
-    #header initializer
     def header(style = nil, &initialization_block)
       access_region(@header, style, &initialization_block)
     end
-
-    #data initializer
 
     def data(style = nil, &initialization_block)
       access_region(@data, style, &initialization_block)
@@ -101,10 +94,13 @@ module PDFRegion
   end
 
   module TableContainer
+    
     def table(data_table, &initialization_block)
       table = Table.new(self, data_table)
       table.instance_eval(&initialization_block)
       table.render([table.document.pdf.left_margin, table.document.pdf.y])
     end
+    
   end
+  
 end

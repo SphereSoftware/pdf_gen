@@ -7,11 +7,12 @@ require "lib/containers/span_container"
 require "lib/containers/caption_container"
 require "lib/containers/image_container"
 
-module PDFRegion
-  class Div < BaseRegion
-    include Container, CaptionContainer, SpanContainer, DivContainer, ImageContainer
 
-    #initialization
+module PDFRegion
+  
+  class Div < BaseRegion
+    
+    include Container, CaptionContainer, SpanContainer, DivContainer, ImageContainer
 
     def initialize parent
       super parent
@@ -21,20 +22,14 @@ module PDFRegion
       @optional_border = false
     end
 
-    #gorizontal interval
-    attr_accessor :gorizontal_interval
-
-    #gorizontal alignment
-    attr_accessor :gorizontal_align
-
-    #optional border
-    attr_accessor :optional_border
+    attr_accessor :gorizontal_interval, :gorizontal_align, :optional_border
 
     #renders inner regions
     def render_regions(x, y, test = true)
       content_height = 0
-      last = regions.last
-      first = regions.first
+      
+      last = regions.last()
+      first = regions.first()
 
       document.pdf.y = y
 
@@ -49,6 +44,7 @@ module PDFRegion
           if (region.width > (width - pad_left - pad_right)) or gorizontal_align
             region.width = width - pad_left - pad_right
           end
+          
           add_border_top(x, document.pdf.y) if region == first
 
           document.pdf.y -= pad_top if region == first
@@ -107,5 +103,7 @@ module PDFRegion
       super x, y, test
       [x, y]
     end
+    
   end
+  
 end

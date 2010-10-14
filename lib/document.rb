@@ -7,11 +7,13 @@ require "lib/span"
 require "lib/div"
 require "lib/image"
 
+
 module PDFRegion
+
   class Document < BaseRegion
+ 
     include Canvas, Container, TableContainer, CaptionContainer, SpanContainer, DivContainer, ImageContainer
 
-    #initialization
     def initialize(pdf, page_pad_top)
       super nil
       pdf.y += pdf.top_margin # clear predefined top_margin
@@ -19,7 +21,6 @@ module PDFRegion
       pdf.top_margin = 0
 
       @pdf = pdf
-
       @page_pad_top = page_pad_top
       @header = []
     end
@@ -33,19 +34,15 @@ module PDFRegion
     end
 
     def add_header_region(header_region)
-
       unless header_region.nil?
         @header << header_region
       end
-
     end
 
     def remove_header_region(header_region)
-
       unless header_region.nil?
         @header.delete(header_region)
       end
-
     end
 
   end
@@ -56,4 +53,5 @@ module PDFRegion
     document.render(0, pdf.y, false)
     pdf.render
   end
+  
 end
