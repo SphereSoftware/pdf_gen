@@ -16,7 +16,7 @@ module PDFRegion
     attr_accessor :image
 
     def set_properties(props = {})
-      super props
+      super
 
       case true
         when (width == 0 and height == 0)

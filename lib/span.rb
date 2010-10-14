@@ -15,7 +15,7 @@ module PDFRegion
     include Container, CaptionContainer, ImageContainer
 
     def initialize(parent)
-      super(parent)
+      super
 
       @vertical_interval = 0
       @vertical_align = false
@@ -28,7 +28,7 @@ module PDFRegion
     end
 
     def add_region(region)
-      if super(region)
+      if super
         self.width=([width, render_regions].max)
         clear_minimal_height
       end

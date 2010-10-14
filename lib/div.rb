@@ -15,7 +15,7 @@ module PDFRegion
     include Container, CaptionContainer, SpanContainer, DivContainer, ImageContainer
 
     def initialize parent
-      super parent
+      super
 
       @gorizontal_interval = 0
       @gorizontal_align = false
@@ -100,7 +100,7 @@ module PDFRegion
     end
 
     def render(x, y, test=false)
-      super x, y, test
+      super
       [x, y]
     end
     

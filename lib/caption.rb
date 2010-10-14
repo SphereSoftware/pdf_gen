@@ -6,7 +6,7 @@ module PDFRegion
   class Caption < BaseRegion
     
     def initialize(parent)
-      super(parent)
+      super
 
       @text = ""
       @template = @text
@@ -86,7 +86,7 @@ module PDFRegion
     #renders specified text at the specified position
     #returns real position that caption was generated on
     def render(x, y, test=false)
-      new_x, new_y = super x, y, test
+      new_x, new_y = super
 
       add_text_wrap(new_x, new_y, test) if (new_x and new_y)
     end

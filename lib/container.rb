@@ -20,7 +20,7 @@ module PDFRegion
     end
 
     def page_pad_top=(value)
-      super value
+      super
 
       regions.each {|region| region.page_pad_top=value}
     end
@@ -37,7 +37,7 @@ module PDFRegion
     #renders specified span at the specified position
     #returns real position that caption was generated on
     def render(x, y, test = false)
-      new_x, new_y = super x, y, test
+      new_x, new_y = super
 
       render_regions(new_x, new_y, test) if new_x and new_y
     end
