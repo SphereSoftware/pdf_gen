@@ -19,7 +19,6 @@ module PDFRegion
       @border_style = PDF::Writer::StrokeStyle::SOLID
       @border_color = Color::RGB::Black
 
-
       @pad_top = 0
       @pad_bottom = 0
       @pad_left = 0
