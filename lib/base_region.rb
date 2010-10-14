@@ -2,14 +2,12 @@ require "lib/writer"
 
 module PDFRegion
 
-  #base region. can be generated to the several pages
   class BaseRegion
 
-    def initialize parent
+    def initialize(parent)
       @parent = parent
 
-      @width = 0#document.pdf.page_width - document.pdf.left_margin - document.pdf.right_margin
-
+      @width = 0 #document.pdf.page_width - document.pdf.left_margin - document.pdf.right_margin
       @height = 0
 
       @border_top = false
@@ -27,7 +25,6 @@ module PDFRegion
       @background_color = nil
     end
 
-    #pdf
     attr_reader :parent
 
     #gets region's document
@@ -35,7 +32,6 @@ module PDFRegion
       parent ? parent.document : self
     end
 
-    #width
     attr_reader :width
 
     #padding from the page top after page break
@@ -46,7 +42,6 @@ module PDFRegion
       @minimal_height ||= calculate_minimal_height
     end
 
-    #clears cached minimal height
     def clear_minimal_height
       @minimal_height = nil
     end
@@ -60,19 +55,16 @@ module PDFRegion
 
     protected :calculate_minimal_height
 
-    #height
     attr_writer :height
 
     def height
       [minimal_height, @height].max
     end
 
-    #sets page pad top
     def page_pad_top=(value)
       @page_pad_top = value
     end
-
-
+    
     def width=(value)
       if value && @width != value
         @width = value
@@ -80,17 +72,7 @@ module PDFRegion
       end
     end
 
-    attr_accessor :border_top
-
-    attr_accessor :border_bottom
-
-    attr_accessor :border_left
-
-    attr_accessor :border_right
-
-    attr_accessor :border_style
-
-    attr_accessor :border_color
+    attr_accessor :border_top, :border_bottom, :border_left, :border_right, :border_style, :border_color 
 
     def border= value
       self.border_top = value
@@ -99,7 +81,6 @@ module PDFRegion
       self.border_right = value
     end
 
-    #top padding
     attr_reader :pad_top
 
     def pad_top=(value)
@@ -109,7 +90,6 @@ module PDFRegion
       end
     end
 
-    #bottom padding
     attr_reader :pad_bottom
 
     def pad_bottom=(value)
@@ -119,7 +99,6 @@ module PDFRegion
       end
     end
 
-    #left padding
     attr_reader :pad_left
 
     def pad_left=(value)
@@ -129,7 +108,6 @@ module PDFRegion
       end
     end
 
-    #right padding
     attr_reader :pad_right
 
     def pad_right=(value)
@@ -139,10 +117,7 @@ module PDFRegion
       end
     end
 
-    #background color
     attr_accessor :background_color
-
-    #adds caption border
 
     def add_border(x, y)
       if border_top || border_bottom || border_left || border_right
@@ -166,36 +141,25 @@ module PDFRegion
     #fills caption area with background color
     def fill(x, y)
       unless background_color.nil?
-
         document.pdf.save_state
 
         document.pdf.stroke_color! background_color
         document.pdf.stroke_style! PDF::Writer::StrokeStyle::SOLID
         document.pdf.fill_color! background_color
-
         document.pdf.rectangle(x, y - height, width, height).fill.stroke
 
         document.pdf.restore_state
-
       end
     end
 
     private :fill
 
-    #breaks pdf page
-    #def page_break
-    #  pdf.page_break page_pad_top
-    #end
-    #protected :page_break
-
-    #renders region
     def render(x, y, test=false)
       fill(x, y)
       add_border(x, y)
       [x, y]
     end
 
-    #appliaes specified values
     def apply_values(values = {})
 
     end
@@ -205,12 +169,8 @@ module PDFRegion
     end
 
     #sets region properties specified as array
-    def set_properties props = {}
-
+    def set_properties(props = {})
       props.each_pair {|name, value| self.send("#{name}=", value)}
-
     end
-
   end
-
 end
