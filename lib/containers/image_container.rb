@@ -6,7 +6,6 @@ module ImageContainer
     image = Image.new self, image_res
     image.set_properties style unless style.nil?
     image.instance_eval(&initialization_block) if initialization_block
-
     self.add_region(image)
   end
 end
