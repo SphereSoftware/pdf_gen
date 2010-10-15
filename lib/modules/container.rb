@@ -38,8 +38,7 @@ module PDFRegion
     #returns real position that caption was generated on
     def render(x, y, test = false)
       new_x, new_y = super
-
-      render_regions(new_x, new_y, test) if new_x and new_y
+      render_regions(new_x, new_y, test)
     end
 
   end

@@ -26,7 +26,7 @@ shared_examples_for "base region" do
             base_region.border_bottom.should == false
   end
   it "should have solid black border style" do
-    base_region.border_style.should == PDF::Writer::StrokeStyle::SOLID and
+    base_region.border_style.should == :solid and
             base_region.border_color.should == Color::RGB::Black
   end
   it "should have all paddings equal to zero" do

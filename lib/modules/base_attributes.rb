@@ -15,7 +15,8 @@ module BaseAttributes
     @border_left = false
     @border_right = false
     @border_bottom = false
-    @border_style = PDF::Writer::StrokeStyle::SOLID
+    @border_style = :solid
+    @border_width = 1
     @border_color = Color::RGB::Black
 
     @background_color = nil
@@ -43,7 +44,8 @@ module BaseAttributes
     common_setter(:@width, value)
   end
 
-  attr_accessor :border_top, :border_bottom, :border_left, :border_right, :border_style, :border_color
+  attr_accessor :border_top, :border_bottom, :border_left, :border_right,\
+                :border_style, :border_color, :border_width
 
   def border= value
     self.border_top = value
@@ -68,6 +70,11 @@ module BaseAttributes
 
   def pad_right=(value)
     common_setter(:@pad_right, value)
+  end
+  
+  def border_params
+    border_type = {:solid => [1,0], :dotted => [1,1], :none => [0,1]}
+    PDF::Writer::StrokeStyle.new(@border_width, :dash => {:pattern => border_type[@border_style]})
   end
 
 end
