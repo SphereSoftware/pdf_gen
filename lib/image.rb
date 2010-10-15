@@ -27,10 +27,11 @@ module PDFRegion
         when height == 0
           self.height = width * @info.height / @info.width.to_f
       end
+      self.height = self.height - pad_top - pad_bottom
     end
 
     def render(x, y, test=false)
-      document.pdf.add_image(@image, x, y - height, width, height)
+      document.pdf.add_image(@image, x+pad_left, y-height+pad_bottom, width-pad_left-pad_right, height-pad_top-pad_bottom)
       super
     end
     
