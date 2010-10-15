@@ -1,5 +1,5 @@
 Gem::Specification.new do |spec|
-  spec.name = "sph_pdf_gen"
+  spec.name = "pdf_gen"
   spec.version = '0.0.1'
   spec.platform = Gem::Platform::RUBY
   spec.summary = "PDF generator for Ruby"
