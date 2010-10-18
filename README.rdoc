@@ -1,4 +1,4 @@
 == pdf_gen
 
-PDF generation DSL wrapped around "PDF::Writer":http://ruby-pdf.rubyforge.org/pdf-writer/index.html
+PDF generation DSL wrapped around PDF::Writer[http://ruby-pdf.rubyforge.org/pdf-writer/index.html]
 
