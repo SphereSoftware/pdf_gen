@@ -11,6 +11,5 @@ result = PDFRegion::document PDF::Writer.new, 2.cm do
   image image_data, :width => 250
 end
 
-
-File.open("doc_test.pdf", 'wb') {|f| f.write result}
+File.open("#{File.basename(__FILE__, ".rb")}.pdf", 'wb') {|f| f.write result}
 
