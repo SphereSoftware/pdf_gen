@@ -1,3 +1,4 @@
+$: << File.dirname(__FILE__)
 require "lib/writer"
 require "lib/base_region"
 require "lib/table"
