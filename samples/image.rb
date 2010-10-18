@@ -7,7 +7,7 @@ require "lib/float"
 
 
 result = PDFRegion::document PDF::Writer.new, 2.cm do
-  image_data = open(File.expand_path('../test_image.jpg'), "rb") { |file| file.read }
+  image_data = open(File.expand_path('ruby_logo.jpg'), "rb") { |file| file.read }
   image image_data, :width => 250
 end
 
