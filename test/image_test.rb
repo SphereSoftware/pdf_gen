@@ -4,7 +4,7 @@ require 'lib/caption.rb'
 require 'lib/writer.rb'
 require 'pdf/writer'
 require "lib/fixnum"
-require 'lib/document.rb'
+require 'document.rb'
 require 'test/shared_examples.rb'
 require "test/helpers_for_testing"
 include PDFRegion

@@ -4,7 +4,7 @@ require 'lib/caption.rb'
 require 'lib/writer.rb'
 require 'pdf/writer'
 require "lib/fixnum"
-require 'lib/document.rb'
+require 'document.rb'
 require 'lib/base_region.rb'
 
 shared_examples_for "base region" do

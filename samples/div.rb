@@ -1,7 +1,7 @@
 $: << File.expand_path("../")
 require "rubygems"
 require "pdf/writer"
-require "lib/document"
+require "document"
 require "lib/fixnum"
 require "lib/float"
 

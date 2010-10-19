@@ -1,3 +1,4 @@
+$: << File.dirname(__FILE__)
 require "lib/writer"
 require "lib/base_region"
 require "lib/table"
@@ -7,13 +8,15 @@ require "lib/modules/container"
 require "lib/span"
 require "lib/div"
 require "lib/image"
+require "lib/containers/table_container"
 
 
 module PDFRegion
 
   class Document < BaseRegion
- 
-    include Canvas, Container, TableContainer, CaptionContainer, SpanContainer, DivContainer, ImageContainer
+
+    include Canvas, Container, TableContainer, CaptionContainer, SpanContainer, \
+ DivContainer, ImageContainer
 
     def initialize(pdf, page_pad_top)
       super(nil)
@@ -54,5 +57,5 @@ module PDFRegion
     document.render(0, pdf.y, false)
     pdf.render
   end
-  
+
 end

@@ -1,12 +1,13 @@
 require "lib/base_region"
 require "lib/div"
+require "lib/containers/table_container"
 
 
 module PDFRegion
 
   #Table region
   class Table < BaseRegion
-
+    
     def initialize(parent, table)
       super(parent)
 
@@ -92,15 +93,5 @@ module PDFRegion
 
     private :access_region
   end
-
-  module TableContainer
-    
-    def table(data_table, &initialization_block)
-      table = Table.new(self, data_table)
-      table.instance_eval(&initialization_block)
-      table.render([table.document.pdf.left_margin, table.document.pdf.y])
-    end
-    
-  end
-  
+ 
 end
