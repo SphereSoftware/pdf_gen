@@ -9,18 +9,13 @@ require "lib/float"
 require "pdf/simpletable"
 
 result = PDFRegion::document PDF::Writer.new, 2.cm do
-
-  table span do
-    header do
-      caption "test"
-      caption "test1"
-    end
-    data do
-      caption "test" * 100
-      caption "test1" * 100
-    end
-    title do
-      caption "testssssss"
+  div :width => 20.cm do
+    div :width => 16.cm, :height => 30.cm, :border => true do
+      caption "test text" * 50, :width => 5.cm
+      caption "test text" * 50, :width => 5.cm
+      caption "test text" * 50, :width => 5.cm
+      caption "test text" * 50, :width => 5.cm
+      caption "test text" * 50, :width => 5.cm
     end
   end
 
