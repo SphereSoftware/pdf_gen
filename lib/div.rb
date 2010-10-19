@@ -52,7 +52,9 @@ module PDFRegion
 
           document.pdf.y -= pad_top if region == first
           region.render(x + pad_left, document.pdf.y)
-
+          
+          debugger if regions.size == 1
+          
           y = region == first ? document.pdf.y + pad_top : document.pdf.y
           y_new = region == last ? document.pdf.y - region.height - pad_bottom : document.pdf.y - region.height
 
@@ -86,7 +88,7 @@ module PDFRegion
     #border left and right
     def add_border_sides(x, y, y_new)
       add_border(x, y, x, y_new) if border_left
-#      p "%s|%s||||%s|%s" % [x + width, y, x + width, y_new] if border_right
+      p "%s|%s||||%s|%s" % [x + width, y, x + width, y_new] if border_right
       add_border(x + width, y, x + width, y_new) if border_right
     end
 
@@ -102,7 +104,9 @@ module PDFRegion
     end
 
     def calculate_minimal_height
-      (regions.collect{|region| region.height}.max || 0) + pad_top + pad_bottom
+      height = 0
+      regions.each{|region| height += region.height }
+      height + pad_top + pad_bottom
     end
 
     def render(x, y, test=false)
