@@ -54,7 +54,7 @@ module PDFRegion
   def self.document(pdf, page_pad_top, &initialization_block)
     document = Document.new(pdf, page_pad_top)
     document.instance_eval(&initialization_block)
-    document.render(0, pdf.y, false)
+    document.render([0, pdf.y], pdf.y, false)
     pdf.render
   end
 

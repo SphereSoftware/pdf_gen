@@ -24,7 +24,7 @@ module PDFRegion
     attr_accessor :vertical_interval, :vertical_align
 
     def calculate_minimal_height
-      (regions.collect{|region| region.height}.max || 0) + pad_top + pad_bottom  
+      (regions.collect{|region| region.height}.max || 0) + pad_top + pad_bottom
     end
 
     def add_region(region)
@@ -42,7 +42,7 @@ module PDFRegion
       last = regions.last
       regions.each do |region|
         region.height = height if vertical_align
-        region.render((x + content_width), (y - pad_top)) unless test
+        region.render([(x + content_width), (y - pad_top)],document.pdf.y) unless test
 
         content_width += region.width
         content_width += vertical_interval unless region == last

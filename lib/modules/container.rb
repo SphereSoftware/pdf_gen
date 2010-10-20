@@ -36,9 +36,13 @@ module PDFRegion
 
     #renders specified span at the specified position
     #returns real position that caption was generated on
-    def render(x, y, test = false)
-      new_x, new_y = super
-      render_regions(new_x, new_y, test)
+    def render(pos,av_height, test = false)
+      if av_height >= self.height
+        render_regions(pos[0],pos[1], test)
+        [self.height, true]
+      else
+        [0, false]
+      end
     end
 
   end

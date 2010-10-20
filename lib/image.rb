@@ -3,9 +3,9 @@ require 'lib/base_region'
 
 
 module PDFRegion
-  
+
   class Image < BaseRegion
-    
+
     def initialize(parent, image_res)
       super(parent)
 
@@ -30,11 +30,17 @@ module PDFRegion
       self.height = self.height - pad_top - pad_bottom
     end
 
-    def render(x, y, test=false)
-      document.pdf.add_image(@image, x+pad_left, y-height+pad_bottom, width-pad_left-pad_right, height-pad_top-pad_bottom)
-      super
+    def render(pos, av_height, test=false)
+      if av_height >= self.height
+        document.pdf.add_image(@image, pos[0]+pad_left, pos[1]-height+pad_bottom, \
+ width-pad_left-pad_right, height-pad_top-pad_bottom)
+        super
+        [self.height, true]
+      else
+         [0, false]
+      end
     end
-    
+
   end
-  
+
 end
