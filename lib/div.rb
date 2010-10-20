@@ -51,16 +51,15 @@ module PDFRegion
           add_border_top(x, document.pdf.y) if region == first
 
           document.pdf.y -= pad_top if region == first
-          region.render(x + pad_left, document.pdf.y)
-          
-          debugger if regions.size == 1
-          
+          p document.pdf.y if region.class == Div            
           y = region == first ? document.pdf.y + pad_top : document.pdf.y
-          y_new = region == last ? document.pdf.y - region.height - pad_bottom : document.pdf.y - region.height
-
+#          y_new = region == last ? document.pdf.y - (region.height + pad_bottom) : document.pdf.y - region.height
+           y_new = document.pdf.y - [document.pdf.y, region.height + pad_bottom].min
 #          p "%s|%s" % [y,y_new]
           add_border_sides(x, y, y_new)
-
+          
+          region.render(x + pad_left, document.pdf.y)
+          
           document.pdf.y -= region.height
           document.pdf.y -= gorizontal_interval unless region == last
           document.pdf.y -= pad_bottom if region == last

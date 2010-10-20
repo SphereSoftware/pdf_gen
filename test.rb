@@ -11,7 +11,7 @@ require "pdf/simpletable"
 result = PDFRegion::document PDF::Writer.new, 2.cm do
   div :width => 20.cm, :border => true do
     div :width => 16.cm, :height => 30.cm do
-caption "test text" * 50, :width => 5.cm
+      caption "test text" * 50, :width => 5.cm
       caption "test text" * 50, :width => 5.cm
       caption "test text" * 50, :width => 5.cm
       caption "test text" * 50, :width => 5.cm
@@ -19,7 +19,11 @@ caption "test text" * 50, :width => 5.cm
     end
 
   end
-
+    3.times { pdf.start_new_page }
+#  p pdf.pages.size
+  pdf.insert_page(:before)
+  pdf.line(100, 100, 200, 200).stroke
+      
 end
 
 

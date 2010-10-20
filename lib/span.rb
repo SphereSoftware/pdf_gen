@@ -38,17 +38,17 @@ module PDFRegion
     #renders inner regions
     #returns height of the region content
     def render_regions(x=0, y=document.y,  test=true)
-      content_height = pad_left
+      content_width = pad_left
       last = regions.last
       regions.each do |region|
         region.height = height if vertical_align
-        region.render((x + content_height), (y - pad_top)) unless test
+        region.render((x + content_width), (y - pad_top)) unless test
 
-        content_height += region.width
-        content_height += vertical_interval unless region == last
+        content_width += region.width
+        content_width += vertical_interval unless region == last
       end
       
-      content_height + pad_right
+      content_width + pad_right
     end
 
   end
