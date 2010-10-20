@@ -37,7 +37,8 @@ module PDFRegion
 
     protected :calculate_minimal_height
 
-    def add_border(x, y)
+    def add_border(pos)
+      x,y = pos
       if border_top || border_bottom || border_left || border_right
 
         document.pdf.save_state
@@ -57,14 +58,14 @@ module PDFRegion
     private :add_border
 
     #fills caption area with background color
-    def fill(x, y)
+    def fill(pos)
       unless background_color.nil?
         document.pdf.save_state
 
         document.pdf.stroke_color! background_color
         document.pdf.stroke_style! PDF::Writer::StrokeStyle::SOLID
         document.pdf.fill_color! background_color
-        document.pdf.rectangle(x, y - height, width, height).fill.stroke
+        document.pdf.rectangle(pos[0], pos[1] - height, width, height).fill.stroke
 
         document.pdf.restore_state
       end
@@ -72,10 +73,10 @@ module PDFRegion
 
     private :fill
 
-    def render(x, y, test=false)
-      fill(x, y)
-      add_border(x, y)
-      [x, y]
+    def render(pos,av_height, test=false)
+      fill(pos)
+      add_border(pos)
+      [pos,true]
     end
 
     def apply_values(values = {})

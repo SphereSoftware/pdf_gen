@@ -48,10 +48,13 @@ module PDFRegion
     end
 
     #writes text. return actual text height
-    def add_text_wrap(x = 0, y = document.pdf.y, test = true)
+    def add_text_wrap(pos=[], test = true)
+      x = pos[0] || 0
+      y = pos[1] || document.pdf.y
+      
       res = document.pdf.font_height + pad_top
       txt = bold ? "<b>#{text}</b>" : text
-
+      
       document.pdf.save_state
       document.pdf.fill_color text_color if text_color
       while !(txt = document.pdf.add_text_wrap(x + pad_left, y - res, width - pad_left - pad_right, txt, font_size,\
@@ -67,9 +70,14 @@ module PDFRegion
 
     #renders specified text at the specified position
     #returns real position that caption was generated on
-    def render(x, y, test=false)
-      add_text_wrap(x, y, test)
-      super
+    def render(pos, av_height, test=false)
+      if ((pos[1] - self.height) > 0) 
+        av_height = add_text_wrap(pos, test)
+        super
+        av_height, true
+      else
+        0, false
+      end
     end
 
     def apply_values(values = {})
