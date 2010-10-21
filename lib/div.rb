@@ -89,7 +89,6 @@ module PDFRegion
     #border left and right
     def add_border_sides(x, y, y_new)
       add_border(x, y, x, y_new) if border_left
-      p "%s|%s||||%s|%s" % [x + width, y, x + width, y_new] if border_right
       add_border(x + width, y, x + width, y_new) if border_right
     end
 
@@ -131,17 +130,6 @@ module PDFRegion
         end
       end
       [av_height - remain_height, true]
-#      if (av_height >= self.height)
-#        [self.height, true]
-#      else
-#        used_height = 0
-#        regions.each_with_index do |region, i|
-#          if region.height <= (document.pdf.y - used_height)
-#            used_height += region.height
-#          end
-#        end
-#        [0, false]
-#      end
     end
 
   end
