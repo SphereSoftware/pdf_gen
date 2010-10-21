@@ -12,7 +12,7 @@ module PDFRegion
   class Div < BaseRegion
 
     include Container, CaptionContainer, SpanContainer, DivContainer, \
-            ImageContainer, TableContainer
+ ImageContainer, TableContainer
 
     def initialize parent
       super
@@ -51,15 +51,15 @@ module PDFRegion
           add_border_top(x, document.pdf.y) if region == first
 
           document.pdf.y -= pad_top if region == first
-          p document.pdf.y if region.class == Div            
+          p document.pdf.y if region.class == Div
           y = region == first ? document.pdf.y + pad_top : document.pdf.y
 #          y_new = region == last ? document.pdf.y - (region.height + pad_bottom) : document.pdf.y - region.height
-           y_new = document.pdf.y - [document.pdf.y, region.height + pad_bottom].min
+          y_new = document.pdf.y - [document.pdf.y, region.height + pad_bottom].min
 #          p "%s|%s" % [y,y_new]
           add_border_sides(x, y, y_new)
-          
+
           region.render([x + pad_left, document.pdf.y], document.pdf.y)
-          
+
           document.pdf.y -= region.height
           document.pdf.y -= gorizontal_interval unless region == last
           document.pdf.y -= pad_bottom if region == last
@@ -71,7 +71,7 @@ module PDFRegion
         content_height += gorizontal_interval unless region == last
       end
 
-      content_height
+      content_height + pad_bottom + pad_top
     end
 
     private :render_regions
@@ -103,20 +103,23 @@ module PDFRegion
     end
 
     def calculate_minimal_height
-      height = 0
-      regions.each{|region| height += region.height }
-      height + pad_top + pad_bottom
+      render_regions(0, document.pdf.y)
     end
 
     def render(pos, av_height, test=false)
-      used_height = render_regions(pos[0], pos[1], test)
-      if (used_height == self.height)
-        [used_height, true]
+      if (av_height >= self.height)
+        [self.height, true]
       else
-        [used_height, false]
+        used_height = 0
+        regions.each_with_index do |region, i|
+          if region.height <= (document.pdf.y - used_height)
+            used_height += region.height
+          end
+        end
+        [0, false]
       end
     end
-    
+
   end
 
 end
