@@ -122,7 +122,12 @@ module PDFRegion
           pos[1] -= region_height
           remain_height -= region_height
         else
-          return [av_height - remain_height, false]
+          if region.breakable?
+            status = region.render(pos,remain_height)
+            return [av_height - remain_height - status[0], status[1]]
+          else  
+            return [av_height - remain_height, false]
+          end
         end
       end
       [av_height - remain_height, true]
