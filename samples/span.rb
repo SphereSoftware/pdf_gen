@@ -4,11 +4,9 @@ require "pdf/writer"
 require "document"
 require "lib/fixnum"
 require "lib/float"
-require "ruby-debug"
 
 
 result = PDFRegion::document PDF::Writer.new, 2.cm do
-  debugger
   span :width => 10.cm, :pad_left => 2.cm do
     caption ' first '*50, :width => 5.cm
     caption ' second '*50, :width => 4.cm

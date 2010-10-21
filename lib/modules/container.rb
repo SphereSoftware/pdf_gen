@@ -31,7 +31,7 @@ module PDFRegion
     end
 
     def render_regions(x, y, test = false)
-      regions.each { |region| region.render(x, document.pdf.y, test)}
+      regions.each { |region| region.render([x, document.pdf.y], document.pdf.y, test)}
     end
 
     #renders specified span at the specified position

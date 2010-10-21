@@ -6,7 +6,7 @@ require "lib/fixnum"
 require "lib/float"
 
 
-image_data = open(File.expand_path('../test_image.jpg'), "rb") { |file| file.read }
+image_data = open(File.expand_path('ruby_logo.jpg'), "rb") { |file| file.read }
 
 result = PDFRegion::document PDF::Writer.new, 2.cm do
   div :width => 12.cm, :gorizontal_interval => 2.cm do

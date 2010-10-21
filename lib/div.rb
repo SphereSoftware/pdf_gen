@@ -58,7 +58,7 @@ module PDFRegion
 #          p "%s|%s" % [y,y_new]
           add_border_sides(x, y, y_new)
           
-          region.render(x + pad_left, document.pdf.y)
+          region.render([x + pad_left, document.pdf.y], document.pdf.y)
           
           document.pdf.y -= region.height
           document.pdf.y -= gorizontal_interval unless region == last
@@ -108,11 +108,15 @@ module PDFRegion
       height + pad_top + pad_bottom
     end
 
-    def render(x, y, test=false)
-      render_regions(x, y, test)
-      [x, y]
+    def render(pos, av_height, test=false)
+      used_height = render_regions(pos[0], pos[1], test)
+      if (used_height == self.height)
+        [used_height, true]
+      else
+        [used_height, false]
+      end
     end
-
+    
   end
 
 end
