@@ -49,12 +49,30 @@ module PDFRegion
       end
     end
 
+    def render
+      av_height = pdf.y
+      pos = [0, pdf.y]
+      regions.each do |region|
+        status = region.render(pos, av_height)
+        if status[1]
+          av_height -= status[0]
+          pos[1] -= status[0]
+        else
+          self.break_page
+          pos = [0, pdf.y]
+          av_height = pdf.y
+          redo
+        end
+      end
+    end
+
   end
+
 
   def self.document(pdf, page_pad_top, &initialization_block)
     document = Document.new(pdf, page_pad_top)
     document.instance_eval(&initialization_block)
-    document.render([0, pdf.y], pdf.y, false)
+    document.render
     pdf.render
   end
 
