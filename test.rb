@@ -17,6 +17,8 @@ debugger
       caption "test text" * 50, :width => 5.cm
       caption "test text" * 50, :width => 5.cm
       caption "test t111" * 100, :width => 5.cm
+      caption "test text" * 50, :width => 5.cm
+      caption "test text" * 100, :width => 5.cm
     end
  end
   

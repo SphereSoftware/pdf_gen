@@ -33,7 +33,6 @@ module PDFRegion
 
     def add_border_bottom(x, y)
       add_border(x, y, x + width, y) if border_bottom
-      p x, y, x+width
     end
 
     #border left and right
@@ -62,11 +61,9 @@ module PDFRegion
     end
 
     def render(pos, av_height, test=false)
-      remain_height = av_height
       remain_regions = regions.slice(@count_rendered_region..regions.size)
       if @count_rendered_region == 0 && @rendered_height == 0
         @rendered_height += pad_top
-        remain_height -= pad_top
 
         add_border_top(pos[0], pos[1])
 
@@ -74,40 +71,39 @@ module PDFRegion
         pos[0] += pad_left
       end
       remain_regions.each do |region|
-        if (remain_height >= region.height)
+        if (pos[1] >= region.height)
           @count_rendered_region += 1
 
           self.fit_width(region)
-
-          region_height = region.render(pos, remain_height)[0]
+          add_border_sides(pos[0],pos[1],pos[1] - region.height)
+          region_height = region.render(pos, pos[1])[0]
           @rendered_height += region_height
           pos[1] -= region_height
 
-          remain_height -= region_height
           if region == regions.last
-            remain_height -= pad_bottom
             pos[1] -= pad_bottom
             add_border_bottom(pos[0], pos[1])
             @rendered_height += pad_bottom
           end
         else
           if region.breakable?
-            status = region.render(pos, remain_height)
+            status = region.render(pos, pos[1])
+            p region.height
+            add_border_sides(pos[0],pos[1],pos[1]+status[0]) 
             @rendered_height += status[0]
             if region == regions.last and status[1]
-              remain_height -= pad_bottom
               pos[1] -= pad_bottom
               add_border_bottom(pos[0], pos[1])
               @rendered_height += pad_bottom
             end
-            return [av_height - remain_height - status[0], status[1]]
+            return [av_height - pos[1] - status[0], status[1]]
           else
-            return [av_height - remain_height, false]
+            return [av_height - pos[1], false]
           end
         end
       end
 
-      [av_height - remain_height, true]
+      [av_height - pos[1], true]
     end
 
     def fit_width(region)
