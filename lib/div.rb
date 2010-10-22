@@ -60,12 +60,10 @@ module PDFRegion
       height + pad_top + pad_bottom
     end
 
-    def render(pos, av_height, test=false)
+    def render_regions(pos, av_height, test=false)
       remain_regions = regions.slice(@count_rendered_region..regions.size)
       if @count_rendered_region == 0 && @rendered_height == 0
         @rendered_height += pad_top
-
-        add_border_top(pos[0], pos[1])
 
         pos[1] -= pad_top
         pos[0] += pad_left
@@ -74,26 +72,21 @@ module PDFRegion
         if (pos[1] >= region.height)
           @count_rendered_region += 1
 
-          self.fit_width(region)
-          add_border_sides(pos[0],pos[1],pos[1] - region.height)
+          self.fit_width(region)          
           region_height = region.render(pos, pos[1])[0]
           @rendered_height += region_height
           pos[1] -= region_height
 
           if region == regions.last
-            pos[1] -= pad_bottom
-            add_border_bottom(pos[0], pos[1])
+            pos[1] -= pad_bottom            
             @rendered_height += pad_bottom
           end
         else
           if region.breakable?
             status = region.render(pos, pos[1])
-            p region.height
-            add_border_sides(pos[0],pos[1],pos[1]+status[0]) 
             @rendered_height += status[0]
             if region == regions.last and status[1]
               pos[1] -= pad_bottom
-              add_border_bottom(pos[0], pos[1])
               @rendered_height += pad_bottom
             end
             return [av_height - pos[1] - status[0], status[1]]
@@ -104,6 +97,18 @@ module PDFRegion
       end
 
       [av_height - pos[1], true]
+    end
+
+    def render(pos, av_height, test=false)
+      add_border_top(pos[0],pos[1]) if @rendered_height == 0
+      status = render_regions(pos,av_height,test)
+      if (status[1])
+        add_border_bottom(pos[0],pos[1])
+        add_border_sides(pos[0],av_height,pos[1])
+      else
+        add_border_sides(pos[0],av_height,0)
+      end
+      status
     end
 
     def fit_width(region)
