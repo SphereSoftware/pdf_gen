@@ -63,34 +63,38 @@ module PDFRegion
       remain_height = av_height
       remain_regions = regions.slice(@count_rendered_region..regions.size)
       remain_height -= pad_top if @count_rendered_region == 0
-      
+
       pos[1] -= pad_top if @count_rendered_region == 0
       pos[0] += pad_left
-      
+
       remain_regions.each do |region|
         if (remain_height >= region.height)
           @count_rendered_region += 1
-          
-          if (region.width > (width - pad_left - pad_right)) or gorizontal_align
-            region.width = width - pad_left - pad_right
-          end
-          
+
+          self.fit_width(region)
+
           region_height = region.render(pos, remain_height)[0]
           pos[1] -= region_height
-          
+
           remain_height -= region_height
           remain_height -= pad_bottom if @count_rendered_region == regions.size
         else
           if region.breakable?
-            status = region.render(pos,remain_height)
+            status = region.render(pos, remain_height)
             return [av_height - remain_height - status[0], status[1]]
-          else  
+          else
             return [av_height - remain_height, false]
           end
         end
       end
-      
+
       [av_height - remain_height, true]
+    end
+
+    def fit_width(region)
+      if (region.width > (width - pad_left - pad_right)) or gorizontal_align
+        region.width = width - pad_left - pad_right
+      end
     end
 
   end
