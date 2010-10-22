@@ -33,6 +33,7 @@ module PDFRegion
 
     def add_border_bottom(x, y)
       add_border(x, y, x + width, y) if border_bottom
+      p x, y, x+width
     end
 
     #border left and right
@@ -66,11 +67,11 @@ module PDFRegion
       if @count_rendered_region == 0 && @rendered_height == 0
         @rendered_height += pad_top
         remain_height -= pad_top
-        
-        add_border_top(pos[0],pos[1])
-        
+
+        add_border_top(pos[0], pos[1])
+
         pos[1] -= pad_top
-        pos[0] += pad_left 
+        pos[0] += pad_left
       end
       remain_regions.each do |region|
         if (remain_height >= region.height)
@@ -85,12 +86,20 @@ module PDFRegion
           remain_height -= region_height
           if region == regions.last
             remain_height -= pad_bottom
+            pos[1] -= pad_bottom
+            add_border_bottom(pos[0], pos[1])
             @rendered_height += pad_bottom
           end
         else
           if region.breakable?
             status = region.render(pos, remain_height)
             @rendered_height += status[0]
+            if region == regions.last and status[1]
+              remain_height -= pad_bottom
+              pos[1] -= pad_bottom
+              add_border_bottom(pos[0], pos[1])
+              @rendered_height += pad_bottom
+            end
             return [av_height - remain_height - status[0], status[1]]
           else
             return [av_height - remain_height, false]
@@ -106,6 +115,7 @@ module PDFRegion
         region.width = width - pad_left - pad_right
       end
     end
+    protected :fit_width
 
   end
 

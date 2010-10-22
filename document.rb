@@ -50,7 +50,8 @@ module PDFRegion
     end
 
     def render
-      pos = [0, pdf.y-page_pad_top]
+      pdf.y -= page_pad_top
+      pos = [0, pdf.y]
       regions.each do |region|
         pos[1] = pdf.y
         status = region.render(pos, pdf.y)
