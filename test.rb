@@ -11,7 +11,7 @@ require "pdf/simpletable"
 result = PDFRegion::document PDF::Writer.new, 2.cm do
 debugger
   div :width => 20.cm, :border => true do
-    div :width => 16.cm, :height => 30.cm, :pad_top => 2.cm, :pad_left => 5.cm, :pad_right => 5.cm do
+    div :width => 16.cm, :height => 30.cm, :pad_top => 2.cm, :pad_left => 5.cm, :pad_right =>7.cm do
       caption "test text" * 50, :width => 5.cm
       caption "test text" * 50, :width => 5.cm
       caption "test text" * 50, :width => 5.cm
