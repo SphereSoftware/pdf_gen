@@ -26,58 +26,6 @@ module PDFRegion
 
     attr_accessor :gorizontal_interval, :gorizontal_align, :optional_border
 
-    #renders inner regions
-#    def render_regions(x, y, test = true)
-
-#      content_height = 0
-#
-#      last = regions.last()
-#      first = regions.first()
-#
-#      document.pdf.y = y
-#
-#      regions.each do |region|
-#
-#        unless test
-#          if (region.height >= (document.pdf.y - pad_bottom))
-#            add_optional_border(x, document.pdf.y) if optional_border
-#            unless region.breakable?
-#              document.break_page
-#            end
-#          end
-#
-#          if (region.width > (width - pad_left - pad_right)) or gorizontal_align
-#            region.width = width - pad_left - pad_right
-#          end
-#
-#          add_border_top(x, document.pdf.y) if region == first
-#
-#          document.pdf.y -= pad_top if region == first
-#          p document.pdf.y if region.class == Div
-#          y = region == first ? document.pdf.y + pad_top : document.pdf.y
-##          y_new = region == last ? document.pdf.y - (region.height + pad_bottom) : document.pdf.y - region.height
-#          y_new = document.pdf.y - [document.pdf.y, region.height + pad_bottom].min
-##          p "%s|%s" % [y,y_new]
-#          add_border_sides(x, y, y_new)
-#
-#          region.render([x + pad_left, document.pdf.y], document.pdf.y)
-#
-#          document.pdf.y -= region.height
-#          document.pdf.y -= gorizontal_interval unless region == last
-#          document.pdf.y -= pad_bottom if region == last
-#
-#          add_border_bottom(x, document.pdf.y) if region == last
-#        end
-#
-#        content_height += region.height
-#        content_height += gorizontal_interval unless region == last
-#      end
-#
-#      content_height + pad_bottom + pad_top
-#    end
-#
-#    private :render_regions
-
     def add_border_top(x, y)
       add_border(x, y, x + width, y) if border_top
     end

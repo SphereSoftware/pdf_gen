@@ -30,7 +30,6 @@ module PDFRegion
 
     protected :clear_minimal_height
 
-    #gets minimal region height
     def calculate_minimal_height
       0
     end
