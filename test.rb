@@ -8,15 +8,15 @@ require "lib/float"
 require 'ruby-debug'
 require "pdf/simpletable"
 
-result = PDFRegion::document PDF::Writer.new, 2.cm do
+result = PDFRegion::document PDF::Writer.new, 0.cm do
 debugger
-  div :width => 20.cm, :border => true do
-    div :width => 16.cm, :height => 30.cm, :pad_top => 2.cm, :pad_left => 5.cm, :pad_right =>7.cm do
+  div :width => 20.cm, :border => true, :pad_top => 2.cm do
+    div :width => 16.cm, :height => 30.cm, :border => true, :pad_top => 2.cm do
       caption "test text" * 50, :width => 5.cm
       caption "test text" * 50, :width => 5.cm
       caption "test text" * 50, :width => 5.cm
       caption "test text" * 50, :width => 5.cm
-      caption "test text" * 150, :width => 5.cm
+      caption "test t111" * 100, :width => 5.cm
     end
  end
   
