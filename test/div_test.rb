@@ -12,17 +12,18 @@ include Container
 describe "Div" do
   it "it should right calculate pages count" do
     div = create_div
+    document = Document.new(Writer.new, 0.cm)
     
     caption = create_caption
-    caption.height = 500
+    caption.height = 500    
     caption1 = create_caption
     caption1.height = 500
     
     div.add_region(caption)
     div.add_region(caption1)
+    document.add_region(div)
     
-    div.send(:render_regions, 0, div.parent.pdf.y,false)
-    
-    div.parent.pdf.pageset.size.should == 2
+    document.render
+    document.pdf.pageset.size.should == 2
   end
 end
