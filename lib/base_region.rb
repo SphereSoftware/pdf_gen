@@ -77,6 +77,12 @@ module PDFRegion
       add_border(pos)
       [pos,true]
     end
+    
+    def check_fit_in_height
+       if (self.height >= document.pdf.page_height)
+        raise "caption`s height is bigger then page`s height"
+      end
+    end
 
     def apply_values(values = {})
 

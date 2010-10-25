@@ -50,6 +50,11 @@ module PDFRegion
       
       content_width + pad_right
     end
+    
+    def render(pos, av_height,test=false)
+      self.check_fit_in_height
+      super
+    end
 
   end
   
