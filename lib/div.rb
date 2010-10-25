@@ -17,8 +17,8 @@ module PDFRegion
     def initialize parent
       super
 
-      @gorizontal_interval = 0
-      @gorizontal_align = false
+      @horizontal_interval = 0
+      @horizontal_align = false
       @optional_border = false
       @is_breakable = true
       @count_rendered_region = 0
@@ -26,7 +26,7 @@ module PDFRegion
       @x
     end
 
-    attr_accessor :gorizontal_interval, :gorizontal_align, :optional_border
+    attr_accessor :horizontal_interval, :horizontal_align, :optional_border
 
     def add_border_top(x, y)
       add_border(x, y, x + width, y) if border_top
@@ -76,7 +76,10 @@ module PDFRegion
           region_height = region.render(pos, pos[1])[0]
           @rendered_height += region_height
           pos[1] -= region_height
-
+          
+          @rendered_height += horizontal_interval unless region == regions.last
+          pos[1] -= horizontal_interval unless region == regions.last
+          
           if region == regions.last
             pos[1] -= pad_bottom            
             @rendered_height += pad_bottom
@@ -86,6 +89,10 @@ module PDFRegion
             self.fit_width(region)
             status = region.render(pos, pos[1])
             @rendered_height += status[0]
+            
+            @rendered_height += horizontal_interval unless region == regions.last
+            pos[1] -= horizontal_interval unless region == regions.last
+            
             if region == regions.last and status[1]
               pos[1] -= pad_bottom
               @rendered_height += pad_bottom
@@ -117,7 +124,7 @@ module PDFRegion
     end
 
     def fit_width(region)
-      if (region.width > (width - pad_left - pad_right)) or gorizontal_align
+      if (region.width > (width - pad_left - pad_right)) or horizontal_align
         region.width = width - pad_left - pad_right
       end
     end
