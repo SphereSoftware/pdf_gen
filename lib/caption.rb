@@ -72,7 +72,7 @@ module PDFRegion
     #returns real position that caption was generated on
     def render(pos, av_height, test=false)
       if av_height >= self.height 
-        used_height = add_text_wrap(pos, test)
+        used_height = add_text_wrap(pos) >= self.height ?  add_text_wrap(pos,test) : self.height
         super
         [used_height, true]
       else
