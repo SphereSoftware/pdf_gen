@@ -62,7 +62,6 @@ module PDFRegion
     end
 
     def render_regions(pos, av_height, test=false)
-      p pos[0]
       remain_regions = regions.slice(@count_rendered_region..regions.size)
       if @count_rendered_region == 0 && @rendered_height == 0
         @rendered_height += pad_top
