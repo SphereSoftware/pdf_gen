@@ -1,6 +1,9 @@
 $: << File.dirname(__FILE__)
+require "rubygems"
+require "pdf/writer"
 require "lib/writer"
 require "lib/base_region"
+require "lib/fixnum"
 require "lib/table"
 require "lib/caption"
 require "lib/modules/canvas"
