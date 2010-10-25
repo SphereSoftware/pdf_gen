@@ -23,6 +23,7 @@ module PDFRegion
       @is_breakable = true
       @count_rendered_region = 0
       @rendered_height = 0
+      @x
     end
 
     attr_accessor :gorizontal_interval, :gorizontal_align, :optional_border
@@ -61,10 +62,10 @@ module PDFRegion
     end
 
     def render_regions(pos, av_height, test=false)
+      p pos[0]
       remain_regions = regions.slice(@count_rendered_region..regions.size)
       if @count_rendered_region == 0 && @rendered_height == 0
         @rendered_height += pad_top
-
         pos[1] -= pad_top
         pos[0] += pad_left
       end
@@ -83,12 +84,14 @@ module PDFRegion
           end
         else
           if region.breakable?
+            self.fit_width(region)
             status = region.render(pos, pos[1])
             @rendered_height += status[0]
             if region == regions.last and status[1]
               pos[1] -= pad_bottom
               @rendered_height += pad_bottom
             end
+
             return [av_height - pos[1] - status[0], status[1]]
           else
             return [av_height - pos[1], false]
@@ -101,13 +104,16 @@ module PDFRegion
 
     def render(pos, av_height, test=false)
       add_border_top(pos[0],pos[1]) if @rendered_height == 0
+      @x = pos[0] if @rendered_height == 0
       status = render_regions(pos,av_height,test)
+      
       if (status[1])
-        add_border_bottom(pos[0],pos[1])
-        add_border_sides(pos[0],av_height,pos[1])
+        add_border_bottom(@x,pos[1])
+        add_border_sides(@x,av_height,pos[1])
       else
-        add_border_sides(pos[0],av_height,0)
+        add_border_sides(@x,av_height,0)
       end
+      
       status
     end
 
