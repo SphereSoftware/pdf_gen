@@ -23,19 +23,19 @@ module PDFRegion
       region.render(pos, document.pdf.y, test)
     end
 
-    def render(pos)
+    def render(pos, av_height,test=false)
       title_height = render_region(pos, @title, true)
       header_height = render_region(pos, @header, true)
       
-      if (title_height[0] + header_height[0]) > (document.pdf.y)
+      if (title_height[0] + header_height[0]) > document.pdf.y
         document.break_page
       end
 
       document.add_header_region @header if @repeat_header_on_each_page
 
-      render_region(pos[0], @title)
-      render_region(pos[0], @header)
-      render_region(pos[0], @data)
+      render_region(pos, @title)
+      render_region(pos, @header)
+      render_region(pos, @data)
     end
 
     document.remove_header_region(@header) if @repeat_header_on_each_page
