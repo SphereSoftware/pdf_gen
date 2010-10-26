@@ -4,10 +4,12 @@ include PDFRegion
 
 module TableContainer
 
-  def table(data_table, &initialization_block)
-    table = Table.new(self, data_table)
+  def table(&initialization_block)
+#    debugger
+    table = Table.new(self)
     table.instance_eval(&initialization_block)
-    table.render([table.document.pdf.left_margin, table.document.pdf.y])
+    self.add_region(table)
+#    table.render([table.document.pdf.left_margin, table.document.pdf.y])
   end
 
 end
