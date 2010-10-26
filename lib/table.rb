@@ -26,26 +26,26 @@ module PDFRegion
       @data.page_pad_top = value
     end
 
-    def render_region x, region, test = false
+    def render_region pos, region, test = false
       region.width = width
-      region.render [x, document.pdf.y], test
+      region.render pos, document.pdf.y, test
     end
 
     def render(pos)
       #title, header and first row of table should not split
-      title_height = render_region pos[0], @title, true
-      header_height = render_region pos[0], @header, true
+      title_height = render_region pos, @title, true
+      header_height = render_region pos, @header, true
       first_row_height = 0
 
       unless @table.data.nil? && @table.data.empty
         first_row_data = @table.data[0]
         unless first_row_data.nil?
           @data.apply_values(get_data_dictionary(first_row_data))
-          first_row_height = render_region pos[0], @data, true
+          first_row_height = render_region pos, @data, true
         end
       end
 
-      if (title_height + header_height + first_row_height) > (document.pdf.y - document.pdf.bottom_margin)
+      if (title_height[0] + header_height[0] + first_row_height[0]) > (document.pdf.y - document.pdf.bottom_margin)
         document.break_page
       end
 
