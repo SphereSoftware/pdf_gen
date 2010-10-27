@@ -31,14 +31,18 @@ module PDFRegion
         document.break_page
       end
 
-      document.add_header_region @header if @repeat_header_on_each_page
+      document.add_header_region @header if @repeat_header_on_each_page && document.header.size < 1
 
       render_region(pos, @title)
       render_region(pos, @header)
-      render_region(pos, @data)
+      status = render_region(pos, @data)
+
+      document.remove_header_region(@header) if @repeat_header_on_each_page && status[1] == true
+
+      status
     end
 
-    document.remove_header_region(@header) if @repeat_header_on_each_page
+    
   end
 
   def title(style = nil, &initialization_block)
