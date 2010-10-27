@@ -27,6 +27,7 @@ module PDFRegion
     end
 
     attr_accessor :horizontal_interval, :horizontal_align, :optional_border
+    attr_accessor :count_rendered_region
 
     def add_border_top(x, y)
       add_border(x, y, x + width, y) if border_top

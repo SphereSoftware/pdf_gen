@@ -33,12 +33,16 @@ module PDFRegion
       @header = []
     end
 
-    attr_reader :pdf
+    attr_reader :pdf,:header
 
     #creates new page
     def break_page
       pdf.page_break @page_pad_top
-      @header.each {|header_region| header_region.render([pdf.left_margin, pdf.y])}
+      @header.each do |header_region|
+        header_region.count_rendered_region = 0
+        status = header_region.render([0, pdf.y],pdf.y)
+        pdf.y -= status[0]
+      end
     end
 
     def add_header_region(header_region)
