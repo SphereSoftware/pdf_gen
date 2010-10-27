@@ -79,7 +79,7 @@ module PDFRegion
     end
     
     def check_fit_in_height
-       if (self.height >= document.pdf.page_height)
+       if (self.height >= document.pdf.page_height-document.page_pad_top)
         raise "region`s height is bigger then page`s height"
       end
     end
