@@ -73,8 +73,8 @@ module PDFRegion
     private :fill
 
     def render(pos,av_height, test=false)
-      fill(pos)
-      add_border(pos)
+      fill(pos) unless test
+      add_border(pos) unless test
       [pos,true]
     end
     
