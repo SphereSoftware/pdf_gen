@@ -80,7 +80,7 @@ module PDFRegion
     
     def check_fit_in_height
        if (self.height >= document.pdf.page_height)
-        raise "caption`s height is bigger then page`s height"
+        raise "region`s height is bigger then page`s height"
       end
     end
 
