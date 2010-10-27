@@ -1,9 +1,4 @@
-$: << File.expand_path("../")
-require "rubygems"
-require "pdf/writer"
-require "document"
-require "lib/fixnum"
-require "lib/float"
+require "../document"
 
 
 result = PDFRegion::document PDF::Writer.new, 2.cm do

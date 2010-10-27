@@ -1,10 +1,4 @@
-$: << File.expand_path("../")
-require "rubygems"
-require "pdf/writer"
-require "document"
-require "lib/fixnum"
-require "lib/float"
-require "ruby-debug"
+require "../document"
 
 image_data = open(File.expand_path('ruby_logo.jpg'), "rb") { |file| file.read }
 
