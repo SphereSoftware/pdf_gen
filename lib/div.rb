@@ -23,7 +23,6 @@ module PDFRegion
       @is_breakable = true
       @count_rendered_region = 0
       @rendered_height = 0
-      @x
     end
 
     attr_accessor :horizontal_interval, :horizontal_align, :optional_border
@@ -62,6 +61,7 @@ module PDFRegion
     end
 
     def render_regions(pos, av_height, test=false)
+      pos = pos.clone
       remain_regions = regions.slice(@count_rendered_region..regions.size)
       if @count_rendered_region == 0 && @rendered_height == 0
         @rendered_height += pad_top
@@ -110,14 +110,14 @@ module PDFRegion
 
     def render(pos, av_height, test=false)
       add_border_top(pos[0],pos[1]) if @rendered_height == 0
-      @x = pos[0] if @rendered_height == 0
       status = render_regions(pos,av_height,test)
+      pos[1] -= status[0] 
       
       if (status[1])
-        add_border_bottom(@x,pos[1])
-        add_border_sides(@x,av_height,pos[1])
+        add_border_bottom(pos[0],pos[1])
+        add_border_sides(pos[0],av_height,pos[1])
       else
-        add_border_sides(@x,av_height,0)
+        add_border_sides(pos[0],av_height,0)
       end
       
       status
