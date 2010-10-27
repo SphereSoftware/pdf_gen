@@ -53,6 +53,7 @@ module PDFRegion
     
     def render(pos, av_height,test=false)
       self.check_fit_in_height
+      add_border(pos)
       super
     end
 
