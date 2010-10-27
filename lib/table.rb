@@ -32,7 +32,7 @@ module PDFRegion
       end
 
       document.add_header_region @header if @repeat_header_on_each_page && document.header.size < 1
-
+      
       render_region(pos, @title)
       render_region(pos, @header)
       status = render_region(pos, @data)
