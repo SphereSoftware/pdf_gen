@@ -71,7 +71,7 @@ module PDFRegion
       end
       remain_regions.each do |region|
         if (pos[1] >= region.height)
-          @count_rendered_region += 1
+          @count_rendered_region += 1 unless test
 
           self.fit_width(region)          
           region_height = region.render(pos, pos[1],test)[0]
