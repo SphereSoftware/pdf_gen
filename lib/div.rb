@@ -90,6 +90,7 @@ module PDFRegion
             self.fit_width(region)
             status = region.render([pos_x, pos_y], pos_y)
             @rendered_height += status[0]
+            pos_y -= status[0]
             
             @rendered_height += horizontal_interval unless region == regions.last
             pos_y -= horizontal_interval unless region == regions.last
@@ -99,7 +100,7 @@ module PDFRegion
               @rendered_height += pad_bottom
             end
 
-            return [av_height - pos_y - status[0], status[1]]
+            return [av_height - pos_y, status[1]]
           else
             return [av_height - pos_y, false]
           end
