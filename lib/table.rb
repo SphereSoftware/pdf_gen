@@ -26,34 +26,50 @@ module PDFRegion
     end
 
     def render(pos, av_height,test=false)
-      title_height = render_region(pos, @title, true)
-      header_height = render_region(pos, @header, true)
+      pos_x,pos_y = pos
+      title_height = render_region([pos_x,pos_y], @title, true)
+      header_height = render_region([pos_x,pos_y], @header, true)
       
       if (title_height[0] + header_height[0]) > document.pdf.y
+        p "first"
         document.break_page
+        pos_y = document.pdf.y
       end
-      pos[1] = document.pdf.y
+      #pos_y = document.pdf.y
       #document.add_header_region @header if @repeat_header_on_each_page && document.header.size < 1
-      render_region(pos, @title)
-
-      @header.count_rendered_region = 0 if @repeat_header_on_each_page
-      render_region(pos, @header)
-      status = render_region(pos, @data)
+      title_status = render_region([pos_x,pos_y], @title)
+      pos_y -= title_status[0]
       
-      footer_height = render_region(pos,@footer,true)
+      @header.count_rendered_region = 0 if @repeat_header_on_each_page
+      header_status = render_region([pos_x,pos_y], @header)
+      pos_y -= header_status[0]
+      
+      status = render_region([pos_x,pos_y], @data)
+      pos_y -= status[0]
+      
+      footer_height = render_region([pos_x,pos_y],@footer,true)
       if (footer_height[0] > document.pdf.y)
+        p footer_height[0]
+        p document.pdf.y
+        p "second"
         document.break_page
-        pos[1] = document.pdf.y
+        pos_y = document.pdf.y
       end
 
       if status[1]
-        status = render_region(pos,@footer)
+        status = render_region([pos_x,pos_y],@footer)
+        
       else if @repeat_footer_on_each_page
-          footer_status = render_region(pos,@footer)
+          footer_status = render_region([pos_x,pos_y],@footer)
+
           status[0] = footer_status[0]
           @footer.count_rendered_region = 0
         end
       end
+
+
+
+      pos_y -= status[0]
 
       status
     end

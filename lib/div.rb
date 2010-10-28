@@ -23,7 +23,6 @@ module PDFRegion
       @is_breakable = true
       @count_rendered_region = 0
       @rendered_height = 0
-      @x
     end
 
     attr_accessor :horizontal_interval, :horizontal_align, :optional_border
@@ -63,62 +62,68 @@ module PDFRegion
     end
 
     def render_regions(pos, av_height, test=false)
+      pos_x, pos_y =  pos
       remain_regions = regions.slice(@count_rendered_region..regions.size)
       if @count_rendered_region == 0 && @rendered_height == 0
         @rendered_height += pad_top
-        pos[1] -= pad_top
-        pos[0] += pad_left
+        pos_y -= pad_top
+        #pos_x += pad_left
       end
+      pos_x += pad_left
       remain_regions.each do |region|
-        if (pos[1] >= region.height)
-          @count_rendered_region += 1 unless test
 
+        if (pos_y >= region.height)
+          @count_rendered_region += 1 unless test
           self.fit_width(region)          
-          region_height = region.render(pos, pos[1],test)[0]
+          region_height = region.render([pos_x, pos_y], pos_y,test)[0]
+
           @rendered_height += region_height
-          pos[1] -= region_height
+          pos_y -= region_height
           
           @rendered_height += horizontal_interval unless region == regions.last
-          pos[1] -= horizontal_interval unless region == regions.last
+          pos_y -= horizontal_interval unless region == regions.last
           
           if region == regions.last
-            pos[1] -= pad_bottom            
+            pos_y -= pad_bottom            
             @rendered_height += pad_bottom
           end
         else
           if region.breakable?
             self.fit_width(region)
-            status = region.render(pos, pos[1],test)
+            status = region.render([pos_x, pos_y], pos_y,test)
+
             @rendered_height += status[0]
+            pos_y -= status[0]
             
             @rendered_height += horizontal_interval unless region == regions.last
-            pos[1] -= horizontal_interval unless region == regions.last
+            pos_y -= horizontal_interval unless region == regions.last
             
             if region == regions.last and status[1]
-              pos[1] -= pad_bottom
+              pos_y -= pad_bottom
               @rendered_height += pad_bottom
             end
 
-            return [av_height - pos[1] - status[0], status[1]]
+            return [av_height - pos_y, status[1]]
           else
-            return [av_height - pos[1], false]
+            return [av_height - pos_y, false]
           end
         end
       end
 
-      [av_height - pos[1], true]
+      [av_height - pos_y, true]
     end
 
     def render(pos, av_height, test=false)
-      add_border_top(pos[0],pos[1]) if @rendered_height == 0
-      @x = pos[0] if @rendered_height == 0
-      status = render_regions(pos,av_height,test)
+      pos_x, pos_y =  pos
+      add_border_top(pos_x,pos_y) if @rendered_height == 0
+      status = render_regions([pos_x, pos_y],av_height,test)
+      pos_y -= status[0] 
       
       if (status[1])
-        add_border_bottom(@x,pos[1])
-        add_border_sides(@x,av_height,pos[1])
+        add_border_bottom(pos_x,pos_y)
+        add_border_sides(pos_x,av_height,pos_y)
       else
-        add_border_sides(@x,av_height,0)
+        add_border_sides(pos_x,av_height,0)
       end
       
       status
