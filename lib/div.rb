@@ -74,7 +74,7 @@ module PDFRegion
         if (pos_y >= region.height)
           @count_rendered_region += 1 unless test
           self.fit_width(region)          
-          region_height = region.render([pos_x, pos_y], pos_y)[0]
+          region_height = region.render([pos_x, pos_y], pos_y,test)[0]
           @rendered_height += region_height
           pos_y -= region_height
           
@@ -88,7 +88,7 @@ module PDFRegion
         else
           if region.breakable?
             self.fit_width(region)
-            status = region.render([pos_x, pos_y], pos_y)
+            status = region.render([pos_x, pos_y], pos_y,test)
             @rendered_height += status[0]
             pos_y -= status[0]
             
