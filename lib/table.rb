@@ -22,7 +22,7 @@ module PDFRegion
 
     def render_region(pos, region, test = false)
       region.width = width
-      region.render(pos, document.pdf.y, test)
+      region.render(pos, pos[1], test)
     end
 
     def render(pos, av_height,test=false)
@@ -30,8 +30,7 @@ module PDFRegion
       title_height = render_region([pos_x,pos_y], @title, true)
       header_height = render_region([pos_x,pos_y], @header, true)
       
-      if (title_height[0] + header_height[0]) > document.pdf.y
-        p "first"
+      if (title_height[0] + header_height[0]) > av_height
         document.break_page
         pos_y = document.pdf.y
       end
@@ -48,16 +47,13 @@ module PDFRegion
       pos_y -= status[0]
       
       footer_height = render_region([pos_x,pos_y],@footer,true)
-      if (footer_height[0] > document.pdf.y)
-        p footer_height[0]
-        p document.pdf.y
-        p "second"
+      if (footer_height[0] > pos[1])
         document.break_page
         pos_y = document.pdf.y
       end
 
       if status[1]
-        status = render_region([pos_x,pos_y],@footer)
+        footer_status = render_region([pos_x,pos_y],@footer)
         
       else if @repeat_footer_on_each_page
           footer_status = render_region([pos_x,pos_y],@footer)
@@ -66,12 +62,9 @@ module PDFRegion
           @footer.count_rendered_region = 0
         end
       end
-
-
-
-      pos_y -= status[0]
-
-      status
+      pos_y -= footer_status[0] if footer_status
+      
+      [av_height-pos_y,status[1]&&footer_status[1]]
     end
 
   end
