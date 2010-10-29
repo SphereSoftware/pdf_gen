@@ -134,8 +134,12 @@ module PDFRegion
         region.width = width - pad_left - pad_right
       end
     end
+
     protected :fit_width
 
+    def reset_count_rendered_regions
+      @count_rendered_region = 0
+    end
   end
 
 end
