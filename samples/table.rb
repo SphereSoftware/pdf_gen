@@ -1,85 +1,90 @@
 #! /usr/bin/ruby
-require "document"
-require "ruby-debug"
+require "../document"
+
 
 result = PDFRegion::document PDF::Writer.new, 0.cm do
-#  debugger
+
   table do
-    self.width = 20.cm
-    title :horizontal_align => true do
+    self.width = document.pdf.page_width
+    self.repeat_header_on_each_page = true
+    self.repeat_footer_on_each_page = false
+     title :horizontal_align => true do
       caption "Transactions for Account Number",
-              :pad_top => 0.1.cm, :pad_bottom => 0.2.cm, :pad_left => 5,
-              :font_size => 11, :border => true
-    end
-
-    header :horizontal_align => true do
-
-      span :height => 20, :width=>document.pdf.page_width, :vertical_align=>true do
-
-
-        caption "Reference Number",
-                :width => 3.cm,
-                :border_right => true, :border_left => true
-
-        caption "Tran Date",
-                :width => 2.cm,
-                :border_right => true, :border_left => true
-
-        caption "Post Date", :width => 2.cm,
-                :border_right => true, :border_left => true
-
-        caption "Transaction Description", :width => 2.cm,
-                :pad_left => 5,
-                :border_right => true, :border_left => true
-
-        caption "Amount", :width => 2.cm,
-                :border_right => true, :border_left => true
-
-        caption "Payment Due Date*", :width => 2.cm,
-                :border_right => true, :border_left => true
-
-      end
-    end
-
-    data :horizontal_align => true do
-
-      span :height => 0 do
-
-        caption "Some Value",
-                :width => (document.pdf.page_width - document.pdf.left_margin - document.pdf.right_margin) / 6 - 17,
-                :justification => :center,
-                :border_right => true, :border_left => true, :pad_bottom => 2
-
-        caption "Some Value",
-                :width => (document.pdf.page_width - document.pdf.left_margin - document.pdf.right_margin) / 6 - 50,
-                :justification => :center,
-                :border_right => true, :border_left => true, :pad_bottom => 2
-
-        caption "Some Value",
-                :width => (document.pdf.page_width - document.pdf.left_margin - document.pdf.right_margin) / 6 - 50,
-                :justification => :center,
-                :border_right => true, :border_left => true, :pad_bottom => 2
-
-        caption "Some Value",
-                :width => (document.pdf.page_width - document.pdf.left_margin - document.pdf.right_margin) / 6 + 175,
-                :justification => :left, :pad_left => 5,
-                :border_right => true, :border_left => true, :pad_bottom => 2
-
-        caption "Some Value",
-                :width => (document.pdf.page_width - document.pdf.left_margin - document.pdf.right_margin) / 6 - 45,
-                :justification => :right, :pad_right => 5,
-                :border_right => true, :border_left => true, :pad_bottom => 2
-
-        caption "Some Value",
-                :width => (document.pdf.page_width - document.pdf.left_margin - document.pdf.right_margin) / 6 - 13,
-                :justification => :center,
-                :border_right => true, :border_left => true, :pad_bottom => 2
-
-      end #span
-    end #data
-
-
+              :pad_top => 0.1.cm, :pad_bottom => 0.1.cm, :pad_left => 5,
+              :text_color => Color::RGB::Red,:border => true, :justification => :center
   end
+
+  header :horizontal_align => true do
+
+    span do
+
+      caption "Reference Number",
+              :width => document.pdf.page_width / 2, :justification => :center,
+              :border_right => true, :border_left => true
+
+      caption "Tran Date",
+              :width => document.pdf.page_width / 2, :justification => :center,
+              :border_right => true, :border_left => true
+    end
+  end
+
+data :horizontal_align => true do
+
+  span do
+
+    caption "Some Value"*100,
+            :width => document.pdf.page_width / 2, :justification => :center,
+            :border_right => true, :border_left => true, :pad_bottom => 2
+
+    caption "Some Value"*150,
+            :width => document.pdf.page_width / 2, :justification => :center,
+            :border_right => true, :border_left => true, :pad_bottom => 2
+  end
+  span do
+
+    caption "Some Value"*200,
+            :width => document.pdf.page_width / 2, :justification => :center,
+            :border_right => true, :border_left => true, :pad_bottom => 2
+
+    caption "Some Value"*250,
+            :width => document.pdf.page_width / 2, :justification => :center,
+            :border_right => true, :border_left => true, :pad_bottom => 2
+  end
+  span do
+
+    caption "Some Value"*190,
+            :width => document.pdf.page_width / 2, :justification => :center,
+            :border_right => true, :border_left => true, :pad_bottom => 2
+
+    caption "Some Value"*190,
+            :width => document.pdf.page_width / 2, :justification => :center,
+            :border_right => true, :border_left => true, :pad_bottom => 2
+  end
+  span do
+
+    caption "Some Value"*100,
+            :width => document.pdf.page_width / 2, :justification => :center,
+            :border_right => true, :border_left => true, :pad_bottom => 2
+
+    caption "Some Value"*110,
+            :width => document.pdf.page_width / 2, :justification => :center,
+            :border_right => true, :border_left => true, :pad_bottom => 2
+  end
+end
+footer :horizontal_align => true do
+
+  span do
+
+    caption "Footer1",
+            :width => document.pdf.page_width / 2, :justification => :center,
+            :border_right => true, :border_left => true, :pad_bottom => 2
+
+    caption "Footer2",
+            :width => document.pdf.page_width / 2, :justification => :center,
+            :border_right => true, :border_left => true, :pad_bottom => 2
+  end
+end
+end
 end
 
 File.open("#{File.dirname(__FILE__)}/../doc_test.pdf", 'wb') {|f| f.write result}
