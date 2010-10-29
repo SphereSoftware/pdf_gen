@@ -12,4 +12,8 @@ module HelpersForTesting
   def create_div
     Div.new(Document.new Writer.new, 0)
   end
+
+  def create_table
+    Table.new(Document.new Writer.new, 0)
+  end
 end
