@@ -32,8 +32,8 @@ describe "Table" do
 
     @table.title.add_region(caption)
     @table.header.add_region(caption)
-    @table.data.add_region(caption)
-    @table.data.add_region(caption1)
+    @table.body.add_region(caption)
+    @table.body.add_region(caption1)
     @table.footer.add_region(caption)
 
     @table.render([0,750],750,true).should == [600,true]

@@ -12,7 +12,7 @@ module PDFRegion
 
       @title = Div.new(parent)
       @header = Div.new(parent)
-      @data = Div.new(parent)
+      @body = Div.new(parent)
       @footer = Div.new(parent)
       @repeat_header_on_each_page = false
       @repeat_footer_on_each_page = false
@@ -41,7 +41,7 @@ module PDFRegion
       header_status = render_region([pos_x,pos_y], @header)
       pos_y -= header_status[0]
       
-      status = render_region([pos_x,pos_y], @data)
+      status = render_region([pos_x,pos_y], @body)
       pos_y -= status[0]
       
       footer_height = render_region([pos_x,pos_y],@footer,true)
@@ -73,8 +73,13 @@ module PDFRegion
     access_region(@header, style, &initialization_block)
   end
 
-  def data(style = nil, &initialization_block)
-    access_region(@data, style, &initialization_block)
+  def body(style = nil, &initialization_block)
+    access_region(@body, style, &initialization_block)
+  end
+  
+  def width_ds(data)
+    ds = Ds_Ar.new(data)
+    
   end
 
   def footer(style = nil, &initialization_block)
