@@ -5,6 +5,10 @@ module PDFRegion
     def regions
       @regions ||= []
     end
+    
+    def [](index)
+      regions[index]
+    end
 
     #executes specified initialization block on all inner regions
     def elements(style = {}, &initialization_block)

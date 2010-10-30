@@ -5,7 +5,7 @@ require 'pdf/writer'
 require "lib/fixnum"
 require 'document.rb'
 require 'lib/containers/div_container'
-require "helpers_for_testing"
+require "test/helpers_for_testing"
 include HelpersForTesting
 include PDFRegion
 include Container

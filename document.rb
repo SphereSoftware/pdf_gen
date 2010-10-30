@@ -78,6 +78,7 @@ module PDFRegion
 
   def self.document(pdf, page_pad_top, &initialization_block)
     document = Document.new(pdf, page_pad_top)
+    document.width = document.pdf.page_width
     document.instance_eval(&initialization_block)
     document.render
     pdf.render

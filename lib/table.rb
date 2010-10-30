@@ -1,15 +1,17 @@
 require "lib/base_region"
 require "lib/div"
 require "lib/containers/table_container"
-
+require "lib/modules/smart_table"
 
 module PDFRegion
 
   class Table < BaseRegion
 
+    include SmartTable
+
     def initialize(parent)
       super(parent)
-
+      
       @title = Div.new(parent)
       @header = Div.new(parent)
       @body = Div.new(parent)
@@ -26,6 +28,7 @@ module PDFRegion
     end
 
     def render(pos, av_height,test=false)
+      super
       pos_x,pos_y = pos
       title_height = render_region([pos_x,pos_y], @title, true)
       header_height = render_region([pos_x,pos_y], @header, true)
@@ -62,6 +65,7 @@ module PDFRegion
       
       [av_height-pos_y, status[1] && footer_status[1]]
     end
+    
 
   end
 
@@ -75,11 +79,6 @@ module PDFRegion
 
   def body(style = nil, &initialization_block)
     access_region(@body, style, &initialization_block)
-  end
-  
-  def width_ds(data)
-    ds = Ds_Ar.new(data)
-    
   end
 
   def footer(style = nil, &initialization_block)

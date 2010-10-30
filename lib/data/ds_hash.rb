@@ -1,21 +1,20 @@
+require "lib/data/ds_base"
+
+
 module PDFRegion
 
-  class Ds_Hash
+  class DsHash < DsBase
     def initialize(data)
-       @data = data
+      @data = data
     end
-    
+
     def columns
       @data[:columns]
     end
-    
-    def each
-      
+
+    def body
+      @data.body
     end
-    
-#    def data
-#      @data
-#    end
   end
 
 end
