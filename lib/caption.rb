@@ -57,6 +57,7 @@ module PDFRegion
       
       document.pdf.save_state
       document.pdf.fill_color text_color if text_color
+      document.pdf.stroke_color! text_color if text_color
       while !(txt = document.pdf.add_text_wrap(x + pad_left, y - res, width - pad_left - pad_right, txt, font_size,\
                 justification, 0, test)).empty?
         res += document.pdf.font_height
@@ -73,8 +74,8 @@ module PDFRegion
     def render(pos, av_height, test=false)
       self.check_fit_in_height
       if av_height >= self.height 
-        used_height = add_text_wrap(pos) >= self.height ?  add_text_wrap(pos,test) : self.height
         super
+        used_height = add_text_wrap(pos) >= self.height ?  add_text_wrap(pos,test) : self.height
         [used_height, true]
       else
         [0, false]
