@@ -1,13 +1,11 @@
 require "lib/base_region"
 require "lib/div"
 require "lib/containers/table_container"
-require "lib/modules/smart_table"
+
 
 module PDFRegion
 
   class Table < BaseRegion
-
-    include SmartTable
 
     def initialize(parent)
       super(parent)

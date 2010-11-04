@@ -13,7 +13,11 @@ module PDFRegion
     end
 
     def body
-      @data.body
+      @data[:body]
+    end
+
+    def each
+      self.body.each {|item| yield item}
     end
   end
 
