@@ -10,14 +10,18 @@ module PDFRegion
     attr_accessor :header_region, :body_regions, :columns
 
     class RowsContainer < Div
-      
+
       def initialize(parent)
         super
         @cells = []
       end
 
+      def ds
+        parent.data_source
+      end
+
       def cell(region=nil)
-        if region == nil
+        if region.nil?
           caption = Caption.new(parent)
           caption.border_left = true
           region = caption
@@ -42,19 +46,27 @@ module PDFRegion
         span.border = true
         yield if block_given?
 
-        while @cells.size != parent.columns.size
-          cell
+        if  @cells.size > parent.columns.size
+          raise "count of columns less then cells"
+        else
+          @cells.size < parent.columns.size
+          i = parent.columns.size - @cells.size
+          i.times do
+            cell
+          end
         end
-        @cells.each_with_index do |cell,index|
-          parent.columns.nil? ? cell.width = parent.width/@cells.size : \
-                    cell.width = parent.width/10 * parent.columns[index] #todo
+
+
+        @cells.each_with_index do |cell, index|
+          cell.width = parent.columns.nil? ? parent.width/@cells.size : \
+ parent.width/parent.count_columns * parent.columns[index] #todo
           span.add_region(cell)
         end
-        
+
         @cells = []
         self.add_region(span)
       end
-      
+
     end
 
     def initialize(parent)
@@ -84,7 +96,7 @@ module PDFRegion
     end
 
     attr_reader :data_source
-    
+
     def render(pos, av_height, test=false)
       build_header() unless @is_header_rendered
       build_body() unless @is_body_rendered
@@ -92,7 +104,7 @@ module PDFRegion
       @body_regions.each do |region|
         @body.add_region(region)
       end
-      
+
       super
     end
 
@@ -138,12 +150,19 @@ module PDFRegion
       super
       @is_header_rendered = true
     end
-    
+
     def body(style = nil, &initialization_block)
       super
       @is_body_rendered = true
     end
-    
+
+    def count_columns
+      res = 0
+      @columns.each do |column|
+        res += column
+      end
+      res
+    end
   end
 
 end
