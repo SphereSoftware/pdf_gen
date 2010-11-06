@@ -72,10 +72,13 @@ module PDFRegion
     def initialize(parent)
       super(parent)
 
-      @title = RowsContainer.new(self)
-      @header = RowsContainer.new(self)
-      @body = RowsContainer.new(self)
-      @footer = RowsContainer.new(self)
+      rows_container = RowsContainer.new(self)
+      rows_container.width = self.width
+      
+      @title = rows_container.dup
+      @header = rows_container.dup
+      @body = rows_container.dup
+      @footer = rows_container.dup
 
       @data_source = nil
       @header_data = nil

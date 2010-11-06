@@ -10,10 +10,13 @@ module PDFRegion
     def initialize(parent)
       super(parent)
       
-      @title = Div.new(parent)
-      @header = Div.new(parent)
-      @body = Div.new(parent)
-      @footer = Div.new(parent)
+      rows_container = Div.new(self)
+      rows_container.width = self.width
+      
+      @title = rows_container.dup
+      @header = rows_container.dup
+      @body = rows_container.dup
+      @footer = rows_container.dup
       @repeat_header_on_each_page = false
       @repeat_footer_on_each_page = false
     end
