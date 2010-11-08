@@ -1,4 +1,4 @@
-$: << File.dirname(__FILE__)
+$: << File.expand_path(File.dirname(__FILE__))
 require "rubygems"
 require "pdf/writer"
 require "lib/writer"
@@ -13,6 +13,8 @@ require "lib/span"
 require "lib/div"
 require "lib/image"
 require "lib/containers/table_container"
+
+
 
 
 module PDFRegion
