@@ -75,10 +75,10 @@ module PDFRegion
       rows_container = RowsContainer.new(self)
       rows_container.width = self.width
       
-      @title = rows_container.dup
-      @header = rows_container.dup
-      @body = rows_container.dup
-      @footer = rows_container.dup
+      @title = rows_container.clone
+      @header = rows_container.clone
+      @body = rows_container.clone
+      @footer = rows_container.clone
 
       @data_source = nil
       @header_data = nil
