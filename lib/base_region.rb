@@ -1,4 +1,3 @@
-require "lib/writer"
 require "lib/modules/base_attributes"
 
 module PDFRegion

@@ -1,4 +1,6 @@
-require "../document"
+$:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
+require "document"
+
 
 image_data = open(File.expand_path('ruby_logo.jpg'), "rb") { |file| file.read }
 

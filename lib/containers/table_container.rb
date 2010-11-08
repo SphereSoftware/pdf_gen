@@ -1,7 +1,4 @@
-require "lib/table"
-require "lib/smart_table"
-include PDFRegion
-
+module PDFRegion
 
 module TableContainer
 
@@ -14,4 +11,5 @@ module TableContainer
     self.add_region(table)
   end
 
+end
 end

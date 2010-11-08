@@ -1,6 +1,6 @@
 require "lib/data/ds_hash"
-require "table"
-require "div"
+require "lib/table"
+require "lib/div"
 
 
 module PDFRegion
