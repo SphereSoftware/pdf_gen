@@ -27,7 +27,7 @@ endobj
 endobj
 5 0 obj
 <<
-/CreationDate (D:201011061554)
+/CreationDate (D:201011081537)
 /Creator (test.rb)
 /Producer (PDF::Writer for Ruby)
 >>
@@ -40,15 +40,12 @@ endobj
 endobj
 7 0 obj
 <<
-/Length 4356 >>
+/Length 207 >>
 stream
 
 0.000 0.000 0.000 rg
 0.000 0.000 0.000 RG
 q
-1 w [ 1 0 ] 0 d
-0.000 678.614 m
-340.157 678.614 l S
 1 w
 Q
 q
@@ -58,103 +55,14 @@ q
 1 w
 Q
 q
-1 w
-Q
-q
-BT 56.693 667.054 Td /F1 10.0 Tf 0 Tr ( first  first  first  first  first  first  ) Tj ET
-BT 56.693 655.494 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 643.934 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 632.374 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 620.814 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 609.254 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 597.694 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 586.134 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 574.574 Td /F1 10.0 Tf 0 Tr (first  first ) Tj ET
+BT 0.000 667.054 Td /F1 10.0 Tf 0 Tr (textxtxt) Tj ET
 1 w
 Q
 q
 1 w
 Q
 q
-BT 198.425 667.054 Td /F1 10.0 Tf 0 Tr ( second  second  second  ) Tj ET
-BT 198.425 655.494 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 643.934 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 632.374 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 620.814 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 609.254 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 597.694 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 586.134 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 574.574 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 563.014 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 551.454 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 539.894 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 528.334 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 516.774 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 505.214 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 493.654 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 482.094 Td /F1 10.0 Tf 0 Tr (second  second ) Tj ET
-1 w
-Q
-q
-1 w
-Q
-q
-1 w
-Q
-q
-1 w
-Q
-q
-BT 56.693 413.841 Td /F1 10.0 Tf 0 Tr ( first  first  first  first  first  first  ) Tj ET
-BT 56.693 402.281 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 390.721 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 379.161 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 367.601 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 356.041 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 344.481 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 332.921 Td /F1 10.0 Tf 0 Tr (first  first  first  first  first  first  ) Tj ET
-BT 56.693 321.361 Td /F1 10.0 Tf 0 Tr (first  first ) Tj ET
-1 w
-Q
-q
-1 w
-Q
-q
-BT 198.425 413.841 Td /F1 10.0 Tf 0 Tr ( second  second  second  ) Tj ET
-BT 198.425 402.281 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 390.721 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 379.161 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 367.601 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 356.041 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 344.481 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 332.921 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 321.361 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 309.801 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 298.241 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 286.681 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 275.121 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 263.561 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 252.001 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 240.441 Td /F1 10.0 Tf 0 Tr (second  second  second  ) Tj ET
-BT 198.425 228.881 Td /F1 10.0 Tf 0 Tr (second  second ) Tj ET
-1 w
-Q
-q
-1 w [ 1 0 ] 0 d
-0.000 228.881 m
-340.157 228.881 l S
-1 w
-Q
-q
-1 w [ 1 0 ] 0 d
-0.000 678.614 m
-0.000 228.881 l S
-1 w
-Q
-q
-1 w [ 1 0 ] 0 d
-340.157 678.614 m
-340.157 228.881 l S
+BT 100.000 667.054 Td /F1 10.0 Tf 0 Tr (textxtxt1111111) Tj ET
 1 w
 Q
 endstream
@@ -178,7 +86,7 @@ xref
 0000000291 00000 n 
 0000000395 00000 n 
 0000000458 00000 n 
-0000004867 00000 n 
+0000000717 00000 n 
 
 trailer
   << /Size 9
@@ -186,5 +94,5 @@ trailer
  /Info 5 0 R
   >>
 startxref
-4974
+824
 %%EOF
