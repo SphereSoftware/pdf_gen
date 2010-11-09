@@ -14,7 +14,6 @@ module PDFRegion
       
       rows_container = Div.new(self)
       rows_container.width = self.width
-      
 
       @title = rows_container.clone
       @header = rows_container.clone
@@ -34,9 +33,20 @@ module PDFRegion
       region.width = width
       region.render(pos, pos[1], test)
     end
+    
+    def align_cell_in_row
+      [@header,@body,@footer].each do |container|
+        container.regions.each do |row|
+          row.vertical_align = true if row.respond_to?(:vertical_align)
+        end
+      end
+    end
 
     def render(pos, av_height, test=false)
+      align_cell_in_row
+      
       super
+      
       pos_x, pos_y = pos
       title_height = render_region([pos_x, pos_y], @title, true)
       header_height = render_region([pos_x, pos_y], @header, true)
