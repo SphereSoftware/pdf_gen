@@ -21,11 +21,9 @@ module PDFRegion
       if width == 0 && height == 0
           self.width = @info.width
           self.height = @info.height
-      end
-      if width == 0
+      elsif width == 0
           self.width = height / @info.height.to_f * @info.width
-      end
-      if height == 0
+      elsif height == 0
           self.height = width * @info.height / @info.width.to_f
       end
       self.height = self.height - pad_top - pad_bottom
