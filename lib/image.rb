@@ -18,13 +18,14 @@ module PDFRegion
     def set_properties(props = {})
       super
 
-      case true
-        when (width == 0 and height == 0)
+      if width == 0 && height == 0
           self.width = @info.width
           self.height = @info.height
-        when width == 0
+      end
+      if width == 0
           self.width = height / @info.height.to_f * @info.width
-        when height == 0
+      end
+      if height == 0
           self.height = width * @info.height / @info.width.to_f
       end
       self.height = self.height - pad_top - pad_bottom

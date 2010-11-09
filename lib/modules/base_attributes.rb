@@ -78,11 +78,11 @@ module BaseAttributes
     common_setter(:@pad_right, value)
   end
   
-  def paddings(value)
-    pad_bottom value
-    pad_left value
-    pad_right value
-    pad_bottom value
+  def paddings=(value)
+    @pad_bottom=value
+    @pad_left=value
+    @pad_right=value
+    @pad_top=value
   end
 
   def border_params
