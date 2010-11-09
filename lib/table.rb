@@ -10,8 +10,11 @@ module PDFRegion
     def initialize(parent)
       super(parent)
 
+      set_width(parent)
+      
       rows_container = Div.new(self)
       rows_container.width = self.width
+      
 
       @title = rows_container.clone
       @header = rows_container.clone
@@ -19,6 +22,10 @@ module PDFRegion
       @footer = rows_container.clone
       @repeat_header_on_each_page = false
       @repeat_footer_on_each_page = false
+    end
+    
+    def set_width(parent)
+      self.width = parent.width - parent.pad_left - parent.pad_right
     end
 
     attr_accessor :repeat_header_on_each_page, :repeat_footer_on_each_page
