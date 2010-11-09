@@ -77,6 +77,13 @@ module BaseAttributes
   def pad_right=(value)
     common_setter(:@pad_right, value)
   end
+  
+  def paddings(value)
+    pad_bottom value
+    pad_left value
+    pad_right value
+    pad_bottom value
+  end
 
   def border_params
     border_type = {:solid => [1, 0], :dotted => [1, 1], :none => [0, 1]}
