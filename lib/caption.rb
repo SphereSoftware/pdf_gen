@@ -60,7 +60,7 @@ module PDFRegion
       document.pdf.stroke_color! text_color if text_color
       while !(txt = document.pdf.add_text_wrap(x + pad_left, y - res, width - pad_left - pad_right, txt, font_size,\
                 justification, 0, test)).empty?
-        res += document.pdf.font_height
+        res += document.pdf.font_height(font_size)
       end
       document.pdf.restore_state
 
