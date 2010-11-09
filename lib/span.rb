@@ -12,7 +12,7 @@ module PDFRegion
   #Gorizontall captions line
   class Span < BaseRegion
     
-    include Container, CaptionContainer, ImageContainer
+    include Container, CaptionContainer, ImageContainer, SpanContainer
 
     def initialize(parent)
       super
