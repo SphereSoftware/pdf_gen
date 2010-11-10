@@ -41,7 +41,7 @@ module PDFRegion
         document.pdf.save_state
 
         document.pdf.stroke_color! border_color
-        document.pdf.stroke_style! border_params()
+        document.pdf.stroke_style! border_params
 
         document.pdf.line(x, y, x, y - height).stroke if border_left
         document.pdf.line(x + width, y, x + width, y - height).stroke if border_right

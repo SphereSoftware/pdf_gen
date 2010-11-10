@@ -1,4 +1,4 @@
-$:.unshift(File.expand_path(File.dirname(__FILE__))) 
+$:.unshift(File.expand_path(File.dirname(__FILE__)))
 require "rubygems"
 require "pdf/writer"
 require "lib/writer"
@@ -16,14 +16,12 @@ require "lib/containers/table_container"
 require "lib/smart_table"
 
 
-
-
 module PDFRegion
 
   class Document < BaseRegion
 
-    include Canvas, Container, TableContainer, CaptionContainer, SpanContainer, \
- DivContainer, ImageContainer
+    include Canvas, Container, TableContainer, CaptionContainer, SpanContainer,
+            DivContainer, ImageContainer
 
     def initialize(pdf, page_pad_top)
       super(nil)
@@ -36,27 +34,15 @@ module PDFRegion
       @header = []
     end
 
-    attr_reader :pdf,:header
+    attr_reader :pdf, :header
 
     #creates new page
     def break_page
       pdf.page_break @page_pad_top
       @header.each do |header_region|
         header_region.count_rendered_region = 0
-        status = header_region.render([0, pdf.y],pdf.y)
+        status = header_region.render([0, pdf.y], pdf.y)
         pdf.y -= status[0]
-      end
-    end
-
-    def add_header_region(header_region)
-      unless header_region.nil?
-        @header << header_region
-      end
-    end
-
-    def remove_header_region(header_region)
-      unless header_region.nil?
-        @header.delete(header_region)
       end
     end
 

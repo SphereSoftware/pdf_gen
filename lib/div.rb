@@ -44,7 +44,7 @@ module PDFRegion
 
     def add_border(x, y, x1, y1)
       document.pdf.save_state
-      document.pdf.stroke_style! border_params()
+      document.pdf.stroke_style! border_params
       document.pdf.line(x, y, x1, y1).stroke
       document.pdf.restore_state
     end

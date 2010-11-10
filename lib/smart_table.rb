@@ -35,7 +35,7 @@ module PDFRegion
 
 
       def row
-        span = Span.new(self.document())
+        span = Span.new(self.document)
         span.width = self.width
         span.border = true
         yield if block_given?

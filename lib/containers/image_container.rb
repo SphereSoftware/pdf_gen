@@ -2,15 +2,14 @@ require "lib/image"
 module PDFRegion
 
 
-  module ImageContainer
+module ImageContainer
 
-    def image(image_res, style=nil, &initialization_block)
+    def image(image_res, style=nil)
       image = Image.new self, image_res
       image.set_properties style unless style.nil?
-      image.instance_eval(&initialization_block) if initialization_block
       self.add_region(image)
     end
 
   end
-
+  
 end
