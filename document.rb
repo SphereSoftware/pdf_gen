@@ -13,6 +13,7 @@ require "lib/span"
 require "lib/div"
 require "lib/image"
 require "lib/containers/table_container"
+require "lib/smart_table"
 
 
 
