@@ -11,8 +11,8 @@ module PDFRegion
 
   class Div < BaseRegion
 
-    include Container, CaptionContainer, SpanContainer, DivContainer, \
- ImageContainer, TableContainer
+    include Container, CaptionContainer, SpanContainer, DivContainer,
+            ImageContainer, TableContainer
 
     def initialize parent
       super
@@ -62,42 +62,41 @@ module PDFRegion
     end
 
     def render_regions(pos, av_height, test=false)
-      pos_x, pos_y =  pos
+      pos_x, pos_y = pos
       remain_regions = regions.slice(@count_rendered_region..regions.size)
-      if @count_rendered_region == 0 && @rendered_height == 0
+      if @count_rendered_region.zero? && @rendered_height.zero?
         @rendered_height += pad_top
         pos_y -= pad_top
-        #pos_x += pad_left
       end
       pos_x += pad_left
+      
       remain_regions.each do |region|
-
-        if (pos_y >= region.height)
+        if pos_y >= region.height
           @count_rendered_region += 1 unless test
-          self.fit_width(region)          
-          region_height = region.render([pos_x, pos_y], pos_y,test)[0]
+          self.fit_width(region)
+          region_height = region.render([pos_x, pos_y], pos_y, test)[0]
 
           @rendered_height += region_height
           pos_y -= region_height
-          
+
           @rendered_height += horizontal_interval unless region == regions.last
           pos_y -= horizontal_interval unless region == regions.last
-          
+
           if region == regions.last
-            pos_y -= pad_bottom            
+            pos_y -= pad_bottom
             @rendered_height += pad_bottom
           end
         else
           if region.breakable?
             self.fit_width(region)
-            status = region.render([pos_x, pos_y], pos_y,test)
+            status = region.render([pos_x, pos_y], pos_y, test)
 
             @rendered_height += status[0]
             pos_y -= status[0]
-            
+
             @rendered_height += horizontal_interval unless region == regions.last
             pos_y -= horizontal_interval unless region == regions.last
-            
+
             if region == regions.last and status[1]
               pos_y -= pad_bottom
               @rendered_height += pad_bottom
@@ -114,19 +113,19 @@ module PDFRegion
     end
 
     def render(pos, av_height, test=false)
-      pos_x, pos_y =  pos
-      add_border_top(pos_x,pos_y) if @rendered_height == 0
+      pos_x, pos_y = pos
+      add_border_top(pos_x, pos_y) if @rendered_height.zero?
       fill(pos)
-      status = render_regions([pos_x, pos_y],av_height,test)
-      pos_y -= status[0] 
-      
+      status = render_regions([pos_x, pos_y], av_height, test)
+      pos_y -= status[0]
+
       if (status[1])
-        add_border_bottom(pos_x,pos_y)
-        add_border_sides(pos_x,av_height,pos_y)
+        add_border_bottom(pos_x, pos_y)
+        add_border_sides(pos_x, av_height, pos_y)
       else
-        add_border_sides(pos_x,av_height,0)
+        add_border_sides(pos_x, av_height, 0)
       end
-      
+
       status
     end
 

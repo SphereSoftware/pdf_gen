@@ -50,14 +50,12 @@ module BaseAttributes
     common_setter(:@width, value)
   end
 
-  attr_accessor :border_top, :border_bottom, :border_left, :border_right, \
- :border_style, :border_color, :border_width
+  attr_accessor :border_top, :border_bottom, :border_left, :border_right,
+                :border_style, :border_color, :border_width
 
   def border= value
-    self.border_top = value
-    self.border_bottom = value
-    self.border_left = value
-    self.border_right = value
+    self.border_top = self.border_bottom = self.border_left =
+            self.border_right = value
   end
 
   attr_reader :pad_top, :pad_bottom, :pad_left, :pad_right
@@ -77,12 +75,9 @@ module BaseAttributes
   def pad_right=(value)
     common_setter(:@pad_right, value)
   end
-  
+
   def paddings=(value)
-    @pad_bottom=value
-    @pad_left=value
-    @pad_right=value
-    @pad_top=value
+    @pad_bottom = @pad_left = @pad_right = @pad_top = value
   end
 
   def border_params

@@ -38,7 +38,6 @@ module PDFRegion
     def add_border(pos)
       x,y = pos
       if border_top || border_bottom || border_left || border_right
-
         document.pdf.save_state
 
         document.pdf.stroke_color! border_color
@@ -82,11 +81,7 @@ module PDFRegion
         raise "region`s height is bigger then page`s height"
       end
     end
-
-    def apply_values(values = {})
-
-    end
-
+        
     def value val
       "<!#{val.to_s}!>"
     end

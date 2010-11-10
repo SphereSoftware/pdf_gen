@@ -11,9 +11,9 @@ module PDFRegion
 
   #Horizontal captions line
   class Span < BaseRegion
-    
-    include Container, CaptionContainer, ImageContainer, SpanContainer,\
-      DivContainer
+
+    include Container, CaptionContainer, ImageContainer, SpanContainer,
+            DivContainer
 
     def initialize(parent)
       super
@@ -43,22 +43,22 @@ module PDFRegion
       last = regions.last
       regions.each do |region|
         if (content_width + region.width) > self.width
-          regions[regions.index(region),regions.size].each do |item|
+          regions[regions.index(region), regions.size].each do |item|
             regions.delete(item)
           end
         else
           region.height = height if vertical_align
-          region.render([(x + content_width), (y - pad_top)],document.pdf.y) unless test
+          region.render([(x + content_width), (y - pad_top)], document.pdf.y) unless test
 
           content_width += region.width
           content_width += vertical_interval unless region == last
         end
       end
-      
+
       content_width + pad_right
     end
-    
-    def render(pos, av_height,test=false)
+
+    def render(pos, av_height, test=false)
       self.check_fit_in_height
       fill(pos) unless test
       add_border(pos) unless test
@@ -66,5 +66,5 @@ module PDFRegion
     end
 
   end
-  
+
 end

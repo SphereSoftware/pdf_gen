@@ -19,12 +19,12 @@ module PDFRegion
       super
 
       if width == 0 && height == 0
-          self.width = @info.width
-          self.height = @info.height
+        self.width = @info.width
+        self.height = @info.height
       elsif width == 0
-          self.width = height / @info.height.to_f * @info.width
+        self.width = height / @info.height.to_f * @info.width
       elsif height == 0
-          self.height = width * @info.height / @info.width.to_f
+        self.height = width * @info.height / @info.width.to_f
       end
       self.height = self.height - pad_top - pad_bottom
     end
@@ -32,12 +32,12 @@ module PDFRegion
     def render(pos, av_height, test=false)
       self.check_fit_in_height
       if av_height >= self.height
-        document.pdf.add_image(@image, pos[0]+pad_left, pos[1]-height+pad_bottom, \
- width-pad_left-pad_right, height-pad_top-pad_bottom)
+        document.pdf.add_image(@image, pos[0]+pad_left, pos[1]-height+pad_bottom,
+                               width-pad_left-pad_right, height-pad_top-pad_bottom)
         super
         [self.height, true]
       else
-         [0, false]
+        [0, false]
       end
     end
 

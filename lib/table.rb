@@ -66,7 +66,7 @@ module PDFRegion
       pos_y -= status[0]
 
       footer_height = render_region([pos_x, pos_y], @footer, true)
-      if (footer_height[0] > pos[1])
+      if footer_height[0] > pos[1]
         return [av_height-pos_y, false]
       end
 

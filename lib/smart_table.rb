@@ -21,24 +21,18 @@ module PDFRegion
       end
 
       def cell(region=nil)
-        if region.nil?
+        if region.is_a?(String) or region.nil?
           caption = Caption.new(parent)
+          caption.text = region if region.is_a?(String)
           caption.border_left = true
           region = caption
           @cells << region
         else
-          if region.kind_of?(String)
-            caption = Caption.new(parent)
-            caption.text = region
-            caption.border_left = true
-            region = caption
-            @cells << region
-          else
-            @cells << region[0] #todo
-            region.clear
-          end
+          @cells << region[0] #todo
+          region.clear
         end
       end
+
 
       def row
         span = Span.new(self.document())
@@ -49,17 +43,14 @@ module PDFRegion
         if  @cells.size > parent.columns.size
           raise "count of columns less then cells"
         else
-          @cells.size < parent.columns.size
           i = parent.columns.size - @cells.size
-          i.times do
-            cell
-          end
+          i.times { cell }
         end
 
 
         @cells.each_with_index do |cell, index|
-          cell.width = parent.columns.nil? ? parent.width/@cells.size : \
- parent.width/parent.count_columns * parent.columns[index] #todo
+          cell.width = parent.columns.nil? ? parent.width/@cells.size :
+                  parent.width/parent.count_columns * parent.columns[index] #todo
           span.add_region(cell)
         end
 
@@ -74,7 +65,7 @@ module PDFRegion
 
       rows_container = RowsContainer.new(self)
       rows_container.width = self.width
-      
+
       @title = rows_container.clone
       @header = rows_container.clone
       @body = rows_container.clone
@@ -101,21 +92,19 @@ module PDFRegion
     attr_reader :data_source
 
     def render(pos, av_height, test=false)
-      build_header() unless @is_header_rendered
-      build_body() unless @is_body_rendered
+      build_header unless @is_header_rendered
+      build_body unless @is_body_rendered
       @header.add_region(@header_region)
-      @body_regions.each do |region|
-        @body.add_region(region)
-      end
-
+      @body_regions.each { |region| @body.add_region(region) }
+      
       super
     end
 
     def build_header()
-      span = Span.new(self.document())
+      span = Span.new(self.document)
       span.border = true
       @header_data.each do |cap|
-        caption = Caption.new(self.document())
+        caption = Caption.new(self.document)
         caption.text = cap
         caption.width = self.width / @header_data.size
         caption.border_left = true
@@ -128,11 +117,11 @@ module PDFRegion
 
     def build_body()
       @body_data.each do |row|
-        span = Span.new(self.document())
+        span = Span.new(self.document)
         span.width = self.width
         span.border = true
         row.each do |cap|
-          caption = Caption.new(self.document())
+          caption = Caption.new(self.document)
           caption.text = cap
           caption.width = self.width / row.size
           caption.border_left = true
@@ -145,8 +134,8 @@ module PDFRegion
 
 
     def build_default_table
-      build_header()
-      build_body()
+      build_header
+      build_body
     end
 
     def header(style = nil, &initialization_block)
@@ -160,11 +149,7 @@ module PDFRegion
     end
 
     def count_columns
-      res = 0
-      @columns.each do |column|
-        res += column
-      end
-      res
+      @columns.inject(0){|sum,item| sum + item}
     end
   end
 
