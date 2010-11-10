@@ -49,7 +49,7 @@ describe "New span" do
   end
   it "right calculate content height with vertical interval" do
     span_el = create_span
-
+    span_el.width = 150
     caption1 = create_caption
     caption1.set_properties(:width => 50)
 
@@ -64,14 +64,14 @@ describe "New span" do
   end
   it "right calculate content height with vertical align" do
     span_el = create_span
-    span_el.set_properties(:height => 100)
+    span_el.set_properties(:height => 100, :width=>100)
     span_el.vertical_align = true
 
     caption1 = create_caption
     caption1.set_properties(:width => 50)
 
     span_el.add_region(caption1)
-
+    span_el.render_regions
     caption1.height.should == 100
   end
 end
