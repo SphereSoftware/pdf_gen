@@ -9,7 +9,7 @@ require "lib/containers/image_container"
 
 module PDFRegion
 
-  #Gorizontall captions line
+  #Horizontal captions line
   class Span < BaseRegion
     
     include Container, CaptionContainer, ImageContainer, SpanContainer
@@ -27,13 +27,13 @@ module PDFRegion
       (regions.collect{|region| region.height}.max || 0) + pad_top + pad_bottom
     end
 
-    def add_region(region)
-      if super
-        self.width=([width, render_regions].max)
-        clear_minimal_height
-      end
-
-    end
+#    def add_region(region)
+#      if super
+#        self.width=([width, render_regions].max)
+#        clear_minimal_height
+#      end
+#
+#    end
 
     #renders inner regions
     #returns height of the region content
@@ -41,11 +41,17 @@ module PDFRegion
       content_width = pad_left
       last = regions.last
       regions.each do |region|
-        region.height = height if vertical_align
-        region.render([(x + content_width), (y - pad_top)],document.pdf.y) unless test
+        if (content_width + region.width) > self.width
+          regions[regions.index(region),regions.size].each do |item|
+            regions.delete(item)
+          end
+        else
+          region.height = height if vertical_align
+          region.render([(x + content_width), (y - pad_top)],document.pdf.y) unless test
 
-        content_width += region.width
-        content_width += vertical_interval unless region == last
+          content_width += region.width
+          content_width += vertical_interval unless region == last
+        end
       end
       
       content_width + pad_right
