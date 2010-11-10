@@ -5,14 +5,15 @@ require "lib/modules/container"
 require "lib/caption"
 require "lib/containers/caption_container"
 require "lib/containers/image_container"
-
+require "lib/containers/div_container"
 
 module PDFRegion
 
   #Horizontal captions line
   class Span < BaseRegion
     
-    include Container, CaptionContainer, ImageContainer, SpanContainer
+    include Container, CaptionContainer, ImageContainer, SpanContainer,\
+      DivContainer
 
     def initialize(parent)
       super
