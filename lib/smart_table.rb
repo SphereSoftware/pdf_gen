@@ -39,7 +39,8 @@ module PDFRegion
         span.width = self.width
         span.border = true
         yield if block_given?
-
+        p @cells.size
+        p parent.columns.size
         if  @cells.size > parent.columns.size
           raise "count of columns less then cells"
         else
@@ -54,7 +55,7 @@ module PDFRegion
           span.add_region(cell)
         end
 
-        @cells = []
+        @cells.clear
         self.add_region(span)
       end
 
