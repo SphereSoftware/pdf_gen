@@ -57,7 +57,7 @@ module PDFRegion
 
       title_status = render_region([pos_x, pos_y], @title)
       pos_y -= title_status[0]
-
+      
       @header.reset_count_rendered_regions if @repeat_header_on_each_page
       header_status = render_region([pos_x, pos_y], @header)
       pos_y -= header_status[0]
@@ -76,7 +76,7 @@ module PDFRegion
         if @repeat_footer_on_each_page
           footer_status = render_region([pos_x, pos_y], @footer)
 
-          status[0] = footer_status[0]
+          #status[0] = footer_status[0]
           @footer.reset_count_rendered_regions
         end
       end

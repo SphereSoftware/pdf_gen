@@ -39,11 +39,6 @@ module PDFRegion
     #creates new page
     def break_page
       pdf.page_break @page_pad_top
-      @header.each do |header_region|
-        header_region.count_rendered_region = 0
-        status = header_region.render([0, pdf.y], pdf.y)
-        pdf.y -= status[0]
-      end
     end
 
     def render
