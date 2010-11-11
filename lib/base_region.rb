@@ -3,7 +3,6 @@ require "lib/modules/base_attributes"
 module PDFRegion
 
   class BaseRegion
-
     include BaseAttributes
     
     def initialize(parent)
@@ -12,7 +11,7 @@ module PDFRegion
     end
 
     attr_reader :parent
-
+    
     #gets region's document
     def document
       parent ? parent.document : self

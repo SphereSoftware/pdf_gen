@@ -71,9 +71,11 @@ module PDFRegion
       pos_x += pad_left
       
       remain_regions.each do |region|
+        self.fit_width(region)
+        region.check_fit_in_height
         if pos_y >= region.height
           @count_rendered_region += 1 unless test
-          self.fit_width(region)
+          
           region_height = region.render([pos_x, pos_y], pos_y, test)[0]
 
           @rendered_height += region_height
@@ -88,7 +90,6 @@ module PDFRegion
           end
         else
           if region.breakable?
-            self.fit_width(region)
             status = region.render([pos_x, pos_y], pos_y, test)
 
             @rendered_height += status[0]

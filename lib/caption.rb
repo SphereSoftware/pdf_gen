@@ -4,7 +4,7 @@ require "lib/base_region"
 module PDFRegion
   
   class Caption < BaseRegion
-    
+   
     def initialize(parent)
       super
 
@@ -27,21 +27,7 @@ module PDFRegion
 
     attr_reader :text_color, :justification, :bold, :font_size
 
-    def text_color=(value)
-      common_setter(:@text_color,value)
-    end
-
-    def justification=(value)
-      common_setter(:@justification,value)
-    end
-
-    def bold= (value)
-      common_setter(:@bold,value)
-    end
-
-    def font_size=(value)
-      common_setter(:@font_size,value)
-    end
+    common_setter :text_color, :justification, :bold, :font_size
 
     def calculate_minimal_height
       add_text_wrap

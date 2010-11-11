@@ -1,5 +1,24 @@
 module BaseAttributes
 
+  module ClassMethods
+    def common_setter(*setters)
+      setters.each do |set|
+        define_method("#{set}=") do |val|
+          if val && set != val
+            self.instance_variable_set("@#{set}",val)
+            clear_minimal_height
+          end
+        end
+      end
+    end
+  end
+
+  extend ClassMethods
+
+  def self.included(base)
+    base.extend(ClassMethods)
+  end
+
   attr_accessor :background_color
 
   def var_init
@@ -37,44 +56,19 @@ module BaseAttributes
   #padding from the page top after page break
   attr_accessor :page_pad_top
 
-  def common_setter(var_name, value)
-    if value && var_name != value
-      self.instance_variable_set(var_name, value)
-      clear_minimal_height
-    end
-  end
+  common_setter :pad_left, :pad_right, :pad_top, :pad_bottom, :width
 
   attr_reader :width
 
-  def width=(value)
-    common_setter(:@width, value)
-  end
-
   attr_accessor :border_top, :border_bottom, :border_left, :border_right,
-                :border_style, :border_color, :border_width
+    :border_style, :border_color, :border_width
 
   def border= value
     self.border_top = self.border_bottom = self.border_left =
-            self.border_right = value
+      self.border_right = value
   end
 
   attr_reader :pad_top, :pad_bottom, :pad_left, :pad_right
-
-  def pad_top=(value)
-    common_setter(:@pad_top, value)
-  end
-
-  def pad_bottom=(value)
-    common_setter(:@pad_bottom, value)
-  end
-
-  def pad_left=(value)
-    common_setter(:@pad_left, value)
-  end
-
-  def pad_right=(value)
-    common_setter(:@pad_right, value)
-  end
 
   def paddings=(value)
     @pad_bottom = @pad_left = @pad_right = @pad_top = value

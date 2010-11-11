@@ -42,10 +42,12 @@ module PDFRegion
       content_width = pad_left
       last = regions.last
       regions.each do |region|
+        if region.breakable?
+          region.check_fit_in_height
+        end
+
         if (content_width + region.width) > self.width
-          regions[regions.index(region), regions.size].each do |item|
-            regions.delete(item)
-          end
+          regions.slice(0,regions.index(region))
         else
           region.height = height if vertical_align
           region.render([(x + content_width), (y - pad_top)], document.pdf.y) unless test

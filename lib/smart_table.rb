@@ -39,15 +39,12 @@ module PDFRegion
         span.width = self.width
         span.border = true
         yield if block_given?
-        p @cells.size
-        p parent.columns.size
         if  @cells.size > parent.columns.size
           raise "count of columns less then cells"
         else
           i = parent.columns.size - @cells.size
           i.times { cell }
         end
-
 
         @cells.each_with_index do |cell, index|
           cell.width = parent.columns.nil? ? parent.width/@cells.size :
