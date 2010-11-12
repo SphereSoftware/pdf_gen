@@ -25,7 +25,7 @@ module PDFGen
     document.width = document.pdf.page_width
     document.instance_eval(&initialization_block)
     document.render
-    pdf.render
+    pdf#.render
   end
 
 end

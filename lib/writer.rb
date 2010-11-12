@@ -4,7 +4,8 @@ require "pdf/writer"
 module PDF
   
   class Writer
-    
+
+    alias_method :save, :save_as
     #extends PDF writer class StrikeStyle with several well known styles
     class StrokeStyle
       
