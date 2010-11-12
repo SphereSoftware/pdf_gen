@@ -53,7 +53,7 @@ Object which allows setting several objects in vertical format. This object has 
 === Table
 Object which allows creating tables in PDF file. This object has such elements as title, header, body and footer. The columns should be made be adding “spans” inside the body of the table. The table could have borders from the definite sides, for example: “:border_right => true” or “:border_right => false”.
 
-require "pdf_gen"
+  require "pdf_gen"
 
   PDFRegion::document PDF::Writer.new, 0.cm do
     table do
