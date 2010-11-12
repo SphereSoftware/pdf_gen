@@ -1,4 +1,5 @@
-require "../document"
+$:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
+require "pdf_gen"
 
 image_data = open(File.expand_path('samples/ruby_logo.jpg'), "rb") { |file| file.read }
 

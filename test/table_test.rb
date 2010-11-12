@@ -1,9 +1,9 @@
 $: << File.expand_path("../")
 require 'rubygems'
-require 'lib/writer.rb'
+require 'lib/writer'
 require 'pdf/writer'
 require "lib/fixnum"
-require 'document.rb'
+require 'pdf_gen'
 require 'lib/containers/div_container'
 require "test/helpers_for_testing"
 include HelpersForTesting

@@ -1,11 +1,11 @@
 $: << File.expand_path("../")
 require 'rubygems'
-require 'lib/caption.rb'
-require 'lib/writer.rb'
+require 'lib/caption'
+require 'lib/writer'
 require 'pdf/writer'
 require "lib/fixnum"
-require 'document.rb'
-require 'lib/base_region.rb'
+require 'pdf_gen'
+require 'lib/base_region'
 
 shared_examples_for "base region" do
   it "should have width equal to zero" do

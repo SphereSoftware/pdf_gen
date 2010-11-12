@@ -18,7 +18,7 @@ require "lib/smart_table"
 
 module PDFRegion
 
-  class Document < BaseRegion
+  class PdfGen < BaseRegion
 
     include Canvas, Container, TableContainer, CaptionContainer, SpanContainer,
             DivContainer, ImageContainer
@@ -60,7 +60,7 @@ module PDFRegion
 
 
   def self.document(pdf, page_pad_top, &initialization_block)
-    document = Document.new(pdf, page_pad_top)
+    document = PdfGen.new(pdf, page_pad_top)
     document.width = document.pdf.page_width
     document.instance_eval(&initialization_block)
     document.render

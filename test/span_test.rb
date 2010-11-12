@@ -1,11 +1,11 @@
 $: << File.expand_path("../")
 require 'rubygems'
-require 'lib/caption.rb'
-require 'lib/writer.rb'
+require 'lib/caption'
+require 'lib/writer'
 require 'pdf/writer'
 require "lib/fixnum"
-require 'document.rb'
-require 'test/shared_examples.rb'
+require 'pdf_gen'
+require 'test/shared_examples'
 require "test/helpers_for_testing"
 include PDFRegion
 include PDF
