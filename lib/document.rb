@@ -1,5 +1,5 @@
 require "lib/base_region"
-require "lib/modules/container"
+require "lib/modules/composite"
 require "lib/containers/div_container"
 require "lib/containers/span_container"
 require "lib/containers/caption_container"
@@ -10,7 +10,7 @@ module PDFGen
 
   class Document < BaseRegion
 
-    include Canvas, Container, TableContainer, CaptionContainer, SpanContainer,
+    include Canvas, Composite, TableContainer, CaptionContainer, SpanContainer,
             DivContainer, ImageContainer
 
     def initialize(pdf, page_pad_top)

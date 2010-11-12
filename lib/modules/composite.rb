@@ -1,6 +1,6 @@
 module PDFGen
 
-  module Container
+  module Composite
 
     def regions
       @regions ||= []

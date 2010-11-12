@@ -8,7 +8,7 @@ require 'lib/containers/div_container'
 require "test/helpers_for_testing"
 include HelpersForTesting
 include PDFGen
-include Container
+include Composite
 class Table
   attr_accessor :title, :header, :data, :footer
 end

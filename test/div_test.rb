@@ -8,7 +8,7 @@ require 'lib/containers/div_container'
 require "test/helpers_for_testing"
 include HelpersForTesting
 include PDFGen
-include Container
+include Composite
 
 describe "Div" do
   before(:each) do

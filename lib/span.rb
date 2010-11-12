@@ -1,7 +1,7 @@
 require "pdf/writer"
 require "lib/image"
 require "lib/base_region"
-require "lib/modules/container"
+require "lib/modules/composite"
 require "lib/caption"
 require "lib/containers/caption_container"
 require "lib/containers/image_container"
@@ -12,7 +12,7 @@ module PDFGen
   #Horizontal captions line
   class Span < BaseRegion
 
-    include Container, CaptionContainer, ImageContainer, SpanContainer,
+    include Composite, CaptionContainer, ImageContainer, SpanContainer,
             DivContainer
 
     def initialize(parent)
