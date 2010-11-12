@@ -12,8 +12,10 @@ module BaseAttributes
       end
     end
   end
-
+  
   extend ClassMethods
+  
+  common_setter :pad_left, :pad_right, :pad_top, :pad_bottom, :width
 
   def self.included(base)
     base.extend(ClassMethods)
@@ -55,8 +57,6 @@ module BaseAttributes
 
   #padding from the page top after page break
   attr_accessor :page_pad_top
-
-  common_setter :pad_left, :pad_right, :pad_top, :pad_bottom, :width
 
   attr_reader :width
 
