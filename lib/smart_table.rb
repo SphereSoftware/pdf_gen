@@ -48,7 +48,7 @@ module PDFRegion
 
         @cells.each_with_index do |cell, index|
           cell.width = parent.columns.nil? ? parent.width/@cells.size :
-                  parent.width/parent.count_columns * parent.columns[index] #todo
+            parent.width/parent.count_columns * parent.columns[index] #todo
           span.add_region(cell)
         end
 
@@ -147,8 +147,12 @@ module PDFRegion
     end
 
     def count_columns
-      @columns.inject(0){|sum,item| sum + item}
+      @columns.inject(0) do |sum,item|
+        raise "Column's value can't be less then 1" if item <= 0
+        sum + item
+      end
     end
+    
   end
 
 end
