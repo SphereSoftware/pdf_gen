@@ -6,7 +6,7 @@ require "lib/containers/caption_container"
 require "lib/containers/image_container"
 require "lib/containers/table_container"
 
-module PDFRegion
+module PDFGen
 
   class Document < BaseRegion
 

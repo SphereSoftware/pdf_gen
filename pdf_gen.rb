@@ -17,7 +17,7 @@ require "lib/smart_table"
 require "lib/document"
 
 
-module PDFRegion
+module PDFGen
 
   def self.document(pdf, page_pad_top, &initialization_block)
     document = Document.new(pdf, page_pad_top)

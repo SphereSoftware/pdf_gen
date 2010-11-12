@@ -3,7 +3,7 @@ require "lib/table"
 require "lib/div"
 
 
-module PDFRegion
+module PDFGen
 
   class SmartTable < Table
 

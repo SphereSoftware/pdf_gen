@@ -2,7 +2,7 @@ $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
 require "pdf_gen"
 
 
-result = PDFRegion::document PDF::Writer.new, 2.cm do
+result = PDFGen::document PDF::Writer.new, 2.cm do
 
 caption ' Software Requirements Specification ', :width => document.pdf.page_width,
         :pad_top => 0.5.cm, :pad_bottom => 0.5.cm, :pad_left => 5, :pad_right => 5,

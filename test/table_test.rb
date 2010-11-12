@@ -7,7 +7,7 @@ require 'pdf_gen'
 require 'lib/containers/div_container'
 require "test/helpers_for_testing"
 include HelpersForTesting
-include PDFRegion
+include PDFGen
 include Container
 class Table
   attr_accessor :title, :header, :data, :footer

@@ -3,7 +3,7 @@ require "lib/div"
 require "lib/containers/table_container"
 
 
-module PDFRegion
+module PDFGen
 
   class Table < BaseRegion
 

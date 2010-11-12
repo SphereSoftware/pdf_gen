@@ -2,7 +2,7 @@ require "pdf/writer"
 require 'lib/base_region'
 
 
-module PDFRegion
+module PDFGen
 
   class Image < BaseRegion
 

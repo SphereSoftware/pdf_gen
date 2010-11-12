@@ -1,4 +1,4 @@
-module PDFRegion
+module PDFGen
 
   module TableContainer
 

@@ -1,7 +1,7 @@
 require "lib/base_region"
 
 
-module PDFRegion
+module PDFGen
   
   class Caption < BaseRegion
    

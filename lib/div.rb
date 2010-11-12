@@ -7,7 +7,7 @@ require "lib/containers/image_container"
 require "lib/containers/table_container"
 
 
-module PDFRegion
+module PDFGen
 
   class Div < BaseRegion
 

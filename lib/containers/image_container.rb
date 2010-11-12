@@ -1,5 +1,5 @@
 require "lib/image"
-module PDFRegion
+module PDFGen
 
 
 module ImageContainer

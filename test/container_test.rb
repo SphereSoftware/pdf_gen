@@ -7,7 +7,7 @@ require "lib/fixnum"
 require 'pdf_gen'
 require 'test/shared_examples.rb'
 require "test/helpers_for_testing"
-include PDFRegion
+include PDFGen
 include PDF
 include SpanContainer
 include HelpersForTesting

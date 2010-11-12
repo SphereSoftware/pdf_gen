@@ -1,6 +1,6 @@
 require "lib/modules/base_attributes"
 
-module PDFRegion
+module PDFGen
 
   class BaseRegion
     include BaseAttributes

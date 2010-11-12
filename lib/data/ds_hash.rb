@@ -1,7 +1,7 @@
 require "lib/data/ds_base"
 
 
-module PDFRegion
+module PDFGen
 
   class DsHash < DsBase
     def initialize(data)
