@@ -1,105 +1,99 @@
- == Pdf_gen
-pdf_gen is a high level wrapper around PDF::Writer library which allows to create PDF documents in an easy way with a layout similar to HTML.
+== Pdf_gen
+pdf_gen is a high level wrapper around {PDF::Writer}[https://github.com/sandal/pdf-writer] library which allows to create PDF documents in an easy way with a layout similar to HTML.
 
- == Install
-gem install pdf_gen
+== Install
+  gem install pdf_gen
 
- == Usages
-All classes and modules of the pdf_gen located in skope module PDFGen.
-File generation looks in the following way:
+== Usage
+All package entities are located withing the module PDFGen.
+PDF file generation can be made in the following way:
 
-------
-require "pdf_gen"
+  require "pdf_gen"
 
-PDFRegion::document PDF::Writer.new, 0.cm do
-	**********
-End.save("#{File.basename(__FILE__, ".rb")}.pdf")
-----
+  PDFRegion::document PDF::Writer.new, 0.cm do
+    # pdf generation code here
+  end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
-1. Caption – object which allows representing parts of a text in PDF file. This object has such properties as width, justification, pad_top (indent from the left side of the page), pad_bottom, pad_left, pad_right, text_color, font_size and border. 
+== Construction Elements
+
+=== Caption
+Object which allows representing parts of a text in PDF file. This object has such properties as width, justification, pad_top (indent from the left side of the page), pad_bottom, pad_left, pad_right, text_color, font_size and border.
 Border for it’s turn could be characterized by border_color, border_style (solid or dotted) and border_width (in cm or pixels).
-2. Image – object which allows to add images with filename extensions *.jpg and *.png in PDF file . This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right and border.
-----
+=== Image
+Object which allows to add images with filename extensions *.jpg and *.png in PDF file . This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right and border.
+
+  require "pdf_gen"
+
+  PDFRegion::document PDF::Writer.new, 2.cm do
+    image_data = open(File.expand_path('ruby_logo.jpg'), "rb") { |file| file.read }
+    image image_data, :width => 250
+  end.save("#{File.basename(__FILE__, ".rb")}.pdf")
+=== Span
+Object which allows setting several objects across page. This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
+
+  PDFRegion::document PDF::Writer.new, 2.cm do
+    span :width => 10.cm, :pad_left => 2.cm do
+      caption ' first '*50, :width => 4.cm
+      caption ' second '*50, :width => 4.cm
+      elements :border => true    #group set params
+    end
+  end.save("#{File.basename(__FILE__, ".rb")}.pdf")
+
+=== Div
+Object which allows setting several objects in vertical format. This object has such properties as width, horizontal_interval, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
+
+  PDFRegion::document PDF::Writer.new, 2.cm do
+    div :width => 10.cm do
+      caption ' first '*50, :width => 4.cm
+      caption ' second '*50, :width => 4.cm
+      elements :border => true    #group set params
+    end
+  end.save("#{File.basename(__FILE__, ".rb")}.pdf")
+
+=== Table
+Object which allows creating tables in PDF file. This object has such elements as title, header, body and footer. The columns should be made be adding “spans” inside the body of the table. The table could have borders from the definite sides, for example: “:border_right => true” or “:border_right => false”.
+
 require "pdf_gen"
 
-PDFRegion::document PDF::Writer.new, 2.cm do
-   image_data = open(File.expand_path('ruby_logo.jpg'), "rb") { |file| file.read }
-   image image_data, :width => 250
-end.save("#{File.basename(__FILE__, ".rb")}.pdf")
----
-
-
-3. Span – object which allows setting several objects across page. This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
- 
- -----
-PDFRegion::document PDF::Writer.new, 2.cm do
-  span :width => 10.cm, :pad_left => 2.cm do
-    caption ' first '*50, :width => 4.cm
-    caption ' second '*50, :width => 4.cm
-    elements :border => true    #group set params
-  end
-end.save("#{File.basename(__FILE__, ".rb")}.pdf")
-----
-4. Div – object which allows setting several objects in vertical format. This object has such properties as width, horizontal_interval, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
-
------
-PDFRegion::document PDF::Writer.new, 2.cm do
-  div :width => 10.cm do
-    caption ' first '*50, :width => 4.cm
-    caption ' second '*50, :width => 4.cm
-    elements :border => true    #group set params
-  end
-end.save("#{File.basename(__FILE__, ".rb")}.pdf")
-	-----
-
-
-5. Table – object which allows creating tables in PDF file. This object has such elements as title, header, body and footer. The columns should be made be adding “spans” inside the body of the table. The table could have borders from the definite sides, for example: “:border_right => true” or “:border_right => false”.
------
-require "pdf_gen"
-
-
-PDFRegion::document PDF::Writer.new, 0.cm do
-  table do    
-    self.repeat_header_on_each_page = true
-    self.repeat_footer_on_each_page = true
-    title :horizontal_align => true do
-      caption "Transactions and Triggers",
-     :text_color => Color::RGB::Red, :border => true, :justification => :center, :pad_bottom => 0.25.cm
-    end
-    header :horizontal_align => true do
-      span do
-        caption "Number",
-                :width => self.width / 2, :justification => :center, :border => true
-        caption "Discription",
-                :width => self.width / 2, :justification => :center, :border => true
+  PDFRegion::document PDF::Writer.new, 0.cm do
+    table do
+      self.repeat_header_on_each_page = true
+      self.repeat_footer_on_each_page = true
+      title :horizontal_align => true do
+         caption "Transactions and Triggers",
+       :text_color => Color::RGB::Red, :border => true, :justification => :center, :pad_bottom => 0.25.cm
+      end
+      header :horizontal_align => true do
+        span do
+          caption "Number",
+                  :width => self.width / 2, :justification => :center, :border => true
+          caption "Discription",
+                  :width => self.width / 2, :justification => :center, :border => true
+        end
+      end
+      body :horizontal_align => true do
+        span do
+          caption "  Trigger ", :width => self.width / 2,
+                  :border_right => true, :border_left => true, :text_color => Color::RGB::Grey
+          caption " - is a ... ", :width => self.width / 2,
+                  :border_right => true, :border_left => true, :text_color => Color::RGB::Grey
+        end
+      end
+      footer :horizontal_align => true do
+        span do
+          caption "1", :width => self.width / 2, :justification => :center, :border => true
+          caption "2", :width => self.width / 2, :justification => :center, :border => true
+        end
       end
     end
-    body :horizontal_align => true do
-      span do
-        caption "  Trigger ", :width => self.width / 2, 
-                :border_right => true, :border_left => true, :text_color => Color::RGB::Grey
-        caption " - is a ... ", :width => self.width / 2, 
-                :border_right => true, :border_left => true, :text_color => Color::RGB::Grey
-      end
-    end
-    footer :horizontal_align => true do
-      span do
-        caption "1", :width => self.width / 2, :justification => :center, :border => true
-        caption "2", :width => self.width / 2, :justification => :center, :border => true
-      end
-    end
-  end
-end.save("#{File.basename(__FILE__, ".rb")}.pdf")
----------------------
+  end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
+== Credits
 
-? Credit
-Thanks a lot to *** for helping plan, design, and start the project. 
+=== Project team
+* Mykhaylo Sorochan, Valeriy Prokopchuk - project management
+* Valery Sizov, Dmitriy Landberg - software development
+* Nataliya Shatokhina - Testing
+* others who helped with small contributions
 
-
---------------------------------------
-
-Before contacting us directly, please: 
-If you find a bug or a problem post it in the issues section.
-If you need additional annotations, please look first through the samples. 
-
+Copyright (c) 2010 {Sphere Consulting Inc.}[http://www.sphereinc.com], released under the MIT license (see LICENSE).
