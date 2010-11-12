@@ -1,4 +1,5 @@
-$:.unshift(File.expand_path(File.dirname(__FILE__)))
+$:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
+
 require "rubygems"
 require "pdf/writer"
 require "lib/writer"

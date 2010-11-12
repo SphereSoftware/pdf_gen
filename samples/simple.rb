@@ -1,5 +1,5 @@
 $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
-require "pdf_gen"
+require "lib/pdf_gen"
 
 
 result = PDFGen::document PDF::Writer.new, 2.cm do
