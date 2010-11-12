@@ -9,7 +9,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.add_dependency('pdf-writer', '>= 1.1.8')
   spec.test_files = Dir[ "test/*_test.rb" ]
-  spec.rubyforge_project = %q{pdf_gen}
   spec.author = "Sphere Consulting Inc."
   spec.homepage = 'https://github.com/SphereConsultingInc/pdf_gen/'
   spec.description = <<END_DESC
