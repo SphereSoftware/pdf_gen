@@ -13,6 +13,7 @@ module PDFGen
       @justification = :left
       @bold = false
       @font_size = document.pdf.font_size
+      self.paddings = 0.2.cm
       end
     
     attr_reader :text
