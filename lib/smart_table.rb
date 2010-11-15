@@ -90,9 +90,13 @@ module PDFGen
     attr_reader :data_source
 
     def render(pos, av_height, test=false)
+      @header_region = nil if @is_header_rendered
+      @body_regions.clear if @is_body_rendered
+      
       build_header unless @is_header_rendered
       build_body unless @is_body_rendered
-      @header.add_region(@header_region)
+      
+      @header.add_region(@header_region) 
       @body_regions.each { |region| @body.add_region(region) }
       
       super
@@ -109,7 +113,7 @@ module PDFGen
         yield(span, caption) if block_given?
         span.add_region(caption)
       end
-
+      @is_header_rendered = true
       @header_region = span
     end
 
@@ -128,6 +132,7 @@ module PDFGen
         end
         @body_regions << span
       end
+      @is_body_rendered = true
     end
 
 
