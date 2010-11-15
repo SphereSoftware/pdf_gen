@@ -1,6 +1,9 @@
 module PDFGen
 
   class DsBase
+    
+    include Enumerable
+    
     def initialize(data)
       raise "Not Implemented"
     end
