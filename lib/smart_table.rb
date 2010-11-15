@@ -20,11 +20,12 @@ module PDFGen
         parent.data_source
       end
 
-      def cell(region=nil)
+      def cell(region=nil,style=nil)
         if region.is_a?(String) or region.nil?
           caption = Caption.new(parent)
           caption.text = region if region.is_a?(String)
           caption.border_left = true
+          caption.set_properties style unless style.nil?
           region = caption
           @cells << region
         else
