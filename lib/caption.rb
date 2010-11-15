@@ -13,7 +13,7 @@ module PDFGen
       @justification = :left
       @bold = false
       @font_size = document.pdf.font_size
-      self.paddings = 0.2.cm
+      #self.paddings = 0.2.cm
       end
     
     attr_reader :text
@@ -45,8 +45,9 @@ module PDFGen
       document.pdf.save_state
       document.pdf.fill_color text_color if text_color
       document.pdf.stroke_color! text_color if text_color
-      until (txt = document.pdf.add_text_wrap(x + pad_left, y - res, width - pad_left - pad_right, txt, font_size,
+      until (txt_remain = document.pdf.add_text_wrap(x + pad_left, y - res, width - pad_left - pad_right, txt, font_size,
                 justification, 0, test)).empty?
+        txt_remain == txt ? raise("text very long for this caption") : txt = txt_remain
         res += document.pdf.font_height(font_size)
       end
       document.pdf.restore_state
