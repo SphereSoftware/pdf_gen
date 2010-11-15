@@ -3,7 +3,7 @@ Gem::Specification.new do |spec|
   spec.version = '0.7'
   spec.platform = Gem::Platform::RUBY
   spec.summary = "PDF generator for Ruby"
-  spec.files =  Dir["**/*"].reject!{ |fn| true if fn =~ /^test.rb|.*\.pdf|.git/}
+  spec.files =  Dir["**/*"].reject!{ |fn| true if fn =~ /^test.rb|.*\.pdf|\.git|\.gem/}
   spec.required_ruby_version = '>= 1.8.7'
   spec.required_rubygems_version = ">= 1.3.6"
   spec.require_paths = ["lib"]
