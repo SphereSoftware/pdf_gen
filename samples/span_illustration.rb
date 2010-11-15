@@ -2,7 +2,7 @@ $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
 require "lib/pdf_gen"
 
 
-PDFRegion::document PDF::Writer.new, 1.cm do
+PDFGen::document PDF::Writer.new, 1.cm do
   caption ' Mixed Integer Linear Programming:  '*1, :width => 20.cm,
     :pad_left => 1.5.cm, :pad_right => 1.cm, :pad_top => 1.cm, :pad_bottom => 1.cm,
     :text_color => Color::RGB::Grey,  :justification => :center, :font_size => 20

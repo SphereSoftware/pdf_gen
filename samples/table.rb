@@ -3,7 +3,7 @@ require "lib/pdf_gen"
 
 image_data = open(File.expand_path('samples/ruby_logo.jpg'), "rb") { |file| file.read }
 
-PDFRegion::document PDF::Writer.new, 2.cm do
+PDFGen::document PDF::Writer.new, 2.cm do
   div :paddings => 15 do
     table do
       title do

@@ -1,5 +1,4 @@
 $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
-
 require "rubygems"
 require "pdf/writer"
 require "lib/writer"
@@ -25,7 +24,7 @@ module PDFGen
     document.width = document.pdf.page_width
     document.instance_eval(&initialization_block)
     document.render
-    pdf#.render
+    pdf
   end
 
 end

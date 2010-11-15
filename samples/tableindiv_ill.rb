@@ -2,7 +2,7 @@ $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
 require "lib/pdf_gen"
 
 
-PDFRegion::document PDF::Writer.new, 0.cm do
+PDFGen::document PDF::Writer.new, 0.cm do
 
   caption " SWOT analysis is a strategic planning method used to evaluate the Strengths, Weaknesses, Opportunities, and Threats involved in a project or in a business venture. It involves specifying the objective of the business venture or project and identifying the internal and external factors that are favorable and unfavorable to achieve that objective. The technique is credited to Albert Humphrey, who led a convention at Stanford University in the 1960s and 1970s using data from Fortune 500 companies. ",
     :width => document.pdf.page_width, :justification => :left,

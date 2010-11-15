@@ -2,7 +2,7 @@ $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
 require "lib/pdf_gen"
 
 
-PDFRegion::document PDF::Writer.new, 1.cm do
+PDFGen::document PDF::Writer.new, 1.cm do
 
   table do
     self.width = document.pdf.page_width 

@@ -28,8 +28,8 @@ module PDFGen
           region = caption
           @cells << region
         else
-          @cells << region[0] #todo
-          region.clear
+          @cells << region.last #todo
+          region.delete(region.last)
         end
       end
 
