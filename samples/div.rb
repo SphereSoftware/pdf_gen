@@ -17,21 +17,21 @@ PDFGen::document PDF::Writer.new, 2.cm do
       image image_data, :width=>250
       caption ' first '*50, :width => 5.cm
       caption ' second '*50, :width => 4.cm
-      elements :border => true #group set params
+      elements :border => true
     end
 
     span :width => 10.cm, :pad_left => 2.cm do
       image image_data, :width=>250
       caption ' first '*50, :width => 5.cm
       caption ' second '*50, :width => 4.cm
-      elements :border => true #group set params
+      elements :border => true
     end
     
     span :width => 10.cm, :pad_left => 2.cm do
       image image_data, :width=>250
       caption ' first '*50, :width => 5.cm
       caption ' second '*50, :width => 4.cm
-      elements :border => true #group set params
+      elements :border => true
     end
 
   end

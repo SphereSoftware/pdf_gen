@@ -3,7 +3,6 @@ require "lib/pdf_gen"
 
 
 PDFGen::document PDF::Writer.new, 0.cm do
-
   caption " SWOT analysis is a strategic planning method used to evaluate the Strengths, Weaknesses, Opportunities, and Threats involved in a project or in a business venture. It involves specifying the objective of the business venture or project and identifying the internal and external factors that are favorable and unfavorable to achieve that objective. The technique is credited to Albert Humphrey, who led a convention at Stanford University in the 1960s and 1970s using data from Fortune 500 companies. ",
     :width => document.pdf.page_width, :justification => :left,
     :pad_left => 1.2.cm, :pad_right => 1.2.cm, :pad_top => 0.5.cm, :pad_bottom => 0.5.cm, :font_size => 12
@@ -12,20 +11,19 @@ PDFGen::document PDF::Writer.new, 0.cm do
     :width => document.pdf.page_width, :justification => :left,
     :pad_left => 1.2.cm, :pad_right => 1.2.cm, :pad_top => 0.5.cm, :pad_bottom => 0.5.cm, :font_size => 12
 
-  div :width => 15.cm, :horizontal_interval => 0.1.cm,  :pad_left => 3.cm do
+  div :width => 15.cm, :pad_left => 3.cm do
 
     table do
-      self.width = 15.cm
       self.repeat_header_on_each_page = true
       self.repeat_footer_on_each_page = true
-      title :horizontal_align => true do
+      title do
         caption " Table 1. ",
           :width => 15.cm, :justification => :left,
           :pad_left => 0.2.cm, :pad_right => 0.2.cm, :pad_top => 0.05.cm, :pad_bottom => 0.05.cm, :font_size => 10
       end
 
 
-      header :horizontal_align => true do
+      header do
 
         span  do
           caption " SWOT analysis ",
@@ -36,7 +34,7 @@ PDFGen::document PDF::Writer.new, 0.cm do
         end
       end
 
-      data :horizontal_align => false do
+      body do
 
         span do
 
@@ -98,7 +96,7 @@ PDFGen::document PDF::Writer.new, 0.cm do
   
       end
 
-      footer :horizontal_align => true do
+      footer do
 
         span do
 

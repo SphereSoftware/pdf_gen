@@ -3,8 +3,7 @@ require "lib/pdf_gen"
 
 
 PDFGen::document PDF::Writer.new, 1.cm do
-  table do
-    self.width = document.pdf.page_width 
+  table do    
     self.repeat_header_on_each_page = true
     self.repeat_footer_on_each_page = true
     title :horizontal_align => true do
@@ -20,32 +19,32 @@ PDFGen::document PDF::Writer.new, 1.cm do
         caption "This paper, copyright the IEEE, appears in IEEE Symposium on Security and Privacy 2004. IEEE Computer
 Society Press, May 2004. This paper previously appeared as Johns Hopkins University Information Security 
 Institute Technical Report TR-2003-19, July 23, 2003.",
-          :width => document.pdf.page_width, :justification => :center,
+          :width => self.width, :justification => :center,
           :pad_left => 0.2.cm, :pad_right => 0.2.cm, :pad_top => 0.5.cm, :pad_bottom => 2.5.cm,
           :border_right => true, :border_left => true, :border_top => true, :border_bottom => false, :font_size => 9
       end
     end
 
-    data :horizontal_align => false do
+    body do
 
       span do
   
         caption "Analysis of an Electronic Voting System ",
-          :width => document.pdf.page_width , :justification => :center,
+          :width => self.width , :justification => :center,
           :pad_top => 0.1, :pad_left => 0.5, :pad_right => 0.5, :pad_bottom => 1.0.cm,
           :border_right => true, :border_left => true, :pad_bottom => 2, :font_size => 16
       end
 
       span do
 
-        caption "TADAYOSHI KOHNO"*1,
-          :width => document.pdf.page_width / 3, :justification => :center,
+        caption "TADAYOSHI KOHNO",
+          :width => self.width / 3, :justification => :center,
           :border_right => true, :border_left => true, :border_top => true, :border_bottom => true, :pad_bottom => 2
-        caption "ADAM STUBBLEFIELD"*1,
-          :width => document.pdf.page_width / 3, :justification => :center,
+        caption "ADAM STUBBLEFIELD",
+          :width => self.width / 3, :justification => :center,
           :border_right => true, :border_left => true, :border_top => true, :border_bottom => true, :pad_bottom => 2
-        caption "DAN S. WALLACH"*1,
-          :width => document.pdf.page_width / 3, :justification => :center,
+        caption "DAN S. WALLACH",
+          :width => self.width / 3, :justification => :center,
           :border_right => true, :border_left => true, :border_top => true, :border_bottom => true, :pad_bottom => 2
       end
 
@@ -69,7 +68,7 @@ electronic voting system might suffer similar flaws, despite any certification i
 received. We suggest that the best solutions are voting systems having a voter-verifiable audit trail, 
 where a computerized voting system might print a paper ballot that can be read and verified by the voter. ",
             
-          :width => document.pdf.page_width , :justification => :left,
+          :width => self.width , :justification => :left,
           :pad_top => 0.1.cm, :pad_left => 0.5.cm, :pad_right => 0.5.cm, :pad_bottom => 0.5.cm, :font_size => 12,
           :border_right => true, :border_left => true,  :border_top => true, :border_bottom => true
           
@@ -78,22 +77,31 @@ where a computerized voting system might print a paper ballot that can be read a
   
     end
 
-    footer :horizontal_align => true do
+    footer do
 
       span do
 
-        caption "Dept. of Computer Science and Engineering, University of California at San Diego, 9500 Gilman Drive, La Jolla, California 92093, USA. E-mail: tkohno@cs.ucsd.edu. URL: http://www-cse.ucsd.edu/users/tkohno. Most of this work was performed while visiting the Johns Hopkins University Information Security Institute. Supported by a National Defense Science and Engineering Graduate Fellowship. ",
-          :width => document.pdf.page_width / 3, :justification => :center,
+        caption "Dept. of Computer Science and Engineering, University 
+of California at San Diego, 9500 Gilman Drive, La Jolla, California 92093, 
+USA. E-mail: tkohno@cs.ucsd.edu. URL: http://www-cse.ucsd.edu/users/tkohno. 
+Most of this work was performed while visiting the Johns Hopkins University 
+Information Security Institute. Supported by a National Defense Science and 
+Engineering Graduate Fellowship. ",
+          :width => self.width / 3, :justification => :center,
           :border_top => true,
           :pad_bottom => 2, :font_size => 9, :pad_top => 1.9
 
-        caption "Information Security Institute, Johns Hopkins University, 3400 North Charles Street, Baltimore, Maryland 21218, USA. E-mail: astubble@cs.jhu.edu. URL: http://spar.isi.jhu.edu/.astubble.",
-          :width => document.pdf.page_width / 3, :justification => :center,
+        caption "Information Security Institute, Johns Hopkins University, 
+3400 North Charles Street, Baltimore, Maryland 21218, USA. 
+E-mail: astubble@cs.jhu.edu. URL: http://spar.isi.jhu.edu/.astubble.",
+          :width => self.width / 3, :justification => :center,
           :border_top => true,
           :pad_bottom => 2, :font_size => 9, :pad_top => 1.9
 
-        caption "IInformation Security Institute, Johns Hopkins University, 3400 North Charles Street, Baltimore, Maryland 21218, USA. E-mail: rubin@cs.jhu.edu. URL: http://www.avirubin.com.",
-          :width => document.pdf.page_width / 3, :justification => :center,
+        caption "IInformation Security Institute, Johns Hopkins University, 
+3400 North Charles Street, Baltimore, Maryland 21218, USA. E-mail: rubin@cs.jhu.edu. 
+URL: http://www.avirubin.com.",
+          :width => self.width / 3, :justification => :center,
           :border_top => true,
           :pad_bottom => 2, :font_size => 9, :pad_top => 1.9
       end
