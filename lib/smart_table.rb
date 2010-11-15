@@ -39,10 +39,10 @@ module PDFGen
         span.width = self.width
         span.border = true
         yield if block_given?
-        if  @cells.size > parent.columns.size
+        if  @cells.size > ds.columns.size
           raise "count of columns less then cells"
         else
-          i = parent.columns.size - @cells.size
+          i = ds.columns.size - @cells.size
           i.times { cell }
         end
 

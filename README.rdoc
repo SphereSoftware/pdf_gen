@@ -88,11 +88,14 @@ Object which allows creating tables in PDF file. This object has such elements a
     end
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
+=== Smart Table
+Object which allows creating tables from Hash and ActiveRecord object
+
 == Credits
 
 === Project team
 * Mykhaylo Sorochan, Valeriy Prokopchuk - project management
-* Valery Sizov, Dmitriy Landberg - software development
+* Valeriy Sizov, Dmitriy Landberg - software development
 * Nataliya Shatokhina - Testing
 * others who helped with small contributions
 
