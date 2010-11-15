@@ -59,7 +59,9 @@ module PDFGen
       regions.each do |region|
         height += region.height
       end
+      p height  + pad_top + pad_bottom
       height + pad_top + pad_bottom
+      
     end
 
     def render_regions(pos, av_height, test=false)

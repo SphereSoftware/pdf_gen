@@ -41,6 +41,10 @@ module PDFGen
         end
       end
     end
+    
+    def calculate_minimal_height
+      [@title,@header,@body,@footer].inject(0){ |height, region| height + region.height }
+    end
 
     def render(pos, av_height, test=false)
       align_cell_in_row

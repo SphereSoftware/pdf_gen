@@ -13,7 +13,7 @@ module PDFGen
   class Span < BaseRegion
 
     include Composite, CaptionContainer, ImageContainer, SpanContainer,
-            DivContainer
+            DivContainer, TableContainer
 
     def initialize(parent)
       super
