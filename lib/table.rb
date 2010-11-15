@@ -9,22 +9,27 @@ module PDFGen
 
     def initialize(parent)
       super(parent)
-
-      set_width(parent)
       
-      rows_container = Div.new(self)
-      rows_container.width = self.width
-
-      @title = rows_container.clone
-      @header = rows_container.clone
-      @body = rows_container.clone
-      @footer = rows_container.clone
+      @title = Div.new(self)
+      @header = Div.new(self)
+      @body = Div.new(self)
+      @footer = Div.new(self)
+      
+      init_width(parent)
+      
       @repeat_header_on_each_page = false
       @repeat_footer_on_each_page = false
     end
     
-    def set_width(parent)
+    def init_width(parent)
       self.width = parent.width - parent.pad_left - parent.pad_right
+    end
+    
+    def width=(value)
+      [@title,@header,@body,@footer].each do |region|
+        region.width = value
+      end
+      super
     end
 
     attr_accessor :repeat_header_on_each_page, :repeat_footer_on_each_page
