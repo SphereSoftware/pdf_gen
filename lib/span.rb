@@ -50,7 +50,7 @@ module PDFGen
           regions.slice(0,regions.index(region))
         else
           region.height = height if vertical_align
-          region.render([(x + content_width), (y - pad_top)], document.pdf.y-pad_top) unless test
+          region.render([(x + content_width), (y - pad_top)], y-pad_top) unless test
 
           content_width += region.width
           content_width += vertical_interval unless region == last
