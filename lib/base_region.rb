@@ -77,7 +77,7 @@ module PDFGen
     
     def check_fit_in_height
       if (self.height >= document.pdf.page_height-document.page_pad_top)
-        raise "region`s height is bigger then page`s height"
+        raise "region`s height is bigger then parent region`s height"
       end
     end
         
