@@ -60,15 +60,10 @@ module PDFGen
     end
 
     def initialize(parent)
-      super(parent)
-
-      rows_container = RowsContainer.new(self)
-      rows_container.width = self.width
-
-      @title = rows_container.clone
-      @header = rows_container.clone
-      @body = rows_container.clone
-      @footer = rows_container.clone
+      @title = RowsContainer.new(self)
+      @header = RowsContainer.new(self)
+      @body = RowsContainer.new(self)
+      @footer = RowsContainer.new(self)
 
       @data_source = nil
       @header_data = nil
@@ -80,6 +75,7 @@ module PDFGen
 
       @header_region = nil
       @body_regions = []
+      super(parent)
     end
 
     def data_source=(data)
