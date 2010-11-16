@@ -142,12 +142,6 @@ module PDFGen
       @is_body_rendered = true
     end
 
-
-    def build_default_table
-      build_header
-      build_body
-    end
-
     def header(style = nil, &initialization_block)
       super
       @is_header_rendered = true
