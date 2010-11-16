@@ -1,6 +1,6 @@
 require "lib/data/ds_base"
 
-module PDFRegion
+module PDFGen
   
   class DsActiveRecord < DsBase
     def initialize(data)

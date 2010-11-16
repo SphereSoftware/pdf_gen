@@ -116,6 +116,7 @@ module PDFGen
     end
 
     def render(pos, av_height, test=false)
+      debugger
       pos_x, pos_y = pos
       add_border_top(pos_x, pos_y) if @rendered_height.zero?
       fill(pos)

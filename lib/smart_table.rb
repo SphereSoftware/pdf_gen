@@ -1,4 +1,5 @@
 require "lib/data/ds_hash"
+require 'lib/data/ds_ar'
 require "lib/table"
 require "lib/div"
 
@@ -79,7 +80,11 @@ module PDFGen
     end
 
     def data_source=(data)
-      @data_source = DsHash.new(data)
+      if data.is_a?(Array)
+        @data_source = DsActiveRecord.new(data)
+      else
+        @data_source = DsHash.new(data)
+      end
       @header_data = @data_source.columns
       @body_data = @data_source.body
     end
@@ -104,6 +109,7 @@ module PDFGen
       span.border = true
       @header_data.each do |cap|
         caption = Caption.new(self.document)
+        cap = cap.to_s unless cap.is_a?(String)
         caption.text = cap
         caption.width = self.width / @header_data.size
         caption.border_left = true
@@ -121,6 +127,7 @@ module PDFGen
         span.border = true
         row.each do |cap|
           caption = Caption.new(self.document)
+          cap = cap.to_s unless cap.is_a?(String)
           caption.text = cap
           caption.width = self.width / row.size
           caption.border_left = true
