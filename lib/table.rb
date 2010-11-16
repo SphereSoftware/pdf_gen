@@ -61,7 +61,6 @@ module PDFGen
 
       title_status = @title.render([pos_x, pos_y], pos_y)
       pos_y -= title_status[0]
-      
       @header.reset_count_rendered_regions if @repeat_header_on_each_page
       header_status = @header.render([pos_x, pos_y], pos_y)
       pos_y -= header_status[0]

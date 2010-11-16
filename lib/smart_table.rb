@@ -77,7 +77,6 @@ module PDFGen
       @is_body_rendered = false
       @columns = nil
 
-      @header_region = nil
       @body_regions = []
       
     end
@@ -98,10 +97,9 @@ module PDFGen
       @header_region = nil if @is_header_rendered
       @body_regions.clear if @is_body_rendered
       
-      build_header unless @is_header_rendered
+      @header.add_region(build_header) unless @is_header_rendered
       build_body unless @is_body_rendered
       
-      @header.add_region(@header_region) 
       @body_regions.each { |region| @body.add_region(region) }
       
       super
@@ -109,6 +107,7 @@ module PDFGen
 
     def build_header()
       span = Span.new(self.document)
+      span.width = self.width
       span.border = true
       @header_data.each do |cap|
         caption = Caption.new(self.document)
@@ -120,7 +119,7 @@ module PDFGen
         span.add_region(caption)
       end
       @is_header_rendered = true
-      @header_region = span
+      span
     end
 
     def build_body()
