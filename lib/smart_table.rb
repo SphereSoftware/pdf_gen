@@ -61,11 +61,14 @@ module PDFGen
     end
 
     def initialize(parent)
+      super(parent)
       @title = RowsContainer.new(self)
       @header = RowsContainer.new(self)
       @body = RowsContainer.new(self)
       @footer = RowsContainer.new(self)
 
+      init_width(parent)
+      
       @data_source = nil
       @header_data = nil
       @body_data = nil
@@ -76,7 +79,7 @@ module PDFGen
 
       @header_region = nil
       @body_regions = []
-      super(parent)
+      
     end
 
     def data_source=(data)
