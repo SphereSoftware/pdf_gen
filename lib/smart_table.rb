@@ -8,7 +8,7 @@ module PDFGen
 
   class SmartTable < Table
 
-    attr_accessor :header_region, :body_regions, :columns
+    attr_accessor :header_region, :body_regions
 
     class RowsContainer < Div
 
@@ -41,16 +41,8 @@ module PDFGen
         span.width = self.width
         span.border = true
         yield if block_given?
-        if  @cells.size > ds.columns.size
-          raise "count of columns less then cells"
-        else
-          i = ds.columns.size - @cells.size
-          i.times { cell }
-        end
-
-        @cells.each_with_index do |cell, index|
-          cell.width = parent.columns.nil? ? parent.width/@cells.size :
-            parent.width/parent.count_columns * parent.columns[index] #todo
+        @cells.each do |cell|
+          cell.width = cell.width.zero? ? span.width / @cells.size : cell.width
           span.add_region(cell)
         end
 
@@ -149,13 +141,6 @@ module PDFGen
     def body(style = nil, &initialization_block)
       super
       @is_body_rendered = true
-    end
-
-    def count_columns
-      @columns.inject(0) do |sum,item|
-        raise "Column's value can't be less then 1" if item <= 0
-        sum + item
-      end
     end
     
   end
