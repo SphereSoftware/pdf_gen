@@ -78,5 +78,9 @@ module BaseAttributes
     border_type = {:solid => [1, 0], :dotted => [1, 1], :none => [0, 1]}
     PDF::Writer::StrokeStyle.new(@border_width, :dash => {:pattern => border_type[@border_style]})
   end
+  
+  def av_width
+    width - pad_left - pad_right 
+  end
 
 end
