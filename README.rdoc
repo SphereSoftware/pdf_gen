@@ -10,7 +10,7 @@ PDF file generation can be made in the following way:
 
   require "pdf_gen"
 
-  PDFRegion::document PDF::Writer.new, 0.cm do
+  PDFGen::document PDF::Writer.new, 0.cm do
     # pdf generation code here
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
@@ -24,14 +24,14 @@ Object which allows to add images with filename extensions *.jpg and *.png in PD
 
   require "pdf_gen"
 
-  PDFRegion::document PDF::Writer.new, 2.cm do
+  PDFGen::document PDF::Writer.new, 2.cm do
     image_data = open(File.expand_path('ruby_logo.jpg'), "rb") { |file| file.read }
     image image_data, :width => 250
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 === Span
 Object which allows setting several objects across page. This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
 
-  PDFRegion::document PDF::Writer.new, 2.cm do
+  PDFGen::document PDF::Writer.new, 2.cm do
     span :width => 10.cm, :pad_left => 2.cm do
       caption ' first '*50, :width => 4.cm
       caption ' second '*50, :width => 4.cm
@@ -42,7 +42,7 @@ Object which allows setting several objects across page. This object has such pr
 === Div
 Object which allows setting several objects in vertical format. This object has such properties as width, horizontal_interval, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
 
-  PDFRegion::document PDF::Writer.new, 2.cm do
+  PDFGen::document PDF::Writer.new, 2.cm do
     div :width => 10.cm do
       caption ' first '*50, :width => 4.cm
       caption ' second '*50, :width => 4.cm
@@ -55,41 +55,98 @@ Object which allows creating tables in PDF file. This object has such elements a
 
   require "pdf_gen"
 
-  PDFRegion::document PDF::Writer.new, 0.cm do
+  PDFGen::document PDF::Writer.new, 0.cm do
     table do
-      self.repeat_header_on_each_page = true
-      self.repeat_footer_on_each_page = true
-      title :horizontal_align => true do
+      title do
          caption "Transactions and Triggers",
        :text_color => Color::RGB::Red, :border => true, :justification => :center, :pad_bottom => 0.25.cm
       end
-      header :horizontal_align => true do
+      header do
         span do
           caption "Number",
-                  :width => self.width / 2, :justification => :center, :border => true
+                  :width => av_width / 2, :justification => :center, :border => true
           caption "Discription",
-                  :width => self.width / 2, :justification => :center, :border => true
+                  :width => av_width / 2, :justification => :center, :border => true
         end
       end
-      body :horizontal_align => true do
+      body do
         span do
-          caption "  Trigger ", :width => self.width / 2,
+          caption "  Trigger ", :width => av_width / 2,
                   :border_right => true, :border_left => true, :text_color => Color::RGB::Grey
-          caption " - is a ... ", :width => self.width / 2,
+          caption " - is a ... ", :width => av_width / 2,
                   :border_right => true, :border_left => true, :text_color => Color::RGB::Grey
         end
       end
-      footer :horizontal_align => true do
+      footer do
         span do
-          caption "1", :width => self.width / 2, :justification => :center, :border => true
-          caption "2", :width => self.width / 2, :justification => :center, :border => true
+          caption "1", :width => av_width / 2, :justification => :center, :border => true
+          caption "2", :width => av_width / 2, :justification => :center, :border => true
         end
       end
     end
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
 === Smart Table
-Object which allows creating tables from Hash and ActiveRecord object
+Object which allows creating tables from Hash and ActiveRecord object. Blocks of the title and footer you have to define
+independently if necessary. For examples:
+
+table_data = {:columns =>['id','name','email'],
+              :body => [[1,'Valeriy','valeriy@example.com'],
+                        [2,'Dmitriy','dmitriy@example.com']]}
+
+PDFGen::document PDF::Writer.new, 0.cm do
+  div :paddings => 2 do
+    table :data_source => table_data
+  end
+end.save("#{File.basename(__FILE__, ".rb")}.pdf")
+
+Build table from ActiveRecord (ROR)
+
+table_data = User.all
+
+PDFGen::document PDF::Writer.new, 0.cm do
+  div :paddings => 2 do
+    table :data_source => table_data
+  end
+end.save("#{File.basename(__FILE__, ".rb")}.pdf")
+
+Custom view
+
+table_data = {:columns =>['id','name','email'],
+              :body => [[1,'Valeriy','valeriy@example.com'],
+                        [2,'Dmitriy','dmitriy@example.com']]}
+
+PDFGen::document PDF::Writer.new, 0.cm do
+  div :paddings => 2 do
+    table :data_source => table_data do
+       header do
+         row do
+           cell "<b>#{ds.columns[0]}</b>", :justification => :center, :text_color => Color::RGB::Green
+           cell ds.columns[1], :justification => :center, :text_color => Color::RGB::Green
+           cell ds.columns[2], :justification => :center, :text_color => Color::RGB::Green           
+         end
+       end
+       body do
+         ds.each do |datarow|
+           row do
+             cell datarow[0]
+             cell "<i>#{datarow[1]}</i>"
+             cell datarow[2]
+           end
+         end
+       end
+    end
+  end
+end.save("#{File.basename(__FILE__, ".rb")}.pdf")
+
+We Can setting width of each column
+
+row do
+  cell data[0], :width => av_width * 2/4
+  cell data[1], :width => av_width * 1/4
+  cell data[2], :width => av_width * 1/4
+end
+
 
 == Credits
 
