@@ -9,7 +9,7 @@ module PDFGen
 
     def initialize(parent)
       super(parent)
-      
+      @is_breakable = true
       @title = Div.new(self)
       @header = Div.new(self)
       @body = Div.new(self)
@@ -29,6 +29,7 @@ module PDFGen
       [@title,@header,@body,@footer].each do |region|
         region.width = value
       end
+
       super
     end
 
@@ -48,7 +49,6 @@ module PDFGen
 
     def render(pos, av_height, test=false)
       align_cell_in_row
-      
       super
       
       pos_x, pos_y = pos
@@ -79,7 +79,6 @@ module PDFGen
         if @repeat_footer_on_each_page
           footer_status = @footer.render([pos_x, pos_y], pos_y)
 
-          #status[0] = footer_status[0]
           @footer.reset_count_rendered_regions
         end
       end

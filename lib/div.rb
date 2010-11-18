@@ -58,9 +58,9 @@ module PDFGen
       height = 0
       regions.each do |region|
         height += region.height
+        height += horizontal_interval unless region == regions.last
       end
       height + pad_top + pad_bottom
-      
     end
 
     def render_regions(pos, av_height, test=false)
@@ -71,10 +71,9 @@ module PDFGen
         pos_y -= pad_top
       end
       pos_x += pad_left
-      
+     
       remain_regions.each do |region|
         self.fit_width(region)
-        region.check_fit_in_height
         if pos_y >= region.height
           @count_rendered_region += 1 unless test
           
@@ -107,6 +106,7 @@ module PDFGen
 
             return [av_height - pos_y, status[1]]
           else
+            region.check_fit_in_height
             return [av_height - pos_y, false]
           end
         end

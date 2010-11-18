@@ -35,7 +35,6 @@ module PDFGen
         end
       end
 
-
       def row
         span = Span.new(self.document)
         span.width = self.width
@@ -85,14 +84,23 @@ module PDFGen
 
     attr_reader :data_source
 
+    def calculate_minimal_height
+      regions_formation
+      super
+    end
+
+    def regions_formation
+      @header.add_region(build_header) unless @is_header_rendered
+      build_body unless @is_body_rendered
+
+      @body_regions.each { |region| @body.add_region(region) }
+    end
+
     def render(pos, av_height, test=false)
       @header_region = nil if @is_header_rendered
       @body_regions.clear if @is_body_rendered
-      
-      @header.add_region(build_header) unless @is_header_rendered
-      build_body unless @is_body_rendered
-      
-      @body_regions.each { |region| @body.add_region(region) }
+
+      regions_formation
       
       super
     end
