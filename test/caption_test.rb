@@ -13,12 +13,14 @@ include HelpersForTesting
 
 
 describe "A new caption" do
-  let(:base_region){create_caption}
-  it_should_behave_like "base region"
-
   before(:all) do
     @caption = create_caption
+    @caption.paddings = 0
   end
+  
+  let(:base_region){@caption}
+  it_should_behave_like "base region"
+
   it "should not have text " do
     @caption.text.should == ""
   end
@@ -36,6 +38,7 @@ end
 describe "Caption's setters" do
   before(:each) do
     @caption = create_caption
+    @caption.paddings = 0
   end
   it "for text" do
 
@@ -71,6 +74,7 @@ end
 describe "caption minimal height" do
   before(:each) do
     @caption = create_caption
+    @caption.paddings = 0
     @doc = Document.new Writer.new, 0.cm
   end
   context "when padding is zero" do

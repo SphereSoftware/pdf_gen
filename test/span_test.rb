@@ -23,9 +23,11 @@ describe "New span" do
 
     caption1 = create_caption
     caption1.set_properties(:height => 12)
+    caption1.paddings = 0
 
     caption2 = create_caption
     caption2.set_properties(:height => 15)
+    caption2.paddings = 0
 
     span_el.add_region(caption1)
     span_el.add_region(caption2)
@@ -38,9 +40,11 @@ describe "New span" do
 
     caption1 = create_caption
     caption1.set_properties(:height => 2)
+    caption1.paddings = 0
 
     caption2 = create_caption
     caption2.set_properties(:height => 3)
+    caption2.paddings = 0
 
     span_el.add_region(caption1)
     span_el.add_region(caption2)
