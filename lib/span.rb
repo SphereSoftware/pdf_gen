@@ -25,17 +25,10 @@ module PDFGen
     attr_accessor :vertical_interval, :vertical_align
 
     def calculate_minimal_height
+      render_regions
       (regions.collect{|region| region.height}.max || 0) + pad_top + pad_bottom
     end
-
-#    def add_region(region)
-#      if super
-#        self.width=([width, render_regions].max)
-#        clear_minimal_height
-#      end
-#
-#    end
-
+    
     #renders inner regions
     #returns height of the region content
     def render_regions(x=0, y=document.y,  test=true)
@@ -47,9 +40,13 @@ module PDFGen
         end
 
         if (content_width + region.width) > self.width
-          regions.slice(0,regions.index(region))
+          regions[regions.index(region), regions.size].each do |item|
+            regions.delete(item)
+          end
         else
-          region.height = height if vertical_align
+          if vertical_align && !test
+            region.height = height
+          end
           region.render([(x + content_width), (y - pad_top)], y-pad_top) unless test
 
           content_width += region.width

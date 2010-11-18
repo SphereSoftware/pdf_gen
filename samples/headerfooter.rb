@@ -3,54 +3,44 @@ require "lib/pdf_gen"
 
 
 PDFGen::document PDF::Writer.new, 1.cm do
-  table do    
-    self.repeat_header_on_each_page = true
-    self.repeat_footer_on_each_page = true
-    title :horizontal_align => true do
-      caption "02.11.2010",
-        :pad_top => 0.1.cm, :pad_bottom => 0.1.cm, :pad_left => 5, :pad_right => 5,
-        :text_color => Color::RGB::Green, :border => false, :justification => :center
-    end
+  div :paddings => 1.cm do
+    table do
+      title do
+        caption "02.11.2010",
+                :text_color => Color::RGB::Green, :justification => :center
+      end
 
-    header :horizontal_align => true do
-
-      span  do
-
-        caption "This paper, copyright the IEEE, appears in IEEE Symposium on Security and Privacy 2004. IEEE Computer
+      header do
+        span do
+          caption "This paper, copyright the IEEE, appears in IEEE Symposium on Security and Privacy 2004. IEEE Computer
 Society Press, May 2004. This paper previously appeared as Johns Hopkins University Information Security 
 Institute Technical Report TR-2003-19, July 23, 2003.",
-          :width => self.width, :justification => :center,
-          :pad_left => 0.2.cm, :pad_right => 0.2.cm, :pad_top => 0.5.cm, :pad_bottom => 2.5.cm,
-          :border_right => true, :border_left => true, :border_top => true, :border_bottom => false, :font_size => 9
-      end
-    end
-
-    body do
-
-      span do
-  
-        caption "Analysis of an Electronic Voting System ",
-          :width => self.width , :justification => :center,
-          :pad_top => 0.1, :pad_left => 0.5, :pad_right => 0.5, :pad_bottom => 1.0.cm,
-          :border_right => true, :border_left => true, :pad_bottom => 2, :font_size => 16
+                  :width => av_width, :justification => :center, :pad_bottom => 2.5.cm,
+                  :border => true, :border_bottom => false, :font_size => 9
+        end
       end
 
-      span do
+      body do
+        span do
+          caption "Analysis of an Electronic Voting System ",
+                  :justification => :center, :pad_bottom => 1.0.cm, :border_right => true,
+                  :border_left => true, :pad_bottom => 2, :font_size => 16
+        end
 
-        caption "TADAYOSHI KOHNO",
-          :width => self.width / 3, :justification => :center,
-          :border_right => true, :border_left => true, :border_top => true, :border_bottom => true, :pad_bottom => 2
-        caption "ADAM STUBBLEFIELD",
-          :width => self.width / 3, :justification => :center,
-          :border_right => true, :border_left => true, :border_top => true, :border_bottom => true, :pad_bottom => 2
-        caption "DAN S. WALLACH",
-          :width => self.width / 3, :justification => :center,
-          :border_right => true, :border_left => true, :border_top => true, :border_bottom => true, :pad_bottom => 2
-      end
+        span do
+          caption "TADAYOSHI KOHNO",
+                  :width => av_width / 3, :justification => :center,
+                  :border => true
+          caption "ADAM STUBBLEFIELD",
+                  :width => av_width / 3, :justification => :center,
+                  :border => true
+          caption "DAN S. WALLACH",
+                  :width => av_width / 3, :justification => :center,
+                  :border => true
+        end
 
-      span do
-  
-        caption " With significant U.S. federal funds now available to replace outdated punch-card and mechanical
+        span do
+          caption " With significant U.S. federal funds now available to replace outdated punch-card and mechanical
 voting systems, municipalities and states throughout the U.S. are adopting paperless electronic voting 
 systems from a number of different vendors. We present a security analysis of the source code to one such 
 machine used in a significant share of the market. Our analysis shows that this voting system is far below 
@@ -67,43 +57,37 @@ cast them. We conclude that this voting system is unsuitable for use in a genera
 electronic voting system might suffer similar flaws, despite any certification it could have otherwise 
 received. We suggest that the best solutions are voting systems having a voter-verifiable audit trail, 
 where a computerized voting system might print a paper ballot that can be read and verified by the voter. ",
-            
-          :width => self.width , :justification => :left,
-          :pad_top => 0.1.cm, :pad_left => 0.5.cm, :pad_right => 0.5.cm, :pad_bottom => 0.5.cm, :font_size => 12,
-          :border_right => true, :border_left => true,  :border_top => true, :border_bottom => true
-          
+
+                  :justification => :left, :font_size => 12, :border => true
+
+        end
 
       end
-  
-    end
 
-    footer do
-
-      span do
-
-        caption "Dept. of Computer Science and Engineering, University 
+      footer do
+        span do
+          caption "Dept. of Computer Science and Engineering, University 
 of California at San Diego, 9500 Gilman Drive, La Jolla, California 92093, 
 USA. E-mail: tkohno@cs.ucsd.edu. URL: http://www-cse.ucsd.edu/users/tkohno. 
 Most of this work was performed while visiting the Johns Hopkins University 
 Information Security Institute. Supported by a National Defense Science and 
 Engineering Graduate Fellowship. ",
-          :width => self.width / 3, :justification => :center,
-          :border_top => true,
-          :pad_bottom => 2, :font_size => 9, :pad_top => 1.9
+                  :width => av_width / 3, :justification => :center,
+                  :border_top => true,
+                  :pad_bottom => 2, :font_size => 9
 
-        caption "Information Security Institute, Johns Hopkins University, 
+          caption "Information Security Institute, Johns Hopkins University, 
 3400 North Charles Street, Baltimore, Maryland 21218, USA. 
 E-mail: astubble@cs.jhu.edu. URL: http://spar.isi.jhu.edu/.astubble.",
-          :width => self.width / 3, :justification => :center,
-          :border_top => true,
-          :pad_bottom => 2, :font_size => 9, :pad_top => 1.9
+                  :width => av_width / 3, :justification => :center,
+                  :border_top => true, :font_size => 9
 
-        caption "IInformation Security Institute, Johns Hopkins University, 
+          caption "IInformation Security Institute, Johns Hopkins University, 
 3400 North Charles Street, Baltimore, Maryland 21218, USA. E-mail: rubin@cs.jhu.edu. 
 URL: http://www.avirubin.com.",
-          :width => self.width / 3, :justification => :center,
-          :border_top => true,
-          :pad_bottom => 2, :font_size => 9, :pad_top => 1.9
+                  :width => av_width / 3, :justification => :center,
+                  :border_top => true, :font_size => 9
+        end
       end
     end
   end

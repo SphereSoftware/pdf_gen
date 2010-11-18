@@ -14,21 +14,18 @@ which impose constraints on the design or implementation
 or design constraints).
 TEXT
 PDFGen::document PDF::Writer.new, 2.cm do
-  caption ' Software Requirements Specification ', :width => self.width,
-    :pad_top => 0.5.cm, :pad_bottom => 0.5.cm, :pad_left => 5, :pad_right => 5,
-    :text_color => Color::RGB::Grey, :font_size => 16, :bold => true, :justification => :center
+  caption ' Software Requirements Specification ', :text_color => Color::RGB::Grey, 
+          :font_size => 16, :bold => true, :justification => :center
 
-  caption long_text, :width => self.width,
-    :pad_top => 1.cm, :pad_bottom => 1.cm, :pad_left => 1.5.cm, :pad_right => 1.cm,
+  caption long_text,
     :text_color => Color::RGB::Grey, :font_size => 12, :justification => :left
 
   div :width => 18.cm, :horizontal_interval => 1.cm do
   
-    span :width => 18.cm, :pad_left => 2.cm do
+    span :pad_left => 2.cm do
       caption '1', :width => 2.cm
       caption 'INTRODUCTION', :width => 12.cm 
-    end
-    
+    end    
     span :width => 16.cm, :pad_left => 2.5.cm do
       caption '1.1', :width => 2.cm
       caption 'Product Overview', :width => 10.cm  
@@ -49,22 +46,18 @@ PDFGen::document PDF::Writer.new, 2.cm do
       caption '1.4', :width => 2.cm
       caption 'Definitions and Abbreviations', :width => 10.cm   
     end
-
-    span :width => 18.cm, :pad_left => 2.cm do
+    span  :pad_left => 2.cm do
       caption '2', :width => 2.cm
       caption 'OVERALL DESCRIPTION', :width => 12.cm 
     end
-
     span :width => 18.cm, :pad_left => 2.cm do
       caption '3', :width => 2.cm
       caption 'SPECIFIC REQUIREMENTS', :width => 12.cm  
     end
-
     span :width => 18.cm, :pad_left => 2.cm do
       caption '4', :width => 2.cm
       caption 'ADDITIONAL MATERIALS', :width => 12.cm  
     end
-
     
   end
 end.save("#{File.basename(__FILE__, ".rb")}.pdf")

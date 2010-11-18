@@ -39,8 +39,7 @@ module PDFGen
         if status[1]
           pdf.y -= status[0]
         else
-          self.break_page
-          pdf.y -= page_pad_top
+          self.break_page          
           redo
         end
       end
