@@ -93,7 +93,6 @@ independently if necessary. For examples:
 table_data = {:columns =>['id','name','email'],
               :body => [[1,'Valeriy','valeriy@example.com'],
                         [2,'Dmitriy','dmitriy@example.com']]}
-
 PDFGen::document PDF::Writer.new, 0.cm do
   div :paddings => 2 do
     table :data_source => table_data
@@ -103,7 +102,6 @@ end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 Build table from ActiveRecord (ROR)
 
 table_data = User.all
-
 PDFGen::document PDF::Writer.new, 0.cm do
   div :paddings => 2 do
     table :data_source => table_data
@@ -115,7 +113,6 @@ Custom view
 table_data = {:columns =>['id','name','email'],
               :body => [[1,'Valeriy','valeriy@example.com'],
                         [2,'Dmitriy','dmitriy@example.com']]}
-
 PDFGen::document PDF::Writer.new, 0.cm do
   div :paddings => 2 do
     table :data_source => table_data do
