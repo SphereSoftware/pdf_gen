@@ -79,11 +79,11 @@ company's unique value chain. ",
         span do
           caption " ",
             :width => 15.cm / 2, :justification => :center,
-            :pad_bottom => 0, :font_size => 7, :pad_top => 0
+            :font_size => 7
 
           caption " ",
             :width => 15.cm / 2, :justification => :center,
-            :pad_bottom => 0, :font_size => 7, :pad_top => 0
+            :font_size => 7
         end
       end
 
