@@ -40,7 +40,9 @@ module PDFGen
         span.border = true
         yield if block_given?
         @cells.each do |cell|
-          cell.width = (cell.width.zero? || cell.width == self.width) ? span.width / @cells.size : cell.width
+          if cell.width.zero? || cell.width == self.width
+            cell.width = span.width / @cells.size
+          end
           span.add_region(cell)
         end
 
