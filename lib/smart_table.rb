@@ -27,8 +27,7 @@ module PDFGen
           caption.text = region if region.is_a?(String)
           caption.border_left = true
           caption.set_properties style unless style.nil?
-          region = caption
-          @cells << region
+          @cells << caption
         else
           @cells << region.last #todo
           region.delete(region.last)
@@ -41,7 +40,7 @@ module PDFGen
         span.border = true
         yield if block_given?
         @cells.each do |cell|
-          cell.width = cell.width.zero? ? span.width / @cells.size : cell.width
+          cell.width = (cell.width.zero? || cell.width == self.width) ? span.width / @cells.size : cell.width
           span.add_region(cell)
         end
 
