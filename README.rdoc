@@ -136,7 +136,7 @@ Custom view
     end
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
-We can setting width of each column
+We can set the width of each column
 
   row do
     cell data[0], :width => av_width * 2/4
