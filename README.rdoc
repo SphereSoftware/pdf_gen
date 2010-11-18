@@ -87,8 +87,8 @@ Object which allows creating tables in PDF file. This object has such elements a
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
 === Smart Table
-Object which allows creating tables from Hash and ActiveRecord object. Blocks of the title and footer you have to define
-independently if necessary. For examples:
+Object which allows creating tables from Hash and ActiveRecord objects. Blocks of the title and footer you have to define
+independently if necessary. For example:
 
   table_data = {:columns =>['id','name','email'],
                 :body => [[1,'Valeriy','valeriy@example.com'],
@@ -136,7 +136,7 @@ Custom view
     end
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
-We Can setting width of each column
+We can setting width of each column
 
   row do
     cell data[0], :width => av_width * 2/4
