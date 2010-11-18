@@ -22,15 +22,15 @@ module PDFGen
       end
 
       def cell(region=nil,style=nil)
-        if region.is_a?(String) or region.nil?
+        if region.is_a?(BaseRegion)
+          @cells << region.last #todo
+          region.delete(region.last)
+        else  
           caption = Caption.new(parent)
-          caption.text = region if region.is_a?(String)
+          caption.text = region
           caption.border_left = true
           caption.set_properties style unless style.nil?
           @cells << caption
-        else
-          @cells << region.last #todo
-          region.delete(region.last)
         end
       end
 
@@ -112,7 +112,6 @@ module PDFGen
       span.border = true
       @header_data.each do |cap|
         caption = Caption.new(self.document)
-        cap = cap.to_s unless cap.is_a?(String)
         caption.text = cap
         caption.width = self.width / @header_data.size
         caption.border_left = true
@@ -130,7 +129,6 @@ module PDFGen
         span.border = true
         row.each do |cap|
           caption = Caption.new(self.document)
-          cap = cap.to_s unless cap.is_a?(String)
           caption.text = cap
           caption.width = self.width / row.size
           caption.border_left = true

@@ -19,6 +19,7 @@ module PDFGen
     attr_reader :text
 
     def text=(value)
+      value = value.to_s unless value.is_a?(String)
       if value && @text != value
         @text = value
         @template = value
