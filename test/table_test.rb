@@ -3,7 +3,7 @@ require 'rubygems'
 require 'lib/writer'
 require 'pdf/writer'
 require "lib/fixnum"
-require 'pdf_gen'
+require 'lib/pdf_gen'
 require 'lib/containers/div_container'
 require "test/helpers_for_testing"
 include HelpersForTesting

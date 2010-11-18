@@ -4,7 +4,7 @@ require 'lib/caption'
 require 'lib/writer'
 require 'pdf/writer'
 require "lib/fixnum"
-require 'pdf_gen'
+require 'lib/pdf_gen'
 require 'test/shared_examples'
 require "test/helpers_for_testing"
 include PDFGen

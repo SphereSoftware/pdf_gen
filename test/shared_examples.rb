@@ -4,7 +4,7 @@ require 'lib/caption'
 require 'lib/writer'
 require 'pdf/writer'
 require "lib/fixnum"
-require 'pdf_gen'
+require 'lib/pdf_gen'
 require 'lib/base_region'
 
 shared_examples_for "base region" do
