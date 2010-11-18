@@ -4,7 +4,7 @@ require "lib/pdf_gen"
 
 image_data = open(File.expand_path('ruby_logo.jpg'), "rb") { |file| file.read }
 
-PDFGen::document PDF::Writer.new, 2.cm do
+PDFGen::document PDF::Writer.new, :page_pad_top => 2.cm do
   div :width => 12.cm, :horizontal_interval => 2.cm do
     span :width => 10.cm, :pad_left => 2.cm do
       image image_data, :width => 250

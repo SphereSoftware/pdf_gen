@@ -2,7 +2,7 @@ $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
 require "lib/pdf_gen"
 
 
-PDFGen::document PDF::Writer.new, 0.cm do
+PDFGen::document PDF::Writer.new, :page_pad_top => 2.cm do
   caption " SWOT analysis is a strategic planning method used to evaluate the Strengths, Weaknesses,
  Opportunities, and Threats involved in a project or in a business venture. It involves specifying 
 the objective of the business venture or project and identifying the internal and external factors that 

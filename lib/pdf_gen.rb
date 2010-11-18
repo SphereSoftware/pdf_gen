@@ -19,9 +19,10 @@ require "lib/document"
 
 module PDFGen
 
-  def self.document(pdf, page_pad_top, &initialization_block)
-    document = Document.new(pdf, page_pad_top)
+  def self.document(pdf, style=nil, &initialization_block)
+    document = Document.new(pdf)
     document.width = document.pdf.page_width
+    document.set_properties style unless style.nil?
     document.instance_eval(&initialization_block)
     document.render
     pdf

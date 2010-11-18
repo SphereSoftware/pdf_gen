@@ -8,19 +8,18 @@ require "lib/containers/table_container"
 
 module PDFGen
 
-  class Document < BaseRegion
+  class Document < Div
 
     include Canvas, Composite, TableContainer, CaptionContainer, SpanContainer,
             DivContainer, ImageContainer
 
-    def initialize(pdf, page_pad_top)
+    def initialize(pdf)
       super(nil)
-      pdf.y += pdf.top_margin # clear predefined top_margin
-      pdf.y -= page_pad_top # set y considering page_pad_top
+      pdf.y += pdf.top_margin # clear predefined top_margin      
       pdf.top_margin = 0
 
       @pdf = pdf
-      @page_pad_top = page_pad_top
+      @page_pad_top = 0
       @header = []
     end
 
@@ -30,8 +29,11 @@ module PDFGen
     def break_page
       pdf.page_break @page_pad_top
     end
+    
+    attr_accessor :page_pad_top
 
     def render
+      pdf.y -= page_pad_top # set y considering page_pad_top
       pos = [0, pdf.y]
       regions.each do |region|
         pos[1] = pdf.y

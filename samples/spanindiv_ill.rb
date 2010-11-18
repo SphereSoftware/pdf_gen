@@ -2,7 +2,7 @@ $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
 require "lib/pdf_gen"
 
 
-PDFGen::document PDF::Writer.new, 2.cm do
+PDFGen::document PDF::Writer.new, :page_pad_top => 2.cm do
   div :width => 21.55.cm, :horizontal_interval => 1.0.cm,
       :pad_left => 1.cm, :pad_right => 1.cm,
       :border => true, :border_style => :dotted, :border_width => 0.05.cm do

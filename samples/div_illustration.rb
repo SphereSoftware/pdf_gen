@@ -13,7 +13,7 @@ which impose constraints on the design or implementation
 (such as performance engineering requirements, quality standards, 
 or design constraints).
 TEXT
-PDFGen::document PDF::Writer.new, 2.cm do
+PDFGen::document PDF::Writer.new, :page_pad_top => 2.cm do
   caption ' Software Requirements Specification ', :width => self.width,
     :pad_top => 0.5.cm, :pad_bottom => 0.5.cm, :pad_left => 5, :pad_right => 5,
     :text_color => Color::RGB::Grey, :font_size => 16, :bold => true, :justification => :center

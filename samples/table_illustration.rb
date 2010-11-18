@@ -2,7 +2,7 @@ $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
 require "lib/pdf_gen"
 
 
-PDFGen::document PDF::Writer.new, 1.cm do
+PDFGen::document PDF::Writer.new, :page_pad_top => 1.cm do
 
   table do
     self.repeat_header_on_each_page = true
