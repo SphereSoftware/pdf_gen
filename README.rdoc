@@ -90,59 +90,59 @@ Object which allows creating tables in PDF file. This object has such elements a
 Object which allows creating tables from Hash and ActiveRecord object. Blocks of the title and footer you have to define
 independently if necessary. For examples:
 
-table_data = {:columns =>['id','name','email'],
-              :body => [[1,'Valeriy','valeriy@example.com'],
-                        [2,'Dmitriy','dmitriy@example.com']]}
-PDFGen::document PDF::Writer.new, 0.cm do
-  div :paddings => 2 do
-    table :data_source => table_data
-  end
-end.save("#{File.basename(__FILE__, ".rb")}.pdf")
+  table_data = {:columns =>['id','name','email'],
+                :body => [[1,'Valeriy','valeriy@example.com'],
+                          [2,'Dmitriy','dmitriy@example.com']]}
+  PDFGen::document PDF::Writer.new, 0.cm do
+    div :paddings => 2 do
+      table :data_source => table_data
+    end
+  end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
 Build table from ActiveRecord (ROR)
 
-table_data = User.all
-PDFGen::document PDF::Writer.new, 0.cm do
-  div :paddings => 2 do
-    table :data_source => table_data
-  end
-end.save("#{File.basename(__FILE__, ".rb")}.pdf")
+  table_data = User.all
+  PDFGen::document PDF::Writer.new, 0.cm do
+    div :paddings => 2 do
+      table :data_source => table_data
+    end
+  end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
 Custom view
 
-table_data = {:columns =>['id','name','email'],
-              :body => [[1,'Valeriy','valeriy@example.com'],
-                        [2,'Dmitriy','dmitriy@example.com']]}
-PDFGen::document PDF::Writer.new, 0.cm do
-  div :paddings => 2 do
-    table :data_source => table_data do
-       header do
-         row do
-           cell "<b>#{ds.columns[0]}</b>", :justification => :center, :text_color => Color::RGB::Green
-           cell ds.columns[1], :justification => :center, :text_color => Color::RGB::Green
-           cell ds.columns[2], :justification => :center, :text_color => Color::RGB::Green           
-         end
-       end
-       body do
-         ds.each do |datarow|
+  table_data = {:columns =>['id','name','email'],
+                :body => [[1,'Valeriy','valeriy@example.com'],
+                          [2,'Dmitriy','dmitriy@example.com']]}
+  PDFGen::document PDF::Writer.new, 0.cm do
+    div :paddings => 2 do
+      table :data_source => table_data do
+         header do
            row do
-             cell datarow[0]
-             cell "<i>#{datarow[1]}</i>"
-             cell datarow[2]
+             cell "<b>#{ds.columns[0]}</b>", :justification => :center, :text_color => Color::RGB::Green
+             cell ds.columns[1], :justification => :center, :text_color => Color::RGB::Green
+             cell ds.columns[2], :justification => :center, :text_color => Color::RGB::Green           
            end
          end
-       end
+         body do
+           ds.each do |datarow|
+             row do
+               cell datarow[0]
+               cell "<i>#{datarow[1]}</i>"
+               cell datarow[2]
+             end
+           end
+         end
+      end
     end
-  end
-end.save("#{File.basename(__FILE__, ".rb")}.pdf")
+  end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
 We Can setting width of each column
 
-row do
-  cell data[0], :width => av_width * 2/4
-  cell data[1], :width => av_width * 1/4
-  cell data[2], :width => av_width * 1/4
-end
+  row do
+    cell data[0], :width => av_width * 2/4
+    cell data[1], :width => av_width * 1/4
+    cell data[2], :width => av_width * 1/4
+  end
 
 
 == Credits
