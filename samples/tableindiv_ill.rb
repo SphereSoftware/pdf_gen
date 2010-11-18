@@ -74,19 +74,6 @@ company's unique value chain. ",
         end
   
       end
-
-      footer do
-        span do
-          caption " ",
-            :width => 15.cm / 2, :justification => :center,
-            :font_size => 7
-
-          caption " ",
-            :width => 15.cm / 2, :justification => :center,
-            :font_size => 7
-        end
-      end
-
     end
   end
 

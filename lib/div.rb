@@ -117,8 +117,8 @@ module PDFGen
 
     def render(pos, av_height, test=false)
       pos_x, pos_y = pos
-      add_border_top(pos_x, pos_y) if @rendered_height.zero?
       fill(pos)
+      add_border_top(pos_x, pos_y) if @rendered_height.zero?      
       status = render_regions([pos_x, pos_y], av_height, test)
       pos_y -= status[0]
 
