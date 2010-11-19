@@ -22,7 +22,7 @@ module PDFGen
       end
 
       def cell(region=nil,style=nil)
-        if region.is_a?(BaseRegion)
+        if region.is_a?(Array)
           @cells << region.last #todo
           region.delete(region.last)
         else  
