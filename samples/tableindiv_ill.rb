@@ -2,12 +2,13 @@ $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
 require "lib/pdf_gen"
 
 
-PDFGen::document PDF::Writer.new, 0.cm do
+PDFGen::document PDF::Writer.new, 1.cm do
   caption " SWOT analysis is a strategic planning method used to evaluate the Strengths, Weaknesses,
  Opportunities, and Threats involved in a project or in a business venture. It involves specifying 
 the objective of the business venture or project and identifying the internal and external factors that 
 are favorable and unfavorable to achieve that objective. The technique is credited to Albert Humphrey, 
 who led a convention at Stanford University in the 1960s and 1970s using data from Fortune 500 companies. ",
+    :pad_left => 2.cm, :pad_right => 1.cm, :pad_top => 0.5.cm, :pad_bottom => 0.5.cm,
     :justification => :left, :font_size => 12
 
   caption " A SWOT analysis must first start with defining a desired end state or objective. 
@@ -20,9 +21,10 @@ used in academia to highlight and identify strengths, weaknesses, opportunities 
  It is particularly helpful in identifying areas for development. The aim of any SWOT analysis is to identify 
 the key internal and external factors that are important to achieving the objective. These come from within the 
 company's unique value chain. ",
+    :pad_left => 2.cm, :pad_right => 1.cm, :pad_top => 0.5.cm, :pad_bottom => 0.5.cm,
     :justification => :left, :font_size => 12
 
-  div :width => 15.cm, :pad_left => 3.cm do
+  div :width => 17.cm, :pad_left => 5.cm do
 
     table do
       title do
@@ -94,6 +96,7 @@ weak opportunities may appear to balance strong threats. It is prudent not to el
 quickly any candidate SWOT entry. The importance of individual SWOTs will be revealed by 
 the value of the strategies it generates. A SWOT item that produces valuable strategies is important. 
 A SWOT item that generates no strategies is not important. ",
+    :pad_left => 2.cm, :pad_right => 1.cm, :pad_top => 0.5.cm, :pad_bottom => 0.5.cm,
     :justification => :left, :font_size => 12
 
 end.save("#{File.basename(__FILE__, ".rb")}.pdf")

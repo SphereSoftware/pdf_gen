@@ -15,7 +15,7 @@ PDFGen::document PDF::Writer.new, 1.cm do
           caption "This paper, copyright the IEEE, appears in IEEE Symposium on Security and Privacy 2004. IEEE Computer
 Society Press, May 2004. This paper previously appeared as Johns Hopkins University Information Security 
 Institute Technical Report TR-2003-19, July 23, 2003.",
-                  :width => av_width, :justification => :center, :pad_bottom => 2.5.cm,
+                  :width => av_width, :justification => :center, :pad_bottom => 1.5.cm,
                   :border => true, :border_bottom => false, :font_size => 9
         end
       end
@@ -23,8 +23,8 @@ Institute Technical Report TR-2003-19, July 23, 2003.",
       body do
         span do
           caption "Analysis of an Electronic Voting System ",
-                  :justification => :center, :pad_bottom => 1.0.cm, :border_right => true,
-                  :border_left => true, :pad_bottom => 2, :font_size => 16
+                  :justification => :center, :pad_bottom => 1.cm, :border_right => true,
+                  :border_left => true, :font_size => 16
         end
 
         span do

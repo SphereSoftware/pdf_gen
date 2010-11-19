@@ -3,7 +3,7 @@ require "lib/pdf_gen"
 
 
 PDFGen::document PDF::Writer.new, 1.cm do
-  div :paddings => 5 do
+  div :pad_left => 2.cm, :pad_right => 1.2.cm do
     table do
       title  do
         caption "Financial Report", :text_color => Color::RGB::Green,
@@ -13,8 +13,8 @@ PDFGen::document PDF::Writer.new, 1.cm do
       header do
         span do
           caption "Characteristic",
-            :width => av_width / 8, :justification => :center,
-            :border => true, :font_size => 9
+            :width => av_width / 8, :justification => :left,
+            :border => true, :font_size => 8
 
           caption "2005",
             :width => av_width / 8, :justification => :center,

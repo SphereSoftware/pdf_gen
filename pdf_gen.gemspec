@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name = "pdf_gen"
-  spec.version = '0.7'
+  spec.version = '0.7.1'
   spec.platform = Gem::Platform::RUBY
   spec.summary = "PDF generator for Ruby"
   spec.files =  Dir["**/*"].reject!{ |fn| true if fn =~ /^test.rb|.*\.pdf|\.git|\.gem/}

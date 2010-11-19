@@ -2,7 +2,7 @@ $:.unshift(File.expand_path(File.dirname(__FILE__) + "/../"))
 require "lib/pdf_gen"
 
 long_text = <<TEXT 
-  A Software Requirements Specification (SRS) - a requirements
+ A Software Requirements Specification (SRS) - a requirements
 specification for a software system - is a complete description of the behavior
  of a system to be developed. It includes a set of use cases that describe all 
 the interactions the users will have with the software. 
@@ -12,17 +12,19 @@ In addition to use cases, the SRS also contains non-functional
 which impose constraints on the design or implementation
 (such as performance engineering requirements, quality standards, 
 or design constraints).
+
 TEXT
 PDFGen::document PDF::Writer.new, 2.cm do
   caption ' Software Requirements Specification ', :text_color => Color::RGB::Grey, 
           :font_size => 16, :bold => true, :justification => :center
 
   caption long_text,
-    :text_color => Color::RGB::Grey, :font_size => 12, :justification => :left
+    :text_color => Color::RGB::Grey, :font_size => 12, :justification => :left,
+    :pad_left => 2.5.cm, :pad_right => 2.cm
 
-  div :width => 18.cm, :horizontal_interval => 1.cm do
+  div :width => 20.cm, :horizontal_interval => 0.5.cm do
   
-    span :pad_left => 2.cm do
+    span :pad_left => 2.cm, :pad_top => 2.cm do
       caption '1', :width => 2.cm
       caption 'INTRODUCTION', :width => 12.cm 
     end    

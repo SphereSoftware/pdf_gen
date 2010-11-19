@@ -9,7 +9,17 @@ PDFGen::document PDF::Writer.new, 2.cm do
     span :paddings => 0.5.cm, :border => true do
       image image_data, :width => 5.cm
       caption ' first '*50, :width => 3.cm
-      caption ' second '*100, :width => 4.cm
+      caption ' second '*50, :width => 3.cm
+    end
+    span :paddings => 0.5.cm, :border => true do
+      image image_data, :width => 5.cm
+      caption ' first '*50, :width => 3.cm
+      caption ' second '*50, :width => 3.cm
+    end    
+    span :paddings => 0.5.cm, :border => true do
+      image image_data, :width => 5.cm
+      caption ' first '*50, :width => 3.cm
+      caption ' second '*50, :width => 3.cm
     end
     span :paddings => 0.5.cm, :border => true do
       image image_data, :width => 5.cm
