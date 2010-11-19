@@ -1,0 +1,1061 @@
+%PDF-1.3
+%âãÏÓ
+
+1 0 obj
+<< /Type /Catalog
+/Outlines 2 0 R
+/Pages 3 0 R>>
+endobj
+2 0 obj
+<< /Type /Outlines >>
+endobj
+3 0 obj
+<< /Type /Pages
+/Kids [6 0 R
+]
+/Count 1
+/Resources <<
+/ProcSet 4 0 R
+/Font << 
+/F1 8 0 R >>
+>>
+/MediaBox [0 0 612.0 792.0]
+ >>
+endobj
+4 0 obj
+[/PDF /Text ]
+endobj
+5 0 obj
+<<
+/CreationDate (D:201011190942)
+/Creator (smart_table.rb)
+/Producer (PDF::Writer for Ruby)
+>>
+endobj
+6 0 obj
+<< /Type /Page
+/Parent 3 0 R
+/Contents 7 0 R
+>>
+endobj
+7 0 obj
+<<
+/Length 14095 >>
+stream
+
+0.000 0.000 0.000 rg
+0.000 0.000 0.000 RG
+q
+0.663 0.663 0.663 rg
+0.663 0.663 0.663 RG
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+1 w
+Q
+q
+0.000 0.502 0.000 rg
+0.000 0.502 0.000 RG
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+1 w
+Q
+q
+0.000 0.502 0.000 rg
+0.000 0.502 0.000 RG
+BT 95.993 708.157 Td /F1 22.0 Tf 0 Tr (SWEBOK ) Tj ET
+BT 46.504 682.725 Td /F1 22.0 Tf 0 Tr (STRUCTURE, main ) Tj ET
+BT 97.214 657.293 Td /F1 22.0 Tf 0 Tr (processes) Tj ET
+1 w
+Q
+q
+0.000 0.502 0.000 rg
+0.000 0.502 0.000 RG
+1 w
+Q
+q
+0.827 0.827 0.827 RG
+1 w [ 1 0 ] 0 d
+0.827 0.827 0.827 rg
+266.335 658.329 317.318 91.151 re f S
+1 w
+Q
+q
+0.000 0.502 0.000 RG
+2 w [ 1 0 ] 0 d
+266.335 749.480 m
+583.654 749.480 l S
+1 w
+Q
+q
+0.663 0.663 0.663 rg
+0.663 0.663 0.663 RG
+BT 397.646 709.574 Td /F1 24.0 Tf 0 Tr (IEEE) Tj ET
+1 w
+Q
+q
+0.663 0.663 0.663 rg
+0.663 0.663 0.663 RG
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+BT 345.524 663.998 Td /F1 20.0 Tf 0 Tr (Computer Society) Tj ET
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+1 w
+Q
+q
+0.000 0.502 0.000 RG
+2 w [ 1 0 ] 0 d
+266.335 658.329 m
+583.654 658.329 l S
+1 w
+Q
+q
+0.000 0.502 0.000 RG
+2 w [ 1 0 ] 0 d
+266.335 749.480 m
+266.335 658.329 l S
+1 w
+Q
+q
+0.000 0.502 0.000 RG
+2 w [ 1 0 ] 0 d
+583.654 749.480 m
+583.654 658.329 l S
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 600.600 m
+28.346 561.517 l S
+583.654 600.600 m
+583.654 561.517 l S
+28.346 600.600 m
+583.654 600.600 l S
+28.346 561.517 m
+583.654 561.517 l S
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 600.600 m
+28.346 561.517 l S
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+BT 54.309 583.370 Td /F1 14.0 Tf 0 Tr (Software ) Tj ET
+BT 43.032 567.186 Td /F1 14.0 Tf 0 Tr (requirements) Tj ET
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+139.408 600.600 m
+139.408 561.517 l S
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+BT 165.371 583.370 Td /F1 14.0 Tf 0 Tr (Software ) Tj ET
+BT 174.317 567.186 Td /F1 14.0 Tf 0 Tr (design) Tj ET
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+250.469 600.600 m
+250.469 561.517 l S
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+BT 276.432 583.370 Td /F1 14.0 Tf 0 Tr (Software ) Tj ET
+BT 268.263 567.186 Td /F1 14.0 Tf 0 Tr (contractions) Tj ET
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+361.531 600.600 m
+361.531 561.517 l S
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+BT 387.493 583.370 Td /F1 14.0 Tf 0 Tr (Software ) Tj ET
+BT 394.108 567.186 Td /F1 14.0 Tf 0 Tr (Testing) Tj ET
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+472.592 600.600 m
+472.592 561.517 l S
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+BT 498.555 583.370 Td /F1 14.0 Tf 0 Tr (Software ) Tj ET
+BT 488.048 567.186 Td /F1 14.0 Tf 0 Tr (maintenance) Tj ET
+1 w
+Q
+q
+0.502 0.502 0.502 rg
+0.502 0.502 0.502 RG
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 561.517 m
+28.346 515.498 l S
+583.654 561.517 m
+583.654 515.498 l S
+28.346 561.517 m
+583.654 561.517 l S
+28.346 515.498 m
+583.654 515.498 l S
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 561.517 m
+28.346 515.498 l S
+139.408 561.517 m
+139.408 515.498 l S
+1 w
+Q
+q
+BT 51.367 544.288 Td /F1 10.0 Tf 0 Tr (Requirements ) Tj ET
+BT 53.862 532.728 Td /F1 10.0 Tf 0 Tr (fundamentals) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+139.408 561.517 m
+139.408 515.498 l S
+250.469 561.517 m
+250.469 515.498 l S
+1 w
+Q
+q
+BT 147.974 544.288 Td /F1 10.0 Tf 0 Tr (Design fundamentals) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+250.469 561.517 m
+250.469 515.498 l S
+361.531 561.517 m
+361.531 515.498 l S
+1 w
+Q
+q
+BT 256.535 544.288 Td /F1 10.0 Tf 0 Tr (Software contractions ) Tj ET
+BT 275.985 532.728 Td /F1 10.0 Tf 0 Tr (fundamentals) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+361.531 561.517 m
+361.531 515.498 l S
+472.592 561.517 m
+472.592 515.498 l S
+1 w
+Q
+q
+BT 379.821 544.288 Td /F1 10.0 Tf 0 Tr (Software testing ) Tj ET
+BT 387.046 532.728 Td /F1 10.0 Tf 0 Tr (fundamentals) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+472.592 561.517 m
+472.592 515.498 l S
+1 w
+Q
+q
+BT 507.003 544.288 Td /F1 10.0 Tf 0 Tr (Software ) Tj ET
+BT 498.108 532.728 Td /F1 10.0 Tf 0 Tr (maintenance ) Tj ET
+BT 498.108 521.168 Td /F1 10.0 Tf 0 Tr (fundamentals) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 515.498 m
+28.346 481.040 l S
+583.654 515.498 m
+583.654 481.040 l S
+28.346 515.498 m
+583.654 515.498 l S
+28.346 481.040 m
+583.654 481.040 l S
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 515.498 m
+28.346 481.040 l S
+139.408 515.498 m
+139.408 481.040 l S
+1 w
+Q
+q
+BT 51.367 498.269 Td /F1 10.0 Tf 0 Tr (Requirements ) Tj ET
+BT 66.372 486.709 Td /F1 10.0 Tf 0 Tr (process) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+139.408 515.498 m
+139.408 481.040 l S
+250.469 515.498 m
+250.469 481.040 l S
+1 w
+Q
+q
+BT 164.094 498.269 Td /F1 10.0 Tf 0 Tr (Key issues in ) Tj ET
+BT 159.924 486.709 Td /F1 10.0 Tf 0 Tr (software design) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+250.469 515.498 m
+250.469 481.040 l S
+361.531 515.498 m
+361.531 481.040 l S
+1 w
+Q
+q
+BT 282.655 498.269 Td /F1 10.0 Tf 0 Tr (Managing ) Tj ET
+BT 276.545 486.709 Td /F1 10.0 Tf 0 Tr (constructions) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+361.531 515.498 m
+361.531 481.040 l S
+472.592 515.498 m
+472.592 481.040 l S
+1 w
+Q
+q
+BT 393.166 498.269 Td /F1 10.0 Tf 0 Tr (Test levels) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+472.592 515.498 m
+472.592 481.040 l S
+1 w
+Q
+q
+BT 497.278 498.269 Td /F1 10.0 Tf 0 Tr (Key issues in ) Tj ET
+BT 479.213 486.709 Td /F1 10.0 Tf 0 Tr (software maintenance) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 481.040 m
+28.346 446.581 l S
+583.654 481.040 m
+583.654 446.581 l S
+28.346 481.040 m
+583.654 481.040 l S
+28.346 446.581 m
+583.654 446.581 l S
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 481.040 m
+28.346 446.581 l S
+139.408 481.040 m
+139.408 446.581 l S
+1 w
+Q
+q
+BT 51.367 463.811 Td /F1 10.0 Tf 0 Tr (Requirements ) Tj ET
+BT 62.757 452.251 Td /F1 10.0 Tf 0 Tr (ellocation) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+139.408 481.040 m
+139.408 446.581 l S
+250.469 481.040 m
+250.469 446.581 l S
+1 w
+Q
+q
+BT 152.979 463.811 Td /F1 10.0 Tf 0 Tr (Software structure ) Tj ET
+BT 159.089 452.251 Td /F1 10.0 Tf 0 Tr (and architecture) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+250.469 481.040 m
+250.469 446.581 l S
+361.531 481.040 m
+361.531 446.581 l S
+1 w
+Q
+q
+BT 285.440 463.811 Td /F1 10.0 Tf 0 Tr (Practical ) Tj ET
+BT 273.765 452.251 Td /F1 10.0 Tf 0 Tr (considerations) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+361.531 481.040 m
+361.531 446.581 l S
+472.592 481.040 m
+472.592 446.581 l S
+1 w
+Q
+q
+BT 381.766 463.811 Td /F1 10.0 Tf 0 Tr (Test techniques) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+472.592 481.040 m
+472.592 446.581 l S
+1 w
+Q
+q
+BT 480.603 463.811 Td /F1 10.0 Tf 0 Tr (Maintenance process) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 446.581 m
+28.346 400.563 l S
+583.654 446.581 m
+583.654 400.563 l S
+28.346 446.581 m
+583.654 446.581 l S
+28.346 400.563 m
+583.654 400.563 l S
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 446.581 m
+28.346 400.563 l S
+139.408 446.581 m
+139.408 400.563 l S
+1 w
+Q
+q
+BT 51.367 429.352 Td /F1 10.0 Tf 0 Tr (Requirements ) Tj ET
+BT 64.147 417.792 Td /F1 10.0 Tf 0 Tr (analyses) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+139.408 446.581 m
+139.408 400.563 l S
+250.469 446.581 m
+250.469 400.563 l S
+1 w
+Q
+q
+BT 162.149 429.352 Td /F1 10.0 Tf 0 Tr (Design quality ) Tj ET
+BT 164.089 417.792 Td /F1 10.0 Tf 0 Tr (analyses and ) Tj ET
+BT 172.149 406.232 Td /F1 10.0 Tf 0 Tr (evaluation) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+250.469 446.581 m
+250.469 400.563 l S
+361.531 446.581 m
+361.531 400.563 l S
+1 w
+Q
+q
+BT 304.610 429.352 Td /F1 10.0 Tf 0 Tr ( ) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+361.531 446.581 m
+361.531 400.563 l S
+472.592 446.581 m
+472.592 400.563 l S
+1 w
+Q
+q
+BT 367.601 429.352 Td /F1 10.0 Tf 0 Tr (Test related messures) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+472.592 446.581 m
+472.592 400.563 l S
+1 w
+Q
+q
+BT 493.663 429.352 Td /F1 10.0 Tf 0 Tr (Techniques for ) Tj ET
+BT 499.498 417.792 Td /F1 10.0 Tf 0 Tr (maintenance) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 400.563 m
+28.346 366.104 l S
+583.654 400.563 m
+583.654 366.104 l S
+28.346 400.563 m
+583.654 400.563 l S
+28.346 366.104 m
+583.654 366.104 l S
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 400.563 m
+28.346 366.104 l S
+139.408 400.563 m
+139.408 366.104 l S
+1 w
+Q
+q
+BT 51.367 383.333 Td /F1 10.0 Tf 0 Tr (Requirements ) Tj ET
+BT 56.367 371.773 Td /F1 10.0 Tf 0 Tr (specification) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+139.408 400.563 m
+139.408 366.104 l S
+250.469 400.563 m
+250.469 366.104 l S
+1 w
+Q
+q
+BT 157.699 383.333 Td /F1 10.0 Tf 0 Tr (Design notations) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+250.469 400.563 m
+250.469 366.104 l S
+361.531 400.563 m
+361.531 366.104 l S
+1 w
+Q
+q
+BT 304.610 383.333 Td /F1 10.0 Tf 0 Tr ( ) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+361.531 400.563 m
+361.531 366.104 l S
+472.592 400.563 m
+472.592 366.104 l S
+1 w
+Q
+q
+BT 383.161 383.333 Td /F1 10.0 Tf 0 Tr (Test processes) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+472.592 400.563 m
+472.592 366.104 l S
+1 w
+Q
+q
+BT 526.733 383.333 Td /F1 10.0 Tf 0 Tr ( ) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 366.104 m
+28.346 331.646 l S
+583.654 366.104 m
+583.654 331.646 l S
+28.346 366.104 m
+583.654 366.104 l S
+28.346 331.646 m
+583.654 331.646 l S
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+28.346 366.104 m
+28.346 331.646 l S
+139.408 366.104 m
+139.408 331.646 l S
+1 w
+Q
+q
+BT 51.367 348.875 Td /F1 10.0 Tf 0 Tr (Requirements ) Tj ET
+BT 62.757 337.315 Td /F1 10.0 Tf 0 Tr (validation) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+139.408 366.104 m
+139.408 331.646 l S
+250.469 366.104 m
+250.469 331.646 l S
+1 w
+Q
+q
+BT 149.084 348.875 Td /F1 10.0 Tf 0 Tr (Design strategy and ) Tj ET
+BT 175.764 337.315 Td /F1 10.0 Tf 0 Tr (methods) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+250.469 366.104 m
+250.469 331.646 l S
+361.531 366.104 m
+361.531 331.646 l S
+1 w
+Q
+q
+BT 304.610 348.875 Td /F1 10.0 Tf 0 Tr ( ) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+361.531 366.104 m
+361.531 331.646 l S
+472.592 366.104 m
+472.592 331.646 l S
+1 w
+Q
+q
+BT 415.671 348.875 Td /F1 10.0 Tf 0 Tr ( ) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.000 0.000 0.000 RG
+1 w [ 1 0 ] 0 d
+472.592 366.104 m
+472.592 331.646 l S
+1 w
+Q
+q
+BT 526.733 348.875 Td /F1 10.0 Tf 0 Tr ( ) Tj ET
+1 w
+Q
+q
+1 w
+Q
+q
+0.827 0.827 0.827 RG
+1 w [ 1 0 ] 0 d
+0.827 0.827 0.827 rg
+28.346 244.011 555.307 87.635 re f S
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+BT 39.917 314.416 Td /F1 7.0 Tf 0 Tr (About Us: Mission, Vision & ) Tj ET
+BT 48.286 306.324 Td /F1 7.0 Tf 0 Tr (Goals, History Awards ) Tj ET
+BT 35.245 298.232 Td /F1 7.0 Tf 0 Tr (Program Volunteer Leadership ) Tj ET
+BT 57.417 290.140 Td /F1 7.0 Tf 0 Tr (Staff Leadership ) Tj ET
+BT 45.759 282.048 Td /F1 7.0 Tf 0 Tr (Nondiscrimination Policy) Tj ET
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+BT 145.925 314.416 Td /F1 7.0 Tf 0 Tr (Contact Us: Customer Service, ) Tj ET
+BT 146.695 306.324 Td /F1 7.0 Tf 0 Tr (Key Staff Contacts Advertising ) Tj ET
+BT 149.033 298.232 Td /F1 7.0 Tf 0 Tr (Office Locations & Directions ) Tj ET
+BT 161.482 290.140 Td /F1 7.0 Tf 0 Tr (Report Website Issue) Tj ET
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+BT 261.655 314.416 Td /F1 7.0 Tf 0 Tr (Member Resources: Renew ) Tj ET
+BT 270.409 306.324 Td /F1 7.0 Tf 0 Tr (Membership Access e-) Tj ET
+BT 265.151 298.232 Td /F1 7.0 Tf 0 Tr (Learning Courses Access ) Tj ET
+BT 261.844 290.140 Td /F1 7.0 Tf 0 Tr (Safari Books Online Access ) Tj ET
+BT 268.260 282.048 Td /F1 7.0 Tf 0 Tr (Books 24x7 Discounted ) Tj ET
+BT 265.540 273.956 Td /F1 7.0 Tf 0 Tr (Subscriptions Discounted ) Tj ET
+BT 267.290 265.864 Td /F1 7.0 Tf 0 Tr (Conference Registration ) Tj ET
+BT 256.790 257.772 Td /F1 7.0 Tf 0 Tr (Chapter Contacts
+Username / ) Tj ET
+BT 279.547 249.680 Td /F1 7.0 Tf 0 Tr (Password Issues) Tj ET
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+BT 371.544 314.416 Td /F1 7.0 Tf 0 Tr (Volunteer Center: Member & ) Tj ET
+BT 383.216 306.324 Td /F1 7.0 Tf 0 Tr (Geographic Activities ) Tj ET
+BT 383.020 298.232 Td /F1 7.0 Tf 0 Tr (Educational Activities ) Tj ET
+BT 383.024 290.140 Td /F1 7.0 Tf 0 Tr (Professional Activities) Tj ET
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+BT 483.582 314.416 Td /F1 7.0 Tf 0 Tr (For More Information: Press ) Tj ET
+BT 488.058 306.324 Td /F1 7.0 Tf 0 Tr (Room Member Resource ) Tj ET
+BT 496.224 298.232 Td /F1 7.0 Tf 0 Tr (Guide \(PDF\) Author ) Tj ET
+BT 495.636 290.140 Td /F1 7.0 Tf 0 Tr (Information Request ) Tj ET
+BT 510.616 282.048 Td /F1 7.0 Tf 0 Tr (Information) Tj ET
+1 w
+Q
+q
+1.000 1.000 1.000 rg
+1.000 1.000 1.000 RG
+1 w
+Q
+endstream
+endobj
+
+8 0 obj
+<< /Type /Font
+/Subtype /Type1
+/Name /F1
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+>>
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000019 00000 n 
+0000000083 00000 n 
+0000000120 00000 n 
+0000000262 00000 n 
+0000000291 00000 n 
+0000000402 00000 n 
+0000000465 00000 n 
+0000014614 00000 n 
+
+trailer
+  << /Size 9
+     /Root 1 0 R
+ /Info 5 0 R
+  >>
+startxref
+14721
+%%EOF

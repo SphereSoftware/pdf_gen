@@ -1,5 +1,4 @@
 .idea/*
-samples/*.pdf
 test.rb
 *.pdf
 *.gem

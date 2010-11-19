@@ -19,6 +19,26 @@ PDF file generation can be made in the following way:
 === Caption
 An object which allows to represent some parts of the text in PDF file. This object has such properties as width, justification, pad_top (indent from the left side of the page), pad_bottom, pad_left, pad_right, text_color, font_size and border.
 The Border, in its turn, can be characterized by border_color, border_style (solid or dotted) and border_width (in cm or pixels).
+Support Properties:
+  pad_top - integer
+  pad_bottom - integer
+  pad_left - integer
+  pad_right - integer
+  paddings - integer
+  border - true|false
+  border_top - true|false
+  border_bottom - true|false
+  border_left - true|false
+  border_right - true|false
+  border_style - :solid | :dotted
+  border_widht - integer
+  border_color - object of color-tools*. Color::RGB::Red|Color::RGB.from_html("#ccc")| other
+  background_color - object of color-tools*. Color::RGB::Red|Color::RGB.from_html("#ccc")| other
+  width - integer
+  height - integer
+  
+  *color-tools http://ruby-pdf.rubyforge.org/color-tools/
+
 === Image
 An object which allows to add images with filename extensions *.jpg and *.png in PDF file. This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right and border.
 
@@ -28,6 +48,10 @@ An object which allows to add images with filename extensions *.jpg and *.png in
     image_data = open(File.expand_path('ruby_logo.jpg'), "rb") { |file| file.read }
     image image_data, :width => 250
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
+  
+Support Properties:
+  *the same as caption`s properties
+  
 === Span
 An object which allows setting several objects across the page. This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
 
@@ -38,7 +62,12 @@ An object which allows setting several objects across the page. This object has 
       elements :border => true    #group set params
     end
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
-
+  
+Support Properties:
+  *the same as caption`s properties
+  vertical_interval - integer
+  vartical_align - true | false
+  
 === Div
 An object which allows setting several elements in the vertical format. This object has such properties as width, horizontal_interval, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
 
@@ -49,6 +78,11 @@ An object which allows setting several elements in the vertical format. This obj
       elements :border => true    #group set params
     end
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
+  
+Support Properties:
+  *the same as caption`s properties
+  horizontal_interval - integer
+  horizontal_align - true | false
 
 === Table
 An object which allows creating tables in PDF file. This object has such elements as title, header, body and footer. The columns can be made be adding “spans” inside the body of the table. The table can have borders from specific sides, for example: “:border_right => true” or “:border_right => false”.
