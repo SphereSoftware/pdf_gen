@@ -1,11 +1,11 @@
 == Pdf_gen
-pdf_gen is a high level wrapper around {PDF::Writer}[https://github.com/sandal/pdf-writer] library which allows to create PDF documents in an easy way with a layout similar to HTML.
+pdf_gen is a high-level wrapper around {PDF::Writer}[https://github.com/sandal/pdf-writer] library which allows to create PDF documents in an easy way with a layout similar to HTML.
 
 == Install
   gem install pdf_gen
 
 == Usage
-All package entities are located withing the module PDFGen.
+All package entities are located within the PDFGen module.
 PDF file generation can be made in the following way:
 
   require "pdf_gen"
@@ -17,10 +17,10 @@ PDF file generation can be made in the following way:
 == Construction Elements
 
 === Caption
-Object which allows representing parts of a text in PDF file. This object has such properties as width, justification, pad_top (indent from the left side of the page), pad_bottom, pad_left, pad_right, text_color, font_size and border.
-Border for it’s turn could be characterized by border_color, border_style (solid or dotted) and border_width (in cm or pixels).
+An object which allows to represent some parts of the text in PDF file. This object has such properties as width, justification, pad_top (indent from the left side of the page), pad_bottom, pad_left, pad_right, text_color, font_size and border.
+The Border, in its turn, can be characterized by border_color, border_style (solid or dotted) and border_width (in cm or pixels).
 === Image
-Object which allows to add images with filename extensions *.jpg and *.png in PDF file . This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right and border.
+An object which allows to add images with filename extensions *.jpg and *.png in PDF file. This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right and border.
 
   require "pdf_gen"
 
@@ -29,7 +29,7 @@ Object which allows to add images with filename extensions *.jpg and *.png in PD
     image image_data, :width => 250
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 === Span
-Object which allows setting several objects across page. This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
+An object which allows setting several objects across the page. This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
 
   PDFGen::document PDF::Writer.new, 2.cm do
     span :width => 10.cm, :pad_left => 2.cm do
@@ -40,7 +40,7 @@ Object which allows setting several objects across page. This object has such pr
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
 === Div
-Object which allows setting several objects in vertical format. This object has such properties as width, horizontal_interval, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
+An object which allows setting several elements in the vertical format. This object has such properties as width, horizontal_interval, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
 
   PDFGen::document PDF::Writer.new, 2.cm do
     div :width => 10.cm do
@@ -51,7 +51,7 @@ Object which allows setting several objects in vertical format. This object has 
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
 === Table
-Object which allows creating tables in PDF file. This object has such elements as title, header, body and footer. The columns should be made be adding “spans” inside the body of the table. The table could have borders from the definite sides, for example: “:border_right => true” or “:border_right => false”.
+An object which allows creating tables in PDF file. This object has such elements as title, header, body and footer. The columns can be made be adding “spans” inside the body of the table. The table can have borders from specific sides, for example: “:border_right => true” or “:border_right => false”.
 
   require "pdf_gen"
 
@@ -87,8 +87,8 @@ Object which allows creating tables in PDF file. This object has such elements a
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
 === Smart Table
-Object which allows creating tables from Hash and ActiveRecord objects. Blocks of the title and footer you have to define
-independently if necessary. For example:
+An object which allows creating tables from Hash and ActiveRecord. If necessary, you can define the blocks of the title and footer independently.
+For example:
 
   table_data = {:columns =>['id','name','email'],
                 :body => [[1,'Valeriy','valeriy@example.com'],
@@ -99,7 +99,7 @@ independently if necessary. For example:
     end
   end.save("#{File.basename(__FILE__, ".rb")}.pdf")
 
-Build table from ActiveRecord (ROR)
+Building a table from ActiveRecord (ROR)
 
   table_data = User.all
   PDFGen::document PDF::Writer.new, 0.cm do
@@ -147,10 +147,9 @@ We can set the width of each column
 
 == Credits
 
-=== Project team
-* Mykhaylo Sorochan, Valeriy Prokopchuk - project management
-* Valeriy Sizov, Dmitriy Landberg - software development
-* Nataliya Shatokhina - Testing
-* others who helped with small contributions
+=== Team's line-up
+* Mykhaylo Sorochan, Valeriy Prokopchuk - Project Managers
+* Valeriy Sizov, Dmitriy Landberg - Software Developers
+* Nataliya Shatokhina - Tester
 
 Copyright (c) 2010 {Sphere Consulting Inc.}[http://www.sphereinc.com], released under the MIT license (see LICENSE).
