@@ -59,7 +59,7 @@ module PDFGen
       @body = RowsContainer.new(self)
       @footer = RowsContainer.new(self)
 
-      init_width(parent)
+      self.width = parent.av_width
       
       @data_source = nil
       @header_data = nil

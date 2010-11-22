@@ -67,7 +67,7 @@ module PDFGen
 
       footer_height = @footer.render([pos_x, pos_y], pos_y, true)
       if footer_height[0] > pos[1]
-        return [av_height-pos_y, false]
+        return [av_height - pos_y, false]
       end
 
       if status[1]
@@ -81,7 +81,7 @@ module PDFGen
       end
       pos_y -= footer_status[0] if footer_status
 
-      [av_height-pos_y, status[1] && footer_status[1]]
+      [av_height - pos_y, status[1] && footer_status[1]]
     end
 
 
