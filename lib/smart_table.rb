@@ -2,6 +2,7 @@ require "lib/data/ds_hash"
 require 'lib/data/ds_ar'
 require "lib/table"
 require "lib/div"
+require "ruby-debug"
 
 
 module PDFGen
@@ -23,11 +24,7 @@ module PDFGen
 
       def cell(region=nil,style=nil,&initialization_block)
         if initialization_block
-          if region == :div
-            cell = Div.new(self)
-          elsif region == :span
-            cell = Span.new(self)
-          end
+          cell = PDFGen.const_get(region.to_s.capitalize).new(self)
           cell.border_left = true
           cell.set_properties style unless style.nil?
           cell.instance_eval(&initialization_block)
