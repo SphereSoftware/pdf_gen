@@ -14,16 +14,13 @@ module PDFGen
       @header = Div.new(self)
       @body = Div.new(self)
       @footer = Div.new(self)
-      
-      init_width(parent)
+
+      self.width = parent.av_width
       
       @repeat_header_on_each_page = false
       @repeat_footer_on_each_page = false
     end
     
-    def init_width(parent)
-      self.width = parent.width - parent.pad_left - parent.pad_right
-    end
     
     def width=(value)
       [@title,@header,@body,@footer].each do |region|
