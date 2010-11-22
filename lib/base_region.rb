@@ -61,8 +61,12 @@ module PDFGen
         document.pdf.stroke_color! background_color
         document.pdf.stroke_style! PDF::Writer::StrokeStyle::SOLID
         document.pdf.fill_color! background_color
-        document.pdf.rectangle(pos[0], pos[1] - height, width, height).fill.stroke
-
+        document.pdf.rectangle(
+          pos[0] + border_width / 2.0,
+          pos[1] - height + border_width / 2.0,
+          width - border_width, 
+          height - border_width
+        ).fill.stroke
         document.pdf.restore_state
       end
     end
