@@ -32,8 +32,8 @@ module PDFGen
     def render(pos, av_height, test=false)
       self.check_fit_in_height
       if av_height >= self.height
-        document.pdf.add_image(@image, pos[0]+pad_left, pos[1]-height+pad_bottom,
-                               width-pad_left-pad_right, height-pad_top-pad_bottom)
+        document.pdf.add_image(@image, pos[0] + pad_left, pos[1] - height + pad_bottom,
+                               width - pad_left - pad_right, height-pad_top - pad_bottom)
         super
         [self.height, true]
       else
