@@ -21,11 +21,18 @@ module PDFGen
         parent.data_source
       end
 
-      def cell(region=nil,style=nil)
-        if region.is_a?(Array)
-          @cells << region.last #todo
-          region.delete(region.last)
-        else  
+      def cell(region=nil,style=nil,&initialization_block)
+        if initialization_block
+          if region == :div
+            cell = Div.new(self)
+          elsif region == :span
+            cell = Span.new(self)
+          end
+          cell.border_left = true
+          cell.set_properties style unless style.nil?
+          cell.instance_eval(&initialization_block)
+          @cells << cell
+        else
           caption = Caption.new(parent)
           caption.text = region
           caption.border_left = true
