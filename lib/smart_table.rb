@@ -2,7 +2,6 @@ require "lib/data/ds_hash"
 require 'lib/data/ds_ar'
 require "lib/table"
 require "lib/div"
-require "ruby-debug"
 
 
 module PDFGen

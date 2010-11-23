@@ -55,12 +55,12 @@ module PDFGen
     end
 
     def calculate_minimal_height
-      height = 0
-      regions.each do |region|
-        height += region.height
-        height += horizontal_interval unless region == regions.last
+      sum_height = regions.inject(0) do |sum, region|
+        h = region.height
+        h += horizontal_interval unless region == regions.last
+        sum + h
       end
-      height + pad_top + pad_bottom
+      sum_height + pad_top + pad_bottom
     end
 
     def render_regions(pos, av_height, test=false)
@@ -76,7 +76,7 @@ module PDFGen
         self.fit_width(region)
         if pos_y >= region.height
           @count_rendered_region += 1 unless test
-          
+
           region_height = region.render([pos_x, pos_y], pos_y, test)[0]
 
           @rendered_height += region_height
@@ -118,7 +118,7 @@ module PDFGen
     def render(pos, av_height, test=false)
       pos_x, pos_y = pos
       fill(pos)
-      add_border_top(pos_x, pos_y) if @rendered_height.zero?      
+      add_border_top(pos_x, pos_y) if @rendered_height.zero?
       status = render_regions([pos_x, pos_y], av_height, test)
       pos_y -= status[0]
 
