@@ -123,8 +123,9 @@ module PDFGen
       pos_y -= status[0]
 
       if (status[1])
-        add_border_bottom(pos_x, pos_y)
-        add_border_sides(pos_x, av_height, pos_y)
+        bottom = (av_height - self.height) > 0 ? (av_height - self.height) : pos_y
+        add_border_bottom(pos_x, bottom)
+        add_border_sides(pos_x, av_height, bottom)
       else
         add_border_sides(pos_x, av_height, 0)
       end
