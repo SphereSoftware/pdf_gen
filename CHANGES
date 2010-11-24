@@ -1,0 +1,4 @@
+Version 0.8
+    - Fix draw borders for a div
+    - Add samples
+    - Method cell (in the SmartTable) supports blocks
