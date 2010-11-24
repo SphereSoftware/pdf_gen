@@ -75,7 +75,7 @@ describe "New span" do
     caption1.set_properties(:width => 50)
 
     span_el.add_region(caption1)
-    span_el.render_regions
+    span_el.render_regions(0, 500, false)
     caption1.height.should == 100
   end
 end

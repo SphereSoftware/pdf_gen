@@ -45,7 +45,7 @@ module PDFGen
           end
         else
           if vertical_align && !test
-            region.height = height
+            region.height = self.height - self.pad_top - self.pad_bottom
           end
           region.render([(x + content_width), (y - pad_top)], y-pad_top) unless test
 
