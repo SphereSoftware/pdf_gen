@@ -178,6 +178,21 @@ We can set the width of each column
     cell data[2], :width => av_width * 1/4
   end
 
+Method cell supports blocks, for example:
+
+  body do
+    ds.each do |datarow|
+      row do
+        cell datarow[1], :width => av_width / 2
+        cell datarow[2], :width => av_width / 4
+        cell :div, :width => av_width / 4, :paddings => 0.2.cm do
+              image(open(File.expand_path("example_image.png"), "rb") { |file| file.read }, :width => av_width / 2)
+        end
+      end
+    end
+  end
+
+In this case the first arguments can be ":div", ":span", ":table" and others
 
 == Credits
 
