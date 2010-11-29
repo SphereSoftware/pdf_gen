@@ -17,7 +17,8 @@ PDF file generation can be made in the following way:
 == Construction Elements
 
 === Caption
-An object which allows to represent some parts of the text in PDF file. This object has such properties as width, justification, pad_top (indent from the left side of the page), pad_bottom, pad_left, pad_right, text_color, font_size and border.
+An object which allows to represent some parts of the text in PDF file. 
+This object has such properties as width, justification, pad_top (indent from the left side of the page), pad_bottom, pad_left, pad_right, text_color, font_size and border.
 The Border, in its turn, can be characterized by border_color, border_style (solid or dotted) and border_width (in cm or pixels).
 Support Properties:
   pad_top - integer
@@ -40,7 +41,8 @@ Support Properties:
   *color-tools http://ruby-pdf.rubyforge.org/color-tools/
 
 === Image
-An object which allows to add images with filename extensions *.jpg and *.png in PDF file. This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right and border.
+An object which allows to add images with filename extensions *.jpg and *.png in PDF file. 
+This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right and border.
 
   require "pdf_gen"
 
@@ -53,7 +55,8 @@ Support Properties:
   *the same as caption`s properties
   
 === Span
-An object which allows setting several objects across the page. This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
+An object which allows setting several objects across the page. 
+This object has such properties as width, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
 
   PDFGen::document PDF::Writer.new, 2.cm do
     span :width => 10.cm, :pad_left => 2.cm do
@@ -69,7 +72,9 @@ Support Properties:
   vartical_align - true | false
   
 === Div
-An object which allows setting several elements in the vertical format. This object has such properties as width, horizontal_interval, pad_top, pad_bottom, pad_left, pad_right, border and background_color.
+An object which allows setting several elements in the vertical format. 
+This object has such properties as width, horizontal_interval, pad_top, pad_bottom, pad_left, pad_right, border and background_color. 
+Div element can be divided across pages automatically.
 
   PDFGen::document PDF::Writer.new, 2.cm do
     div :width => 10.cm do
@@ -85,7 +90,9 @@ Support Properties:
   horizontal_align - true | false
 
 === Table
-An object which allows creating tables in PDF file. This object has such elements as title, header, body and footer. The columns can be made be adding “spans” inside the body of the table. The table can have borders from specific sides, for example: “:border_right => true” or “:border_right => false”.
+An object which allows creating tables in PDF file. This object has such elements as title, header, body and footer. 
+The columns can be made be adding “spans” inside the body of the table. 
+The table can have borders from specific sides, for example: “:border_right => true” or “:border_right => false”.
 
   require "pdf_gen"
 
