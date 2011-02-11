@@ -204,6 +204,6 @@ In this case the first arguments can be ":div", ":span", ":table" and others
 == Credits
 
 === Team's line-up
-* Sphere Consulting Development Team. 
+* Sphere Consulting Inc Development Team. 
 
 Copyright (c) 2010 {Sphere Consulting Inc.}[http://www.sphereinc.com], released under the MIT license (see LICENSE).
